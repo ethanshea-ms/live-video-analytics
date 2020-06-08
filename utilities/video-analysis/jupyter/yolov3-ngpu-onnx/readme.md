@@ -1,3 +1,17 @@
+# Yolov3 nGPU ONNX model
+
+The following instructions will enable you to run a [Yolov3](http://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) model using [nginx](https://www.nginx.com/), [gunicorn](https://gunicorn.org/), [flask](https://github.com/pallets/flask), and [runit](http://smarden.org/runit/) on Jupyter notebooks.
+
+Note: References to third-party software in this repo are for informational and convenience purposes only. Microsoft does not endorse nor provide rights for the third-party software. For more information on third-party software please see the links provided above.
+
+## Getting Started
+1. Install the requirements for this sample by following [this guide](https://github.com/mustafakasap/live-video-analytics/blob/master/utilities/video-analysis/jupyter/01_requirements.md)
+2. Set up the deployment and test environment by following 
+
+
+## Introduction
+
+
 follow sections:
 01
 02
