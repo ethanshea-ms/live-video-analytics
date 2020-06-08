@@ -5,7 +5,7 @@ The following instructions will enable you to run a [Yolov3](http://pjreddie.com
 Note: References to third-party software in this repo are for informational and convenience purposes only. Microsoft does not endorse nor provide rights for the third-party software. For more information on third-party software please see the links provided above.
 
 ## Getting Started
-To get started with this sample, clone the [Live Video Analytics repository](/live-video-analytics/tree/master/utilities/video-analysis/jupyter) into your machine.
+To get started with this sample, clone the [Live Video Analytics repository](/utilities/video-analysis/jupyter) into your machine.
 1. Install the requirements for this sample by following [this guide](https://github.com/mustafakasap/live-video-analytics/blob/master/utilities/video-analysis/jupyter/01_requirements.md)
 2. Set up the deployment and test environment by running the Jupyter notebook titled [02_setup_environment.ipynb](https://github.com/mustafakasap/live-video-analytics/blob/master/utilities/video-analysis/jupyter/02_setup_environment.ipynb)
 
