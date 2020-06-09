@@ -34,8 +34,11 @@ Once the Docker image has been tested successfully, [upload the container image]
 
 ## TO BE DETERMINED
 08 setup deployment manifest 
-    - May include RTSP simulator (in cased dont have IP cam) If this is the case, than which sample video file should be played as virtual IP cam content? how these files to be copied into edge device. here we should guide accordingly
-    - how inference server or any other (like LVA) module deployment settings are set.
+* May include RTSP simulator (in cased dont have IP cam) 
+  * If this is the case, than which sample video file should be played as virtual IP cam content? 
+  * How these files to be copied into edge device. 
+  * Here we should guide accordingly
+* How inference server or any other (like LVA) module deployment settings are set.
 
 09 deploy media graph
 
