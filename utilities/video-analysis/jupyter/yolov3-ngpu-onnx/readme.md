@@ -29,17 +29,4 @@ The following section explains how to build a Docker image of the inference serv
 3. Before uploading the Docker image, [test the image locally](/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/03_local_test.ipynb).
 
 ## Deployment
-Once the Docker image has been tested successfully, [upload the container image](/utilities/video-analysis/jupyter/07_upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR). After the image has been successfully uploaded on ACR, [deploy LVA and the inference server modules](/utilities/video-analysis/jupyter/08_deploy_iotedge_modules.ipynb) to an IoT Edge device.
-
-
-## TO BE DETERMINED
-08 setup deployment manifest 
-* May include RTSP simulator (in cased dont have IP cam) 
-  * If this is the case, than which sample video file should be played as virtual IP cam content? 
-  * How these files to be copied into edge device. 
-  * Here we should guide accordingly
-* How inference server or any other (like LVA) module deployment settings are set.
-
-09 deploy media graph
-
-10 Check if all modules works fine, if we get inference results
+Once the Docker image has been tested successfully, [upload the container image](/utilities/video-analysis/jupyter/07_upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR). After the image has been successfully uploaded on ACR, [deploy LVA and the inference server modules](/utilities/video-analysis/jupyter/08_deploy_iotedge_modules.ipynb) to an IoT Edge device using a module deployment manifest. Finally, [deploy media graphs](/utilities/video-analysis/jupyter/09_deploy_media_graph.ipynb) to trigger the modules and test to see if the inference works as desired.
