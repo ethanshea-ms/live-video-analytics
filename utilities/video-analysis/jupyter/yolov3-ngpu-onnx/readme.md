@@ -29,7 +29,7 @@ The following section explains how to build a Docker image of the inference serv
 3. Before uploading the Docker image, [test the image locally](/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/03_local_test.ipynb).
 
 ## Deployment
-Once the Docker image has been tested successfully, [upload the container image](/utilities/video-analysis/jupyter/07_upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR). After the image has been successfully uploaded on ACR, [deploy LVA and the inference server modules](/utilities/video-analysis/jupyter/08_setup_deployment_manifest.ipynb) to an IoT Edge device.
+Once the Docker image has been tested successfully, [upload the container image](/utilities/video-analysis/jupyter/07_upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR). After the image has been successfully uploaded on ACR, [deploy LVA and the inference server modules](/utilities/video-analysis/jupyter/08_deploy_iotedge_modules.ipynb) to an IoT Edge device.
 
 
 ## TO BE DETERMINED
