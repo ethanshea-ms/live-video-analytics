@@ -5,6 +5,12 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
 
 1. There are many ways to run, manage, and update Jupyter notebooks. Out of the many options, we recommend using Visual Studio Code (VSCode) because it has extensions for running and managing IoT devices as well. Install [Visual Studio Code](https://code.visualstudio.com/) if you do not already have it installed.  
 
+    > [!NOTE]  
+    > All of the commands in this sample should work as intended on machines running Ubuntu 18.04 and MacOS. If you are using a machine running Windows, you can try either of the following solutions:
+    > <br><br>Option 1: Install [Git Bash](https://git-scm.com/downloads). When installing the tools below, use the Git Bash terminal. When running the Jupyter notebooks, first [switch the terminal setting in VSCode](https://code.visualstudio.com/docs/editor/integrated-terminal) so that the Bash terminal is used. 
+    > <br><br>Option 2: Turn on the [Windows Subsystem for Linux (WSL) setting](https://code.visualstudio.com/remote-tutorials/wsl/enable-wsl). Then, download [Ubuntu 18.04 from the Microsoft store](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-your-linux-distribution-of-choice). When installing the tools below, use the Ubuntu terminal. When running the Jupyter notebooks, first  [switch the terminal setting in VSCode](https://code.visualstudio.com/docs/editor/integrated-terminal) so that the WSL terminal is used.
+    > By running either of the two options, you will be effectively using Ubuntu on your development PC. In the proceeding steps, you should install the tools as if you were running an Ubuntu machine.
+
 2. To run the Jupyter notebooks, you will need to have Python installed. If Python has not been installed on your machine, you should [install Python](https://www.python.org/downloads/). We recommend that you install Python 3 version 6 or above, as this sample was prepared using Python 3.6.2. Installing the latest version of Python should also install the latest version of Pip 3. Pip is a package management system used to install and manage software packages written in Python. 
 
    If you are using an Ubuntu machine to run this sample, Python may already be pre-installed. You can check if you already have Python installed by running the commands below:
@@ -44,12 +50,17 @@ If you are not familiar with running Jupyter notebooks, you should view this tut
 
 <img src="documents/python_interpreter.png" width=500px/>  
 
+## 1.4. Installing Docker
+Later in this sample, we will be using Docker to containerize our ML modules. On your development PC, install [Docker engine](https://docs.docker.com/engine/install/) based on your operating system. Note that if you are using Windows, you should be installing Docker for Ubuntu, as noted above.
+
+## 1.5. Installing Azure CLI
+
 In this sample, you will be interacting with Azure. If you do not have an active Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). We will mainly be interacting with Azure through Jupyter, but for this to work, you will need to install the [Azure command-line interface (CLI)](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 > <span style="color:red; font-weight: bold; font-size:1.1em;"> [!IMPORTANT] </span> 
 > If you are using the [Azure CLI for Linux](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest), you may run into issues later related to account permissions. For example, we will be running Docker later in this sample. Instead of the command `sudo docker`, we prefer using the command `docker` without the `sudo` command. To run Docker commands on Linux without the `sudo` command, follow the Docker instructions for [managing Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/). Afterwards, you will have to log out from your PC and log back in.
 
-## 1.4. Next Steps
+## 1.6. Next Steps
 In the following sections of this sample, there will be descriptions and instructions in Markdown cells in each of the Jupyter notebooks. Please carefully read these desctiptions and instructions before running the code cells, in order to ensure successful execution of the sample.
 
 Moreover, we refer to three different environments later in this sample. Here are descriptions for each of them for future reference:
@@ -60,13 +71,4 @@ Moreover, we refer to three different environments later in this sample. Here ar
 
 Per your preference, environments 1 and 2 can be the same machine, i.e., developing, debugging, and deploying this sample all on the same IoT Edge device.
 
-> [!NOTE]  
-> All of the commands in this sample should work as intended on machines running Ubuntu 18.04 and MacOS. If you are using a machine running Windows as your development PC, you can try either of the following solutions:
-> <br><br>Option 1: Install [Git Bash](https://git-scm.com/downloads) and run all the proceeding Jupyter notebooks by first running the command `jupyter notebook` on Git Bash, instead of using VSCode. 
-> <br><br>Option 2: Turn on the [Windows Subsystem for Linux (WSL) setting](https://code.visualstudio.com/remote-tutorials/wsl/enable-wsl). Then, download [Ubuntu 18.04 from the Microsoft store](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-your-linux-distribution-of-choice). Finally, [install Jupyter](https://jupyter.org/install) on your WSL (remember to use `pip3` instead of `pip`).
-
-After having all the requirements from this section satisfied, clone [this project repository](/) into your local machine.
-
-
-and open the repository with VSCode. You can continue with next sections (which is a Jupyter notebook file) in Visual Studio Code. Here is a [VSCode Jupyter Notebooks tutorial](https://code.visualstudio.com/docs/python/jupyter-support) that you may want to check if you dont have any Jupyter notebook experience before.
-
+After having all the requirements from this section satisfied, clone [this project repository](/) into your local machine and open the repository with VSCode. You can continue with the next sections (which are Jupyter notebook files) in VSCode. In another window (preferably using split-screen view), return to the Readme file (e.g., by hitting the back button in your browser) and follow the following steps.
