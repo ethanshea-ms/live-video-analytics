@@ -4,7 +4,6 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 Note: References to third-party software in this repo are for informational and convenience purposes only. Microsoft does not endorse nor provide rights for the third-party software. For more information on third-party software please see the links provided above.
 
 ## Prerequisites
-To get started with this sample, clone the [Live Video Analytics repository](/) into your machine and follow the steps below:
 1. Install the [requirements for running LVA on Jupyter](/utilities/video-analysis/jupyter/01_requirements.md).
 2. Set up the [deployment and test environment on Jupyter](/utilities/video-analysis/jupyter/02_setup_environment.ipynb).
 3. Create the [required Azure services](/utilities/video-analysis/jupyter/03_create_azure_services.ipynb).
@@ -30,4 +29,14 @@ The following section explains how to build a Docker image of the inference serv
 3. Before uploading the Docker image, [test the image locally](/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/03_local_test.ipynb).
 
 ## Deployment
-Once the Docker image has been tested successfully, [upload the container image](/utilities/video-analysis/jupyter/07_upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR). After the image has been successfully uploaded on ACR, [deploy LVA and the inference server modules](/utilities/video-analysis/jupyter/08_deploy_iotedge_modules.ipynb) to an IoT Edge device using a module deployment manifest. Finally, [deploy media graphs](/utilities/video-analysis/jupyter/09_deploy_media_graph.ipynb) to trigger the modules and test to see if the inference works as desired.
+The following section will explain how to deploy the Docker image and run media graphs to get started with LVA. 
+
+The image below summarizes the deployment process for LVA. As the dashed lines connecting the container registries and the Edge device grouping show, LVA can be utilized using containers hosted on the Internet, on a local network, or even on a local machine.
+
+<img src="../documents/_architecture.png" width=500px/>  
+
+To deploy your ML module on LVA, follow the steps below:
+
+1. After you have tested your Docker image, [upload the container image](/utilities/video-analysis/jupyter/07_upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR). 
+2. After the image has been successfully uploaded on ACR, [deploy LVA and the inference server modules](/utilities/video-analysis/jupyter/08_deploy_iotedge_modules.ipynb) to an IoT Edge device using a module deployment manifest. 
+3. Finally, [deploy media graphs](/utilities/video-analysis/jupyter/09_deploy_media_graph.ipynb) to trigger the modules and test to see if the inference works as desired.
