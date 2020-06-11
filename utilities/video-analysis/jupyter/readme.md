@@ -7,4 +7,4 @@
 | [Yolo V3](yolov3-icpu-onnx/readme.md)             | HTTP      | iCPU              | ONNX          |               |
 | [Tiny Yolo V3](tinyyolov3-icpu-onnx/readme.md)    | HTTP      | iCPU              | ONNX          |               |
 | [Tiny Yolo V3](http://aka.ms/)                    | gRPC      | iCPU              | ONNX          |               |
-| [Yolo V3](yolov3-ngpu-onnx/readme.md)             | HTTP      | nGPU              | ONNX          |               |
+| [Yolo V3](yolov3-ngpu-onnx/readme.md)             | HTTP      | nGPU              | ONNX          | Sample for creating and deploying a LVA module using Yolo V3, a neural network for real-time object detection, running on GPU accelerated IoT Edge devices.             |
