@@ -15,12 +15,15 @@ To install the IoT Edge Runtime, use the following URL with your OS version in p
     https://packages.microsoft.com/config/ubuntu/<YOUR_OS_VERSION>/multiarch/prod.list
 ```
 
-
+For example, in case of Ubuntu version 18.04, the URL should look like:
+```
+curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+```  
 
 Run the following commands to install the IoT Edge Runtime:
 
 ```shell
-curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+curl https://packages.microsoft.com/config/ubuntu/<YOUR_OS_VERSION>/multiarch/prod.list > ./microsoft-prod.list
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/

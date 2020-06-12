@@ -1,7 +1,7 @@
 # 1. Requirements for LVA Jupyter Notebook Samples 
 
 ## 1.1. Installing Required Tools
-To run LVA on Jupyter notebooks, you will first need to install the following tools. 
+To run LVA on Jupyter notebooks, you will first need to install the following tools.  
 
 1. There are many ways to run, manage, and update Jupyter notebooks. Out of the many options, we recommend using Visual Studio Code (VSCode) because it has extensions for running and managing IoT devices as well. Install [Visual Studio Code](https://code.visualstudio.com/) if you do not already have it installed.  
 
@@ -11,9 +11,9 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     > <br><br>Option 2: Install [Git Bash](https://git-scm.com/downloads). When installing the tools below, use the Git Bash terminal. When running the Jupyter notebooks, first [switch the terminal setting in VSCode](https://code.visualstudio.com/docs/editor/integrated-terminal) so that the Bash terminal is used. 
     > By running either of the two options, you will be effectively using Ubuntu on your development PC. In the proceeding steps, you should install the tools as if you were running an Ubuntu machine.
 
-2. To run the Jupyter notebooks, you will need to have Python installed. If Python has not been installed on your machine, you should [install Python](https://www.python.org/downloads/). If you wish to install Python 3, please install a version that is more recent than Python 3.6. 
+2. To run the Jupyter notebooks, you will need to have [Python](https://www.python.org/downloads/) version >=3.6 installed.
    
-   If you are using an Ubuntu machine to run this sample, Python may already be pre-installed. You can check if you already have Python installed by running the commands below:
+   If you are using an Ubuntu or MacOS machine to run this sample, Python may already be pre-installed. You can check if you already have Python installed by running the commands below:
     ```
     python --version
     ```
@@ -28,8 +28,8 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     ```
     pip3 --version
     ``` 
-
-    ><span>[!NOTE]</span>
+   
+     ><span>[!NOTE]</span>
     > Pip is a package management system used to install and manage software packages written in Python. Installing the latest version of Python should also install the latest version of Pip. 
 
 3. If your machine only has one installation of Python 3, running `python` should refer to Python 3. However, if have multiple Python installations, such as Python 2 (which comes pre-installed with many Linux machines) and Python 3, make sure you are using the appropriate version of `python` and `pip`. Use the commands `python` and `pip` for Python 2 or `python3` and `pip3` for Python 3. Based on the version of Python you are running, you may need to update the code cells below with either `pip` or `pip3`. 

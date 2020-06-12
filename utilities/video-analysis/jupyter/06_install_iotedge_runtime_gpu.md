@@ -1,6 +1,6 @@
 # 6. Install IoT Edge runtime for NVidia GPU Accelerated IoT Edge Devices
 
-This section assumes that your PC have NVidia Tesla K80 GPU card installed and you are using Ubuntu OS version 18.04. For other GPU types, the commands below may need to be updated with the appropriate NVidia drivers.
+This section assumes that your PC have NVidia Tesla K80 GPU card installed and you are using Ubuntu OS version 18.04. For other Operating system versions and GPU types, the commands below may need to be updated with the appropriate NVidia drivers.
 
 If you are using a virtual machine, you can use the SSH connection string to create a terminal session over the VM. Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
 
