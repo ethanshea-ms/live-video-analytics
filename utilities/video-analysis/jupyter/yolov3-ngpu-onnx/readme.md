@@ -1,11 +1,11 @@
 # YoloV3 nGPU ONNX model
 The following instructions will enable you to run a [YoloV3](http://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) model on Live Video Analytics (LVA) using Jupyter notebooks. This sample is specific for Nvidia GPU accelerated IoT Edge devices. 
 
-Note: References to third-party software in this repo are for informational and convenience purposes only. Microsoft does not endorse nor provide rights for the third-party software. For more information on third-party software please see the links provided above.
+Note: References to third-party software in this repo are for informational and convenience purposes only. Microsoft does not endorse nor provide rights for the third-party software.
 
 ## Prerequisites
 1. Install the [requirements for running LVA on Jupyter](/utilities/video-analysis/jupyter/01_requirements.md).
-2. After installing all of the required tools and cloning the [LVA repository](/), have the repository open in a split-screen view so that you can continue following this sample while running the code. On VSCode, start by running the Jupyter notebook titled [02_setup_environment.ipynb](/utilities/video-analysis/jupyter/02_setup_environment.ipynb), which will set up a deployment and test environment on Jupyter. The notebook may take several minutes to load into Jupyter format.
+2. After installing all of the required tools and cloning the [LVA repository](.../), have the repository open in a split-screen view so that you can continue following this sample while running the code. On VSCode, start by running the Jupyter notebook titled [02_setup_environment.ipynb](/utilities/video-analysis/jupyter/02_setup_environment.ipynb), which will set up a deployment and test environment on Jupyter. The notebook may take several minutes to load into Jupyter format.
 3. Create the required Azure services by running the Jupyter notebook titled [03_create_azure_services.ipynb](/utilities/video-analysis/jupyter/03_create_azure_services.ipynb).
 
 ## Getting Started
@@ -17,7 +17,7 @@ To get started with your ML module, create an Azure Virtual Machine by running t
 * want to use a VM to test this sample
 
 > [!NOTE]
-> If you want to run the following sections, you must create a GPU-accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
+> If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
 
 Once you have created your VM, check to see what [type of GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-gpu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) comes with your VM. If your VM has an NVidia GPU, [install](/utilities/video-analysis/jupyter/06_install_iotedge_runtime_gpu.md) IoT Edge runtime and the required drivers and tools for your NVidia GPU. 
 
