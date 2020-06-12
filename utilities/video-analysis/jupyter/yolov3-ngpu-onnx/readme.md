@@ -8,7 +8,7 @@ Note: References to third-party software in this repo are for informational and 
 2. After installing all of the required tools, clone the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
 3. Locate this Readme page in your local repository and continue reading the following sections on VSCode. You can preview Markdown (`.md`) pages by clicking the preview button on the top toolbar in VSCode.  
    
-   <img src="../documents/markdown_preview.png" width=400px/> 
+   <img src="../documents/markdown_preview.png" width=300px/> 
    
 ## Getting Started
 1. On VSCode, [set up the environment](../02_setup_environment.ipynb) so that we can test and deploy LVA.
