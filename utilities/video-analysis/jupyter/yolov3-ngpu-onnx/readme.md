@@ -32,9 +32,9 @@ Once you have created your VM, check to see what [type of GPU](https://docs.micr
     Change the following steps based on specific instructions.
 -->
 The following sections explain how to build a Docker image of an inference server that uses AI logic (i.e., YoloV3 for object detection) on a GPU accelerated VM.
-1. Create a YoloV3 inference engine by running the Jupyter notebook titled [yg1_create_inference_engine.ipynb] (/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/yg1_create_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
+1. Create a YoloV3 inference engine by running the Jupyter notebook titled [yg1_create_inference_engine.ipynb](/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/yg1_create_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
 2. Create a local Docker image by running the Jupyter notebook titled [yg2_create_local_container_image.ipynb](/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/yg2_create_local_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
-3. Before uploading the Docker image, test the image locally by running the Jupyer notebook titled [yg3_local_test.ipynb] (/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/yg3_local_test.ipynb).
+3. Before uploading the Docker image, test the image locally by running the Jupyer notebook titled [yg3_local_test.ipynb](/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/yg3_local_test.ipynb).
 
 ## Deployment
 The following section will explain how to deploy the Docker image and run media graphs on LVA. 
