@@ -5,7 +5,7 @@ Note: References to third-party software in this repo are for informational and 
 
 ## Prerequisites
 1. Install the [requirements for running LVA on Jupyter](/utilities/video-analysis/jupyter/01_requirements.md).
-2. After installing all of the required tools and cloning the [LVA repository](.../), have the repository open in a split-screen view so that you can continue following this sample while running the code. On VSCode, start by running the Jupyter notebook titled [02_setup_environment.ipynb](/utilities/video-analysis/jupyter/02_setup_environment.ipynb), which will set up a deployment and test environment on Jupyter. The notebook may take several minutes to load into Jupyter format.
+2. After installing all of the required tools and cloning the [LVA repository](/../../), have the repository open in a split-screen view so that you can continue following this sample while running the code. On VSCode, start by running the Jupyter notebook titled [02_setup_environment.ipynb](/utilities/video-analysis/jupyter/02_setup_environment.ipynb), which will set up a deployment and test environment on Jupyter. The notebook may take several minutes to load into Jupyter format.
 3. Create the required Azure services by running the Jupyter notebook titled [03_create_azure_services.ipynb](/utilities/video-analysis/jupyter/03_create_azure_services.ipynb).
 
 ## Getting Started
