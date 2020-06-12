@@ -4,8 +4,14 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 Note: References to third-party software in this repo are for informational and convenience purposes only. Microsoft does not endorse nor provide rights for the third-party software.
 
 ## Prerequisites
-1. Install the [requirements for running LVA on Jupyter](/utilities/video-analysis/jupyter/01_requirements.md).
-2. After installing all of the required tools and cloning the [LVA repository](/../../), have the repository open in a split-screen view so that you can continue following this sample while running the code. On VSCode, start by running the Jupyter notebook titled [02_setup_environment.ipynb](/utilities/video-analysis/jupyter/02_setup_environment.ipynb), which will set up a deployment and test environment on Jupyter. The notebook may take several minutes to load into Jupyter format.
+> <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
+> All of the commands in this sample should work as intended on machines running Ubuntu 18.04 and MacOS. If you are using a machine running Windows, you can try either of the following solutions:
+> <br><br>Option 1: Turn on the [Windows Subsystem for Linux](https://code.visualstudio.com/remote-tutorials/wsl/enable-wsl) setting. Then, download [Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-your-linux-distribution-of-choice) from the Microsoft store. When installing the tools below, use the Ubuntu terminal. When running the Jupyter notebooks, first  [switch the terminal setting in VSCode](https://code.visualstudio.com/docs/editor/integrated-terminal) so that the WSL terminal is used.
+> <br><br>Option 2: Install [Git Bash](https://git-scm.com/downloads). When installing the tools below, use the Git Bash terminal. When running the Jupyter notebooks, first [switch the terminal setting in VSCode](https://code.visualstudio.com/docs/editor/integrated-terminal) so that the Bash terminal is used. 
+> By running either of the two options, you will be effectively using Ubuntu on your development PC. In the proceeding steps, you should install the tools as if you were running an Ubuntu machine.
+
+1. Install the [requirements for running LVA on Jupyter](/utilities/video-analysis/jupyter/01_requirements.md). For optimal readibility, we recommend viewing Readme pages and Markdown files (`.md`) on a browser and running Jupyter notebooks (`.ipynb`) on VSCode.
+2. After installing all of the required tools and cloning the [LVA repository](/../../), have the repository open in VSCode in split-screen view so that you can continue following this sample while running the code. On VSCode, run the Jupyter notebook titled [02_setup_environment.ipynb](/utilities/video-analysis/jupyter/02_setup_environment.ipynb), which will set up a deployment and test environment on Jupyter. The notebook may take several minutes to render into Jupyter format.
 3. Create the required Azure services by running the Jupyter notebook titled [03_create_azure_services.ipynb](/utilities/video-analysis/jupyter/03_create_azure_services.ipynb).
 
 ## Getting Started
@@ -14,7 +20,7 @@ Note: References to third-party software in this repo are for informational and 
 -->
 To get started with your ML module, create an Azure Virtual Machine by running the Jupyter notebook titled [04_create_vm_iotedge_device.ipynb](/utilities/video-analysis/jupyter/04_create_vm_iotedge_device.ipynb) if you
 * do not have a physical IoT Edge device, or 
-* want to use a VM to test this sample
+* want to use a VM to test this sample.
 
 > [!NOTE]
 > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
@@ -25,15 +31,15 @@ Once you have created your VM, check to see what [type of GPU](https://docs.micr
 <!--
     Change the following steps based on specific instructions.
 -->
-The following sections explain how to build a Docker image of the inference server that uses AI logic (i.e., YoloV3 for object detection) on a GPU-accelerated VM.
-1. Create a YoloV3 inference engine by running the Jupyter notebook titled [yg1_create_inference_engine.ipynb] (/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/yg1_create_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyse it, and return the analysis as output.
+The following sections explain how to build a Docker image of an inference server that uses AI logic (i.e., YoloV3 for object detection) on a GPU accelerated VM.
+1. Create a YoloV3 inference engine by running the Jupyter notebook titled [yg1_create_inference_engine.ipynb] (/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/yg1_create_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
 2. Create a local Docker image by running the Jupyter notebook titled [yg2_create_local_container_image.ipynb](/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/yg2_create_local_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
 3. Before uploading the Docker image, test the image locally by running the Jupyer notebook titled [yg3_local_test.ipynb] (/utilities/video-analysis/jupyter/yolov3-ngpu-onnx/yg3_local_test.ipynb).
 
 ## Deployment
-The following section will explain how to deploy the Docker image and run media graphs to get started with LVA. 
+The following section will explain how to deploy the Docker image and run media graphs on LVA. 
 
-The image below summarizes the deployment process for LVA. As the dashed lines connecting the container registries and the Edge device grouping show, LVA can be utilized using containers hosted on the Internet, on a local network, or even on a local machine.
+The image below summarizes the deployment scheme of LVA. As the dashed lines connecting the container registries and the Edge device indicate, LVA can be utilized using containers hosted on the Internet, on a local network, or even on a local machine.
 
 <img src="../documents/_architecture.png" width=500px/>  
 
