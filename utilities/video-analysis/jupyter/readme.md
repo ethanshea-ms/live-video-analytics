@@ -2,7 +2,7 @@
 
 ## List of samples
 
-| Name       | Extension | Accelerator| Description | Tested On |
+| Name       | Extension | Accelerator| Description | Tested On &nbsp;|
 |:---        |:---       |:---        |:---       |:---       |
 | [Yolo V3](yolov3-icpu-onnx/readme.md)             | HTTP      | iCPU | LVA module using Yolo V3, a neural network for real-time object detection, that complies with the Open Neural Network Exchange (ONNX). This module requires an Intel CPU-accelerated IoT Edge device with connection through HTTP. | Python 3.6.2:<ul><li>[ ] Ubuntu 18.04</li><li>[ ] MacOS</li></ul> |
 | [Tiny Yolo V3](tinyyolov3-icpu-onnx/readme.md)    | HTTP      | iCPU | LVA module using Tiny Yolo V3, a lightweight variant of the Yolo V3 neural network model, that complies with the Open Neural Network Exchange (ONNX). This module requires an Intel CPU-accelerated IoT Edge device with connection through HTTP. | Python 3.6.2:<ul><li>[ ] Ubuntu 18.04</li><li>[ ] MacOS</li></ul> |
