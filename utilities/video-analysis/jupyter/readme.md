@@ -2,8 +2,8 @@
 
 ## List of samples
 
-| Jupyter Notebook Sample Name                      | Extension | Accelerator(s)    | AI Framework  | Description   | Tested On |
-|:---------------------------------                 |:---       |:---               |:--------      |:---           |:---------------- |
+| Name       | Extension | Accelerator| AI Framework  | Description   | Tested On |
+|:---        |:---       |:---        |:---           |:---           |:---       |
 | [Yolo V3](yolov3-icpu-onnx/readme.md)             | HTTP      | iCPU              | ONNX          | LVA module using Yolo V3, a neural network for real-time object detection, running on CPU accelerated IoT Edge devices with connection through HTTP. | <ul><li>[ ] Ubuntu 18.04 (CPU1, Python 3.6.2)</li><li>[ ] MacOS (CPU2, Python 3.6.2)</li></ul> |
 | [Tiny Yolo V3](tinyyolov3-icpu-onnx/readme.md)    | HTTP      | iCPU              | ONNX          | LVA module using Tiny Yolo V3, a lightweight variant of the Yolo V3 neural network model used for real-time object detection, running on CPU accelerated IoT Edge devices with connection through HTTP. | <ul><li>[ ] Ubuntu 18.04 (CPU1, Python 3.6.2)</li><li>[ ] MacOS (CPU2, Python 3.6.2)</li></ul> |
 | [Tiny Yolo V3](http://aka.ms/)                    | gRPC      | iCPU              | ONNX          | LVA module using Tiny Yolo V3, a lightweight variant of the Yolo V3 neural network model used for real-time object detection, running on GPU accelerated IoT Edge devices with connection through gRPC. Compared to HTTP, gRPC. gRPC is a remote procedure call that efficiently connects services in and across data centers with pluggable support for load balancing, tracing, health checking and authentication. | <ul><li>[ ] Ubuntu 18.04 (CPU1, Python 3.6.2)</li><li>[ ] MacOS (CPU2, Python 3.6.2)</li></ul> |
