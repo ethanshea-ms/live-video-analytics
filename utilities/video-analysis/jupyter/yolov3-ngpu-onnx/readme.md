@@ -13,11 +13,13 @@ Note: References to third-party software in this repo are for informational and 
     Change the following steps depending on the kind of sample: CPU (/utilities/video-analysis/jupyter/05_install_iotedge_runtime_cpu.md) or GPU (/utilities/video-analysis/jupyter/06_install_iotedge_runtime_gpu.md)
 -->
 To get started with your ML module, create an Azure Virtual Machine by running the Jupyter notebook titled [04_create_vm_iotedge_device.ipynb](/utilities/video-analysis/jupyter/04_create_vm_iotedge_device.ipynb) if you
-    * do not have a physical IoT Edge device, or 
-    * want to use a VM to test this sample
+* do not have a physical IoT Edge device, or 
+* want to use a VM to test this sample
+
 > [!NOTE]
 > If you want to run the following sections, you must create a GPU-accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
-Once you have created your VM, check to see what [type of GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-gpu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) comes with your VM. If your VM has an NVidia GPU, install [these IoT Edge runtime and the required drivers and tools for your NVidia GPU](/utilities/video-analysis/jupyter/06_install_iotedge_runtime_gpu.md). 
+
+Once you have created your VM, check to see what [type of GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-gpu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) comes with your VM. If your VM has an NVidia GPU, [install](/utilities/video-analysis/jupyter/06_install_iotedge_runtime_gpu.md) IoT Edge runtime and the required drivers and tools for your NVidia GPU. 
 
 ## Building a Docker Image of the Inference Server
 <!--
