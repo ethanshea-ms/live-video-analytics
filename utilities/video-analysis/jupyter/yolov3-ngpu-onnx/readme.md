@@ -4,7 +4,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 Note: References to third-party software in this repo are for informational and convenience purposes only. Microsoft does not endorse nor provide rights for the third-party software.
 
 ## Prerequisites
-> <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
+> <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>   
 > All of the commands in this sample should work as intended on machines running Ubuntu 18.04 and MacOS. If you are using a machine running Windows, you can try either of the following solutions:
 > <br><br>Option 1: Turn on the [Windows Subsystem for Linux](https://code.visualstudio.com/remote-tutorials/wsl/enable-wsl) setting. Then, download [Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-your-linux-distribution-of-choice) from the Microsoft store. When installing the tools below, use the Ubuntu terminal. When running the Jupyter notebooks, first  [switch the terminal setting in VSCode](https://code.visualstudio.com/docs/editor/integrated-terminal) so that the WSL terminal is used.
 > <br><br>Option 2: Install [Git Bash](https://git-scm.com/downloads). When installing the tools below, use the Git Bash terminal. When running the Jupyter notebooks, first [switch the terminal setting in VSCode](https://code.visualstudio.com/docs/editor/integrated-terminal) so that the Bash terminal is used. 
@@ -22,7 +22,7 @@ To get started with your ML module, create an Azure Virtual Machine by running t
 * do not have a physical IoT Edge device, or 
 * want to use a VM to test this sample.
 
-> [!NOTE]
+> <span><span>[!NOTE]</span></span>
 > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
 
 Once you have created your VM, check to see what [type of GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-gpu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) comes with your VM. If your VM has an NVidia GPU, [install](/utilities/video-analysis/jupyter/06_install_iotedge_runtime_gpu.md) IoT Edge runtime and the required drivers and tools for your NVidia GPU. 

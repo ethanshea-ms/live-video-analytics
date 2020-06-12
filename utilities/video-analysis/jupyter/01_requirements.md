@@ -29,12 +29,12 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     pip3 --version
     ``` 
 
-    >[!NOTE]
+    ><span>[!NOTE]</span>
     > Pip is a package management system used to install and manage software packages written in Python. Installing the latest version of Python should also install the latest version of Pip. 
 
 3. If your machine only has one installation of Python 3, running `python` should refer to Python 3. However, if have multiple Python installations, such as Python 2 (which comes pre-installed with many Linux machines) and Python 3, make sure you are using the appropriate version of `python` and `pip`. Use the commands `python` and `pip` for Python 2 or `python3` and `pip3` for Python 3. Based on the version of Python you are running, you may need to update the code cells below with either `pip` or `pip3`. 
 
-   >[!NOTE]
+   ><span>[!NOTE]</span>
    > This sample was created using Python 3.6.2 and Pip 3, so we use the commands `python3` and `pip3` respectively.
 
 4. Open Visual Studio Code and install the following extensions:  
