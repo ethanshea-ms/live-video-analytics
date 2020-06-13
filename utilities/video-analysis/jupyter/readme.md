@@ -17,5 +17,5 @@ This repository contains Jupyter notebook samples for Live Video Analytics (LVA)
 | :---        | :---        | :---          | :---              | :---        | :---        |
 | 1           | Ubuntu      | 18.04         | 3.6.2             | Pip3        |             |
 | 2           | Mac OS      | 15            | 3.6.2             | Pip3        |             |
-| 3           | Windows     | 10 (WSL)      | 3.8.3             | Pip3        | Windows 10 running Windows Subsystem for Linux (WSL) on Ubuntu 18.04 |
+| 3           | Windows     | 10 (WSL)      | 3.6.9             | Pip3        | Windows 10 running Windows Subsystem for Linux (WSL) on Ubuntu 18.04 |
 | 4           | Windows     | 10 (Git Bash) | 3.8.3             | Pip3        | Windows 10 running Git Bash, TO DO: Update with fix for permissions  |
