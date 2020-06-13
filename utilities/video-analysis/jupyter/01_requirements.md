@@ -41,7 +41,19 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     - [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
     - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)  
      
-## 1.2. Install Jupyter
+## 1.2. Install Docker
+Later in this sample, we will be using Docker to containerize our inference server container image. On your development PC, install the [Docker engine](https://docs.docker.com/engine/install/) based on your operating system. 
+
+> <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
+> If you are trying to install Docker on a machine running Windows, you should install Docker for Ubuntu, because we will be using Git Bash or the Windows Subsystem for Linux to run LVA.
+
+> <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
+> If you are using a machine that runs Linux, you may run into Docker issues related to account permissions in later sections of this sample. Instead of the command `sudo docker`, we recommend using the `docker` command without the `sudo` prefix. To run Docker commands on Linux without the `sudo` command, follow the Docker instructions for [managing Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/). Afterwards, you will have to log out from your PC and log back in.
+
+## 1.3. Install the Azure CLI
+This sample utilizes Azure. If you do not have an active Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). We will mainly be interacting with Azure through Jupyter, but for this to work, you will need to install the [Azure command-line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+## 1.4. Install Jupyter
 To get started with Jupyter on VSCode, you first need to have Jupyter installed. 
 
 In VSCode, open a terminal window and run either command based on your version of Pip.
@@ -53,22 +65,10 @@ pip install jupyter
 pip3 install jupyter
 ```
 
-## 1.3. Working with Jupyter Notebooks on VSCode
+## 1.5. Working with Jupyter Notebooks on VSCode
 If you are not familiar with running Jupyter notebooks, we recommend getting started with this tutorial on running [Jupyter on VSCode](https://code.visualstudio.com/docs/python/jupyter-support). When you are running Jupyer on VSCode, be sure to activate the right Python environment for VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for `Python: Select Interpreter`. Choose the appropriate version of Python that matches your needs.
 
 <img src="documents/python_interpreter.png" width=500px/>  
-
-## 1.4. Install Docker
-Later in this sample, we will be using Docker to containerize our inference server container image. On your development PC, install the [Docker engine](https://docs.docker.com/engine/install/) based on your operating system. 
-
-> <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
-> If you are trying to install Docker on a machine running Windows, you should install Docker for Ubuntu, because we will be using Git Bash or the Windows Subsystem for Linux to run LVA.
-
-> <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
-> If you are using a machine that runs Linux, you may run into Docker issues related to account permissions in later sections of this sample. Instead of the command `sudo docker`, we recommend using the `docker` command without the `sudo` prefix. To run Docker commands on Linux without the `sudo` command, follow the Docker instructions for [managing Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/). Afterwards, you will have to log out from your PC and log back in.
-
-## 1.5. Install the Azure CLI
-This sample utilizes Azure. If you do not have an active Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). We will mainly be interacting with Azure through Jupyter, but for this to work, you will need to install the [Azure command-line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## 1.6. Next Steps
 In the following sections of this sample, there will be descriptions and instructions in Markdown cells in each of the Jupyter notebooks. Please carefully read these desctiptions and instructions before running the code cells, in order to ensure successful execution of the sample.
