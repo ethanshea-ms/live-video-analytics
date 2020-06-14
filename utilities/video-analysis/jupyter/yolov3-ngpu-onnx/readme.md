@@ -6,7 +6,7 @@ Note: References to third-party software in this repo are for informational and 
 ## Prerequisites
 1. Install the [requirements for running LVA on Jupyter](../01_requirements.md).
 2. After installing all of the required tools, clone the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
-3. Locate this Readme page in your local repository and continue reading the following sections on VSCode. You can preview Markdown (`.md`) pages by clicking the preview button on the top toolbar in VSCode.  
+3. Locate this Readme page in your local repository and continue reading the following sections on VSCode. You can preview Markdown (`.md`) pages by pressing `Ctrl+Shift+V` to open a full-screen window or by clicking the preview button on the top toolbar in VSCode.  
    
    <img src="../documents/markdown_preview.png" width=300px/> 
    
