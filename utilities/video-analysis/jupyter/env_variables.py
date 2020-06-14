@@ -2,8 +2,7 @@
 
 try:
     envPath = find_dotenv(raise_error_if_not_found=True)
-    raise ImportError("dotenv not installed")
-except ImportError:
+except Exception:
     from pathlib import Path
     from dotenv import set_key, get_key, find_dotenv
 
