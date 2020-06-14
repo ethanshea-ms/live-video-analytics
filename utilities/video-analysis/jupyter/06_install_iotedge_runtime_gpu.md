@@ -49,7 +49,7 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 ## 6.3. Install NVIDIA Container Toolkit
 https://github.com/NVIDIA/nvidia-docker#upgrading-with-nvidia-docker2-deprecated
 
-> [!IMPORTANT]
+> <span>[!NOTE]</span>
 > Take note of the following statement on "nvidia-docker" website:
 > "Note that in the future, nvidia-docker2 packages will no longer be supported."
 
