@@ -15,7 +15,7 @@ except Exception:
         Path(".env").touch()
         envPath = find_dotenv()
 
-azureSubsctiptionId = get_key(envPath, "SUBSCRIPTION_ID")
+azureSubscriptionId = get_key(envPath, "SUBSCRIPTION_ID")
 resourceLocation = get_key(envPath, "RESOURCE_LOCATION")
 resourceGroupName = get_key(envPath, "RESOURCE_GROUP")
 acrServiceName = get_key(envPath, "ACR_SERVICE_NAME")
