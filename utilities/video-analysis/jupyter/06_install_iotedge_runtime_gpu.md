@@ -7,7 +7,13 @@ If you are using a virtual machine, you can use the SSH connection string to cre
 ## 6.1. Install NVidia Cuda Drivers for your nGPU (Tesla K80 in this case)
 First, follow [this tutorial](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/n-series-driver-setup) to install NVidia GPU drivers on N-series VMs running Linux. 
 
-Next, run the code snippet below in your terminal. Note that execution of the cell below  may take a few minutes.
+Next, run the code snippets below in your terminal. Note that execution of the cell below  may take a few minutes.
+
+To be able to run below commands, you need to install the `curl` command line tool in case it is not already installed. To install `curl`, please use the following command:
+
+```shell
+sudo apt-get -y install curl
+```
 
 ```shell
 # Install driver
@@ -73,13 +79,6 @@ sudo docker run --runtime nvidia nvidia/cuda:10.0-base nvidia-smi
 ```
 
 ## 6.5. Install the Azure IoT Edge runtime
-
-To be able to run below commands, you need to install the **curl** command line tool in case it is not already installed. To install *curl*, please use the following command:
-
-```shell
-sudo apt-get -y install curl
-```
-
 To install the IoT Edge Runtime, in order run the below commands in the terminal window. Be sure the following URL in the below commands reflects the right version of your OS in the IoT Edge Device:  
 ```
     https://packages.microsoft.com/config/ubuntu/<YOUR_OS_VERSION>/multiarch/prod.list
