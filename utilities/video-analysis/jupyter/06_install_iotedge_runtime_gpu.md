@@ -81,7 +81,7 @@ sudo docker run --runtime nvidia nvidia/cuda:10.0-base nvidia-smi
 ## 6.5. Install the Azure IoT Edge runtime
 To install the IoT Edge Runtime, in order run the below commands in the terminal window. Be sure the following URL in the below commands reflects the right version of your OS in the IoT Edge Device:  
 ```
-    https://packages.microsoft.com/config/ubuntu/<YOUR_OS_VERSION>/multiarch/prod.list
+https://packages.microsoft.com/config/ubuntu/<YOUR_OS_VERSION>/multiarch/prod.list
 ```
 
 
