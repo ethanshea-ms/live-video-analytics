@@ -81,6 +81,6 @@ Moreover, we refer to three different environments later in this sample. Here ar
 2. Development PC - the machine you are currently using to run this sample. This PC should have the required tools mentioned above.  
 3. IoT Edge Device - another machine (be it a virtual machine or a computationally light powered mini PC) used to run LVA on the Edge. This IoT Edge device must be installed with a Debian-based Unix system with x64/AMD64 architecture. ARM processors are not supported yet.  
 
-Per your preference, environments 1 and 2 can be the same machine, i.e., developing, debugging, and deploying this sample all on the same IoT Edge device.
+Per your preference, environments 2 and 3 can be the same machine, i.e., developing, debugging, and deploying this sample all on the same IoT Edge device.
 
 After having all the requirements from this section satisfied on your development PC, return to the previous Readme page.
