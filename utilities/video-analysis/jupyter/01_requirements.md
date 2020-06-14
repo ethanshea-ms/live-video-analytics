@@ -42,10 +42,12 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)  
      
 ## 1.2. Install Docker
-Later in this sample, we will be using Docker to containerize our inference server container image. On your development PC, install the [Docker engine](https://docs.docker.com/engine/install/) based on your operating system. 
-
-> <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
-> If you are trying to install Docker on a machine running Windows, you should install Docker for Ubuntu, because we will be using Git Bash or the Windows Subsystem for Linux to run LVA.
+Later in this sample, we will be using Docker to containerize our inference server container image. On your development PC, install Docker based on your operating system:
+* [MacOS](https://docs.docker.com/docker-for-mac/install/)
+* [Linux](https://docs.docker.com/engine/install/)
+* [Windows on WSL](https://docs.docker.com/docker-for-windows/wsl/)
+* [Windows on Git Bash](https://docs.docker.com/docker-for-windows/install/)
+  * Not yet tested
 
 > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
 > If you are using a machine that runs Linux, you may run into Docker issues related to account permissions in later sections of this sample. Instead of the command `sudo docker`, we recommend using the `docker` command without the `sudo` prefix. To run Docker commands on Linux without the `sudo` command, follow the Docker instructions for [managing Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/). Afterwards, you will have to log out from your PC and log back in.
