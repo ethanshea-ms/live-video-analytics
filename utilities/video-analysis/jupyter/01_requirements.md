@@ -21,7 +21,7 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     python3 --version
     ``` 
 
-    You can also check which version of Pip you have by running the commands below:
+    You can also check which version of [Pip](https://pip.pypa.io/en/stable/installing/) you have by running the commands below:
     ```
     pip --version
     ```
