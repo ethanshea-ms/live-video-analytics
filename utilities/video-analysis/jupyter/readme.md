@@ -1,6 +1,15 @@
 # Jupyter Notebook Samples
 This repository contains Jupyter notebook samples for Live Video Analytics (LVA). To get started, click on any of the samples listed in the table below.  
 
+## Terminology
+We refer to three different environments in this sample. Here are descriptions for each of them for future reference:
+  
+1. Azure Cloud Services - cloud-based services run on Azure datacenters.  
+2. Development PC - the machine you are currently using to run this sample. This PC should have the required tools mentioned above.  
+3. IoT Edge Device - another machine (be it a virtual machine or a computationally light powered mini PC) used to run LVA on the Edge. This IoT Edge device must be installed with a Debian-based Unix system with x64/AMD64 architecture. ARM processors are not supported yet.  
+
+Per your preference, environments 2 and 3 can be the same machine (i.e., developing, debugging, and deploying this sample all on the same IoT Edge device).
+
 ## List of samples
 
 | Name       | Extension | Accelerator| Description | Passed<sup>i</sup> |
@@ -13,9 +22,9 @@ This repository contains Jupyter notebook samples for Live Video Analytics (LVA)
 
 ## Test specifications<sup>i</sup>:
 
-| Test Case   | OS          | OS Version    | Python Version    | Pip Version | Description |
-| :---        | :---        | :---          | :---              | :---        | :---        |
-| 1           | Ubuntu      | 18.04         | 3.6.2             | Pip3        |             |
-| 2           | Mac OS      | 15            | 3.6.2             | Pip3        |             |
-| 3           | Windows     | 10 (WSL)      | 3.6.9             | Pip3        | Windows 10 running Windows Subsystem for Linux (WSL) on Ubuntu 18.04 |
-| 4           | Windows     | 10 (Git Bash) | 3.8.3             | Pip3        | Windows 10 running Git Bash |
+| Test Case   | OS          | OS Version                                                                      | Python Version    | Pip Version | Development PC | IoT Edge Device         |
+| :---        |:---         | :---                                                                            |:--                | :---        | :---           | :---                    | 
+| 1           | Ubuntu      | 18.04                                                                           | 3.6.9             | Pip3        | Azure VM       | Azure VM (Ubuntu 18.04) |
+| 2           | Mac OS      | 15                                                                              | 3.6.9             | Pip3        | Azure VM       | Azure VM (Ubuntu 18.04) |
+| 3           | Windows     | 10 ([WSL](https://docs.microsoft.com/en-us/windows/wsl/about) on Ubuntu 18.04)  | 3.6.9             | Pip3        | Physical PC    | Azure VM (Ubuntu 18.04) |
+| 4           | Windows     | 10 (Git Bash)                                                                   | 3.8.3             | Pip3        | Physical PC    | Azure VM (Ubuntu 18.04) |
