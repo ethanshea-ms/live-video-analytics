@@ -13,10 +13,10 @@ This repository contains Jupyter notebook samples for Live Video Analytics (LVA)
 
 | Test Case   | OS          | OS Version                                                                      | Python Version    | Pip Version | Development PC<sup>b</sup> | IoT Edge Device<sup>c</sup>  |
 | :---        |:---         | :---                                                                            |:--                | :---        | :---           | :---                    | 
-| 1           | Ubuntu      | 18.04                                                                           | 3.6.9             | Pip3        | Azure VM       | Azure VM (Ubuntu 18.04) |
-| 2           | Mac OS      | 15                                                                              | 3.6.9             | Pip3        | Azure VM       | Azure VM (Ubuntu 18.04) |
-| 3           | Windows     | 10 ([WSL](https://docs.microsoft.com/en-us/windows/wsl/about) on Ubuntu 18.04)  | 3.6.9             | Pip3        | Physical PC    | Azure VM (Ubuntu 18.04) |
-| 4           | Windows     | 10 (Git Bash)                                                                   | 3.8.3             | Pip3        | Physical PC    | Azure VM (Ubuntu 18.04) |
+| 1           | Ubuntu      | 18.04                                                                           | 3.6.9             | Pip3        | Azure VM       | Azure VM running Ubuntu 18.04 |
+| 2           | Mac OS      | 15                                                                              | 3.6.9             | Pip3        | Physical PC       | Azure VM running Ubuntu 18.04 |
+| 3           | Windows     | 10 ([WSL](https://docs.microsoft.com/en-us/windows/wsl/about) on Ubuntu 18.04)  | 3.6.9             | Pip3        | Physical PC    | Azure VM running Ubuntu 18.04 |
+| 4           | Windows     | 10 (Git Bash)                                                                   | 3.8.3             | Pip3        | Physical PC    | Azure VM running Ubuntu 18.04 |
 
 ## Terminology
 We refer to three different environments in this sample. Here are descriptions for each of them for future reference:
