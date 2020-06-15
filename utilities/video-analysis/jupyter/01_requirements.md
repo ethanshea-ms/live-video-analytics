@@ -1,7 +1,7 @@
 # 1. Requirements for LVA Jupyter Notebook Samples 
 
 ## 1.1. Install the Required Tools
-To run LVA on Jupyter notebooks, you will first need to install the following tools.  
+To run LVA on Jupyter notebooks, you will first need to install the following tools on your development PC.  
 
 1. There are many ways to run, manage, and update Jupyter notebooks. Out of the many options, we recommend using Visual Studio Code (VSCode) because it has extensions for running and managing IoT devices as well. Install [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview) if you do not already have it installed.  
 
@@ -47,25 +47,22 @@ Later in this sample, we will be using Docker to containerize our inference serv
 * [Linux](https://docs.docker.com/engine/install/)
 * [Windows on WSL](https://docs.docker.com/docker-for-windows/wsl/)
 * [Windows on Git Bash](https://docs.docker.com/docker-for-windows/install/)
-  * Not yet tested
 
 > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
-> If you are using a machine that runs Linux, you may run into Docker issues related to account permissions in later sections of this sample. Instead of the command `sudo docker`, we recommend using the `docker` command without the `sudo` prefix. To run Docker commands on Linux without the `sudo` command, follow the Docker instructions for [managing Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/). Afterwards, you will have to log out from your PC and log back in.
+> If you are using a machine that runs Linux, you may run into Docker issues related to account permissions in later sections of this sample. Instead of the command `sudo docker`, we recommend using the `docker` command without the `sudo` prefix. To run Docker commands on Linux without the `sudo` command, follow the Docker instructions for [managing Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/). Afterwards, you will have to log out from your development PC and log back in.
 
 ## 1.3. Install the Azure CLI
 This sample utilizes Azure. If you do not have an active Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). We will mainly be interacting with Azure through Jupyter, but for this to work, you will need to install the [Azure command-line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## 1.4. Install Jupyter
-To get started with Jupyter on VSCode, you first need to have Jupyter installed. 
+To get started with Jupyter on VSCode, you first need to have Jupyter installed on your development PC. 
 
-In VSCode, open a terminal window and run either command based on your version of Pip.
-
-```
-pip install jupyter 
-```
+In VSCode, open a terminal window and run the following command:
 ```
 pip3 install jupyter
 ```
+> <span> [!WARNING] </span>  
+> Use `pip` or `pip3` based on your version of Python.
 
 ## 1.5. Working with Jupyter Notebooks on VSCode
 If you are not familiar with running Jupyter notebooks, we recommend getting started with this tutorial on running [Jupyter on VSCode](https://code.visualstudio.com/docs/python/jupyter-support). When you are running Jupyer on VSCode, be sure to activate the right Python environment for VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for `Python: Select Interpreter`. Choose the appropriate version of Python that matches your needs.
