@@ -72,8 +72,8 @@ sudo systemctl restart docker
 ```
 
 ## 6.4. Now Test the installation and access to GPU within a container
+<!-- # sudo docker run --gpus all nvidia/cuda:10.0-base nvidia-smi -->
 ```shell
-# sudo docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 sudo docker run --runtime nvidia nvidia/cuda:10.0-base nvidia-smi
 ```
 
