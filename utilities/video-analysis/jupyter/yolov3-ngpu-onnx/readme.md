@@ -3,7 +3,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 
 ## Prerequisites
 1. Install the [requirements for running LVA on Jupyter](../01_requirements.md) on your development PC.
-2. After installing all of the required tools, clone the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
+2. After installing all of the requirements, [clone](https://code.visualstudio.com/Docs/editor/versioncontrol#_cloning-a-repository) the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
 3. Locate this Readme page in your local repository and continue reading the following sections on VSCode. You can preview Markdown (`.md`) pages by pressing `Ctrl+Shift+V` to open a full-screen window or by clicking the preview button on the top toolbar in VSCode.  
    
    <img src="../documents/markdown_preview.png" width=300px/> 
@@ -13,9 +13,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
    ><span>[!NOTE]</span>
    >Jupyter notebooks (`.ipynb`) may take several seconds to render in VSCode.
 2. Create the required [Azure services](../03_create_azure_services.ipynb).
-3. Create an [Azure virtual machine](../04_create_vm_iotedge_device.ipynb) if you
-   * do not have a physical IoT Edge device, or 
-   * want to use a VM to test this sample.
+3. As mentioned in the [Readme](../), in addition to a development PC, you will also need an IoT Edge device to run LVA. If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../04_create_vm_iotedge_device.ipynb).
     > <span>[!NOTE]</span>
     > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
 
