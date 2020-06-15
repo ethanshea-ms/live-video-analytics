@@ -5,15 +5,14 @@ This section assumes that your PC have NVidia Tesla K80 GPU card installed and y
 If you are using a virtual machine, you can use the SSH connection string to create a terminal session over the VM. Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
 
 ## 6.1. Install NVidia Cuda Drivers for your nGPU (Tesla K80 in this case)
-First, follow [this tutorial](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/n-series-driver-setup) to install NVidia GPU drivers on N-series VMs running Linux. 
-
-Next, run the code snippets below in your terminal. Note that execution of the cell below  may take a few minutes.
-
-To be able to run below commands, you need to install the `curl` command line tool in case it is not already installed. To install `curl`, please use the following command:
+First, install the `curl` command line tool on your Iot Edge device's terminal.
 
 ```shell
 sudo apt-get -y install curl
 ```
+
+Next, install the drivers for your nGPU. Note that the installation may take a few minutes. You can learn more about installing [NVidia drivers](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/n-series-driver-setup) for your nGPU here.
+
 
 ```shell
 # Install driver
@@ -29,7 +28,7 @@ sudo reboot
 ```
 
 ## 6.2. Install Docker Engine on Ubuntu
-After your IoT Edge device restarts (the last command above restarts it), install [Docker engine](https://docs.docker.com/engine/install/ubuntu/) on it.
+After your IoT Edge device restarts (the last command above restarts it), install Docker engine by running the code snippets bellow. You can learn more about [Docker engine](https://docs.docker.com/engine/install/ubuntu/) here.
 
 ```shell
 sudo apt-get update
@@ -53,7 +52,7 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 ```
 
 ## 6.3. Install NVIDIA Container Toolkit
-https://github.com/NVIDIA/nvidia-docker#upgrading-with-nvidia-docker2-deprecated
+Follow the instructions listed on the [NVidia Docker 2](https://github.com/NVIDIA/nvidia-docker#upgrading-with-nvidia-docker2-deprecated) Github repo.
 
 > <span>[!NOTE]</span>
 > Take note of the following statement on "nvidia-docker" website:
