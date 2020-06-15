@@ -13,7 +13,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
    ><span>[!NOTE]</span>
    >Jupyter notebooks (`.ipynb`) may take several seconds to render in VSCode.
 2. Create the required [Azure services](../03_create_azure_services.ipynb).
-3. As mentioned in the [Readme](../readme.md), in addition to a development PC, you will also need an IoT Edge device to run LVA. If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../04_create_vm_iotedge_device.ipynb).
+3. As mentioned [previously](../readme.md), in addition to a development PC, you will also need an IoT Edge device to run LVA. If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../04_create_vm_iotedge_device.ipynb).
     > <span>[!NOTE]</span>
     > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
 
