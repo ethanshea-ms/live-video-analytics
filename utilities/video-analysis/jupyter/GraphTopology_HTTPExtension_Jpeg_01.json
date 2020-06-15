@@ -31,7 +31,7 @@
           "name": "httpAIServerAddress",
           "type": "String",
           "description": "AI Server Address",
-          "default": "http://isServer:5001/score"
+          "default": "http://isEdge:5001/score"
         },
         {
           "name": "hubSinkOutputName",
