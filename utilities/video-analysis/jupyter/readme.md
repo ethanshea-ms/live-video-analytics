@@ -20,9 +20,11 @@ This repository contains Jupyter notebook samples for Live Video Analytics (LVA)
 
 ## Terminology
 We refer to three different environments in this sample. Here are descriptions for each of them for future reference:
-  
-a. Azure Cloud Services - cloud-based services run on Azure datacenters.  
-b. Development PC - the machine you are currently using to run this sample.
-c. IoT Edge Device - another machine (be it a virtual machine or a computationally light powered mini PC) used to run LVA on the Edge. This IoT Edge device must be installed with a Debian-based Unix system with x64/AMD64 architecture. ARM processors are not supported yet.  
+
+<ol type="a">
+  <li>Azure Cloud Services: cloud-based services run on Azure datacenters.  </li>
+  <li>Development PC: the machine you are currently using to run this sample.</li>
+  <li>IoT Edge Device: another machine (be it a virtual machine or a computationally light powered mini PC) used to run LVA on the Edge. This IoT Edge device must be installed with a Debian-based Unix system with x64/AMD64 architecture. ARM processors are not supported yet.  </li>
+</ol>
 
 Per your preference, environments b and c can be the same machine (i.e., developing, debugging, and deploying this sample all on the same IoT Edge device).
