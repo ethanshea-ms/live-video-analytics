@@ -34,7 +34,7 @@ The following sections will explain how to build a Docker image of an inference 
    * Your development PC has the same GPU drivers installed as your IoT Edge device
    * Your development PC has the same NVidia Docker toolkit installed as your IoT Edge device
 
-    If you are unsure how to install the latter two requirements, you can review the [GPU installation process](../06_install_iotedge_runtime_gpu.md). After you have everything set up, you can [test locally](yg3_local_test.ipynb). 
+    If you are unsure how to install the latter two requirements, you can review sections 6.1, 6.2, and 6.3 of the [GPU installation process](../06_install_iotedge_runtime_gpu.md#61-install-nvidia-cuda-drivers-for-your-ngpu-tesla-k80-in-this-case). After you have everything set up, you can [test locally](yg3_local_test.ipynb). 
 
 
 ## Deploy Your Docker Image
