@@ -1,10 +1,8 @@
-# YoloV3 nGPU ONNX model
+# LVA YoloV3 nGPU ONNX Sample on Jupyter Notebooks 
 The following instructions will enable you to run a [YoloV3](http://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) model on Live Video Analytics (LVA) using Jupyter notebooks. This sample is specific for Nvidia GPU accelerated IoT Edge devices. 
 
-Note: References to third-party software in this repo are for informational and convenience purposes only. Microsoft does not endorse nor provide rights for the third-party software.
-
 ## Prerequisites
-1. Install the [requirements for running LVA on Jupyter](../01_requirements.md).
+1. Install the [requirements for running LVA on Jupyter](../01_requirements.md) on your development PC.
 2. After installing all of the required tools, clone the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
 3. Locate this Readme page in your local repository and continue reading the following sections on VSCode. You can preview Markdown (`.md`) pages by pressing `Ctrl+Shift+V` to open a full-screen window or by clicking the preview button on the top toolbar in VSCode.  
    
