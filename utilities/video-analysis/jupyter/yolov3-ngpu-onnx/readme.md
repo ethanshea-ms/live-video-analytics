@@ -29,7 +29,13 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 The following sections will explain how to build a Docker image of an inference server that uses AI logic (i.e., YoloV3 for object detection) on a GPU accelerated VM.
 1. Create a [YoloV3 inference engine](yg1_create_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
 2. Create a [local Docker image](yg2_create_local_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
-3. You may want to [test the Docker image locally](yg3_local_test.ipynb) before uploading the Docker image to a container registry, to ensure that it runs as expected.
+3. Optional: You may want to test the Docker image locally before uploading the Docker image to a container registry, to ensure that it runs as expected. To do this, you must meet the following requirements. (If you do not meet all of the requirements, you can skip this.)
+   * Your development PC has the same GPU as your IoT Edge device
+   * Your development PC has the same GPU drivers installed as your IoT Edge device
+   * Your development PC has the same NVidia Docker toolkit installed as your IoT Edge device
+
+    If you are unsure how to install the latter two requirements, you can review the [GPU installation process](../06_install_iotedge_runtime_gpu.md). After you have everything set up, you can [test locally](yg3_local_test.ipynb). 
+
 
 ## Deploy Your Docker Image
 The image below summarizes the deployment scheme of LVA. As the image indicates, LVA can utilize containers hosted on the Internet, on a local network, or even on a local machine.
