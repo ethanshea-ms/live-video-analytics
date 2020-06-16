@@ -71,7 +71,7 @@ pip3 install jupyter
 ## 1.6. Working with Jupyter Notebooks on VSCode
 If you are not familiar with running Jupyter notebooks, we recommend getting started with this tutorial on running [Jupyter on VSCode](https://code.visualstudio.com/docs/python/jupyter-support). When you are running Jupyer on VSCode, be sure to activate the right Python environment for VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for `Python: Select Interpreter`. Choose the appropriate version of Python that matches your needs.
 
-<img src="documents/python_interpreter.png" width=500px/>  
+<img src="/../../images/_python_interpreter.png" width=500px/>  
 
 ## 1.7. Next Steps
 In the following sections of this sample, there will be descriptions and instructions in Markdown cells in each of the Jupyter notebooks. Please carefully read these desctiptions and instructions before running the code cells, in order to ensure successful execution of the sample.
