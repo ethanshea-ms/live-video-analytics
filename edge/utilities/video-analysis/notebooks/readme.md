@@ -17,7 +17,7 @@ This repository contains Jupyter notebook samples for Live Video Analytics (LVA)
 | 3         | Physical PC<br>-OS: Windows 10 with<br> [WSL Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/about)<br>-Python 3.6.9, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |
 | 4         | Physical PC<br>-OS: Windows 10 with Git Bash<br>-Python 3.8.3, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |  
 
-<sup>*</sup> [Create Azure Virtual Machine](../commons/04_create_vm_iotedge_device.ipynb) section has the instructions for creating Azure Virtual Machine.
+<sup>*</sup> [Create Azure Virtual Machine](commons/04_create_vm_iotedge_device.ipynb) section has the instructions for creating Azure Virtual Machine.
 
 ## Terminology
 Throughout the samples, we refer to three different terms. Here are descriptions for each of them for future reference:
