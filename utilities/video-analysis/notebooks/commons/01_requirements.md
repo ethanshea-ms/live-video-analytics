@@ -81,7 +81,7 @@ If you are not familiar with running Jupyter notebooks, we recommend getting sta
 ![Cat](https://i.ytimg.com/vi/PB5FosTwM8s/maxresdefault.jpg)
 
 
-![fe](../../../../../live-video-analytics/images/LVA-product-diagram.png)
+![fe](../../../../live-video-analytics/images/LVA-product-diagram.png)
 
 
 
