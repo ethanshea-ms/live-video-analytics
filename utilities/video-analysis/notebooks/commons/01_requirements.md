@@ -71,20 +71,7 @@ pip3 install jupyter
 ## 1.6. Working with Jupyter Notebooks on VSCode
 If you are not familiar with running Jupyter notebooks, we recommend getting started with this tutorial on running [Jupyter on VSCode](https://code.visualstudio.com/docs/python/jupyter-support). When you are running Jupyer on VSCode, be sure to activate the right Python environment for VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for `Python: Select Interpreter`. Choose the appropriate version of Python that matches your needs.
 
-<img src="https://www.bing.com/images/search?view=detailV2&ccid=2SCArBpA&id=3834AC62ADA103ED9AF42C8244D97C4FA4343670&thid=OIP.2SCArBpAALKsNNW7_1yEywHaEK&mediaurl=https%3a%2f%2fi.ytimg.com%2fvi%2fPB5FosTwM8s%2fmaxresdefault.jpg&exph=720&expw=1280&q=baby+cat+picture&simid=608017349934321615&ck=E1C8C9F21EB6A66F9A243B4E4B80120E&selectedIndex=0&ajaxhist=0" title="hi" />
-
-<img src="https://github.com/t-jaxian/live-video-analytics/tree/master/images/_python_interpreter.png" width=500px/>  
-
-
-<img src="../../../../../live-video-analytics/images/LVA-product-diagram.png" title="LVA on IoT Edge"/>
-
-![Cat](https://i.ytimg.com/vi/PB5FosTwM8s/maxresdefault.jpg)
-
-
-![fe](../../../../images/LVA-product-diagram.png)
-
-
-
+<img src="../../../../images/_python_interpreter.png" width=500px />
 
 ## 1.7. Next Steps
 In the following sections of this sample, there will be descriptions and instructions in Markdown cells in each of the Jupyter notebooks. Please carefully read these desctiptions and instructions before running the code cells, in order to ensure successful execution of the sample.
