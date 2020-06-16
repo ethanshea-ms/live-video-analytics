@@ -6,4 +6,4 @@ This folder has LVA edge related content
 
 | File/folder          | Description                                                   |
 |----------------------|---------------------------------------------------------------|
-| `Yolov`              | Neural network with object detection capabilities             |
+| `Yolo`               | Neural network with object detection capabilities             |
