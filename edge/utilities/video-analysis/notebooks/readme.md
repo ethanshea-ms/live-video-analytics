@@ -10,7 +10,7 @@ This repository contains Jupyter notebook samples for Live Video Analytics (LVA)
 | [Yolo V3](yolov3/yolov3-http-ngpu-onnx/readme.md)             | HTTP      | nGPU |  LVA module using YoloV3, a neural network for real-time object detection, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an NVidia GPU accelerated IoT Edge device with connection through HTTP. | 1 |
 
 ## Test specifications<sup>i</sup>:
-| Test Case | Development PC<sup>a</sup>                            | IoT Edge Device<sup>c</sup>   |
+| Test Case | Development PC<sup>a</sup>                            | IoT Edge Device<sup>b</sup>   |
 | :---      | :---                                                  | :---                          |
 | 1         | Azure VM<br>-OS: Ubuntu 18.04<br>-Python 3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
 | 2         | Physical PC<br>-OS: MacOS 15<br>-Python 3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
