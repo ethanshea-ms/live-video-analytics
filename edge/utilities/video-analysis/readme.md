@@ -6,4 +6,4 @@ This folder has LVA edge related content
 
 | File/folder          | Description                                                   |
 |----------------------|---------------------------------------------------------------|
-| `video-analysis`     |       |
+| `Notebooks`          | Jupyter notebook samples for Live Video Analytics             |
