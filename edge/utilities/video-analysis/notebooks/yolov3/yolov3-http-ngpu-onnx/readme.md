@@ -6,7 +6,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 2. After installing all of the requirements, [clone](https://code.visualstudio.com/Docs/editor/versioncontrol#_cloning-a-repository) the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
 3. Locate this Readme page in your local repository and continue reading the following sections on VSCode. You can preview Markdown (`.md`) pages by pressing `Ctrl+Shift+V` to open a full-screen window or by clicking the preview button on the top toolbar in VSCode.  
    
-   <img src="../../../../images/_markdown_preview.png" width=300px/> 
+   <img src="../../../../../../images/_markdown_preview.png" width=300px/> 
    
 ## Getting Started
 1. On VSCode, [set up the environment](../../commons/02_setup_environment.ipynb) so that we can test and deploy LVA.
@@ -40,7 +40,7 @@ The following sections will explain how to build a Docker image of an inference 
 ## Deploy Your Docker Image
 The image below summarizes the deployment scheme of LVA. As the image indicates, LVA can utilize containers hosted on the Internet, on a local network, or even on a local machine.
 
-<img src="../../../../images/_architecture.png?raw=true" width=500px/>  
+<img src="../../../../../../images/_architecture.png?raw=true" width=500px/>  
 
 
 
