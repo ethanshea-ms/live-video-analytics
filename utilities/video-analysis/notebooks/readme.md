@@ -6,4 +6,4 @@ This folder has LVA edge related content
 
 | File/folder          | Description                                                   |
 |----------------------|---------------------------------------------------------------|
-| `Notebooks`          | Jupyter notebook samples for Live Video Analytics             |
+| `Yolov3`             | Neural network with object detection capabilities             |

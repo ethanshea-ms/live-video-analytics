@@ -1,3 +1,9 @@
-# Utilities for Live video analytics
+# Live video analytics on Edge
 
-This folder contains a set of utility components that can be used in conjunction with Live Video Analytics
+This folder has LVA edge related content
+
+## Contents
+
+| File/folder          | Description                                                   |
+|----------------------|---------------------------------------------------------------|
+| `video-analysis`     |       |
