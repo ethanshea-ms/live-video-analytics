@@ -6,4 +6,5 @@ This folder has LVA edge related content
 
 | File/folder          | Description                                                   |
 |----------------------|---------------------------------------------------------------|
-| `video-analysis`     |       |
+| `setup`              | Bash script to setup Azure resources for LVA on IoT Edge      |
+| `utilities`          |       |
