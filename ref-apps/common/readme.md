@@ -6,6 +6,6 @@ This folder has a set of files that are or can be shared by the different refere
 
 | Folders              | Description                                       |
 |----------------------|---------------------------------------------------|
-| Notebooks			   | Collection of Jupyter notebooks				   |
-| C#   	  			   | Collection of utilities written in C#			   |
-| Python  			   | Collection of utilities written in Python		   |
+| notebooks			   | Collection of Jupyter notebooks				   |
+| csharp   	  		   | Collection of utilities written in C#			   |
+| python  			   | Collection of utilities written in Python		   |

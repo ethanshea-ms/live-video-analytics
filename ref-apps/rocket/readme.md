@@ -22,7 +22,7 @@ This reference application sample includes:
 
 Below is the general architecture of the video analytics pipeline used in this sample. 
 
-<img src="documents/_architecture_lva.png" alt="architecture" width="2002">
+<img src="./notebooks/documents/_architecture_lva.png" alt="architecture" width="1568">
 
 
 ## Supported Cameras
