@@ -34,18 +34,18 @@ sudo apt-get -y install iotedge
 ```
 
 ## 5.3. Configure the IoT Edge Runtime Service
-You need to configure the IoT Edge Runtime service, so it will connect to the IoT Hub service in the cloud. To do so, you need IoT Hub connection string, which looks like something:  
+You need to configure the IoT Edge Runtime service, so it will connect to the IoT Hub service in the cloud. To do so, you need IoT Edge Device connection string, which looks like something:  
 
 ```
 HostName=mkov01iothub.azure-devices.net;DeviceId=mkov01iotdevid;SharedAccessKey=QK+TiYdf1WJQJf5..........oczt1S634yI=  
 ```  
 
-Your IoT Hub connection string value is stored in .env file with the following key: **iotHubConnString**   
+Your IoT Edge Device connection string value is stored in the [.env file](.env) with the following key: IOT_EDGE_DEVICE_CONN_STRING   
 
-Now continue running the following shell commands by replacing the placeholder <IOT_HUB_CONN_STR> in the below commands with the IoT Hub connection string value mentioned above.
+Now continue running the following shell commands by replacing the placeholder <IOT_EDGE_DEVICE_CONN_STRING> in the below commands with the IoT Edge Device connection string value mentioned above.
 
 ```shell
-iotHubConnStr=<IOT_HUB_CONN_STR>
+iotHubConnStr=<IOT_EDGE_DEVICE_CONN_STRING>
 configFile=/etc/iotedge/config.yaml
 sudo sed -i "s#\(device_connection_string: \).*#\1\'$iotHubConnStr\'#g" $configFile
 sudo systemctl restart iotedge

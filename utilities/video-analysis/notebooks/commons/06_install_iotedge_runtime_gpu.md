@@ -2,7 +2,7 @@
 
 This section assumes that your PC have NVidia Tesla K80 GPU card installed and you are using Ubuntu OS version 18.04. For other operating system versions and GPU types, the commands below may need to be updated (e.g., find the appropriate GPU drivers for your Edge device).
 
-If you are using a virtual machine, you can use the SSH connection string to create a terminal session over the VM. Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
+If you are using a virtual machine, you can use the SSH connection string located in the [.env file](.env) to create a terminal session over the VM. Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
 
 ## 6.1. Install NVidia Cuda Drivers for your nGPU (Tesla K80 in this case)
 First, install the `curl` command line tool on your Iot Edge device's terminal.
@@ -102,7 +102,7 @@ You need to configure the IoT Edge Runtime service, so it will connect to the Io
 HostName=mkov01iothub.azure-devices.net;DeviceId=mkov01iotdevid;SharedAccessKey=QK+TiYdf1WJQJf5..........oczt1S634yI=  
 ```  
 
-Your IoT Edge Device connection string value is stored in .env file with the following key: IOT_EDGE_DEVICE_CONN_STRING   
+Your IoT Edge Device connection string value is stored in the [.env file](.env) with the following key: IOT_EDGE_DEVICE_CONN_STRING   
 
 Now continue running the following shell commands by replacing the placeholder <IOT_EDGE_DEVICE_CONN_STRING> in the below commands with the IoT Edge Device connection string value mentioned above.
 
