@@ -1,5 +1,5 @@
 # Jupyter Notebook Samples
-This repository contains Jupyter notebook samples for Live Video Analytics (LVA). To get started, click on any of the samples listed in the table below.  
+This folder contains Jupyter notebook samples for Live Video Analytics (LVA). With Jupyter, you can create and deploy LVA applications on notebooks that contain live code, equations, and formatted text. To get started, click on any of the samples listed in the table below.  
 
 ## List of samples
 | # | Name       | Extension | Accelerator| Description | Passed<sup>i</sup> |
