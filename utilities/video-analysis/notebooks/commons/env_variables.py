@@ -5,13 +5,16 @@ import logging
 logging.disable(logging.WARNING)
 
 try:
-    envPath = find_dotenv(raise_error_if_not_found=True)
-except Exception:
-    from pathlib import Path
     from dotenv import set_key, get_key, find_dotenv
+    envPath = find_dotenv(raise_error_if_not_found=True)
+except IOError:
+    import os
+    from pathlib import Path
 
-    envPath = find_dotenv()
-    if envPath=="":
+    project_folder = os.path.expanduser('../../../commons')  # go three folders back
+    envPath = find_dotenv(os.path.join(project_folder, '.env'))
+
+    if envPath=="": #if no .env exists
         Path(".env").touch()
         envPath = find_dotenv()
 
