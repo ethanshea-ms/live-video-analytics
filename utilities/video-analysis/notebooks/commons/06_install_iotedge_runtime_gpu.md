@@ -2,7 +2,7 @@
 
 This section assumes that your PC have NVidia Tesla K80 GPU card installed and you are using Ubuntu OS version 18.04. For other operating system versions and GPU types, the commands below may need to be updated (e.g., find the appropriate GPU drivers for your Edge device).
 
-If you are using a virtual machine, you can use the SSH connection string to create a terminal session over the VM. Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
+If you are using a virtual machine, you can use the SSH connection string located in the [.env file](.env) to create a terminal session over the VM. Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
 
 ## 6.1. Install NVidia Cuda Drivers for your nGPU (Tesla K80 in this case)
 First, install the `curl` command line tool on your Iot Edge device's terminal.
