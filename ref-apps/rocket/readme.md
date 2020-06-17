@@ -30,11 +30,51 @@ Below is the general architecture of the video analytics pipeline used in this s
 All cameras that use RTSP streaming for their live videos are supported by this reference application. To analyze stored video files, please check out this [sample project](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) for instructions on simulating a RTSP stream from a video file, packaging your simulator, and deploying it as an edge module into your container registry. You can analyze your video file by pointing this reference application to the simulated RTSP stream of the video file.
 
 
-## Setting Up Environment
+## Running LVA & Rocket Sample on Jupyter Notebooks
 
-To set up deployment environment, follow instructions from [**01_requirements.md**](../../utilities/video-analysis/notebooks/commons/01_requirements.md) to [**03_create_azure_services.ipynb**](../../utilities/video-analysis/notebooks/commons/03_create_azure_services.ipynb) to set up Azure Live Video Analytics.
+### Prerequsites 
 
-Once IoT Hub and IoT Edge Device are set up, you can deploy LVA and Rocket containers to the edge device through IoT Hub and connect them through HTTP interface. To use pre-built sample Rocket containers, please skip [**05_build_rocket_image.ipynb**](./notebooks/05_build_rocket_image.ipynb). Section [**05_build_rocket_image.ipynb**](./notebooks/05_build_rocket_image.ipynb) contains the instructions to build your own Rocket container with customized analytics on the videos. 
+1. Install the [requirements for running LVA on Jupyter](../../utilities/video-analysis/notebooks/commons/01_requirements.md) on your development PC.
+
+2. After installing all of the requirements, [clone](https://code.visualstudio.com/Docs/editor/versioncontrol#_cloning-a-repository) the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
+
+3. Locate this Readme page in your local repository and continue reading the following sections on VSCode. You can preview Markdown (`.md`) pages by pressing `Ctrl+Shift+V` to open a full-screen window or by clicking the preview button on the top toolbar in VSCode.  
+   
+   <img src="../../images/_markdown_preview.png" width=300px/> 
+
+### Getting Started
+
+1. On VSCode, [set up the environment](../../utilities/video-analysis/notebooks/commons/02_setup_environment.ipynb) so that we can test and deploy LVA.
+   ><span>[!NOTE]</span>
+   >Jupyter notebooks (`.ipynb`) may take several seconds to render in VSCode, and possibly more than 30 seconds on GitHub.
+
+2. Create the required [Azure services.](../../utilities/video-analysis/notebooks/commons/03_create_azure_services.ipynb)
+
+3. As mentioned [here,](../../utilities/video-analysis/notebooks/readme.md) in addition to a development PC, you will also need an IoT Edge device to run LVA. If you don't have a physical IoT Edge device, you can [create an Azure virtual machine and configure it properly.](./notebooks/04_setup_iotedge_device.ipynb)
+    > <span>[!NOTE]</span>
+    > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
+
+
+### Run LVA & Rocket on an IoT Edge Device
+
+1. **Optional:** [Build your own customized Rocket Docker image.](./notebooks/05_build_rocket_image.ipynb) You can also choose to deploy pre-built Rocket images with LVA and skip this step. The pre-built image is used by default in Step 3 below.
+
+2. For this sample, you are going to utilize Rocket’s ability to count and alert when objects cross lines of interest in a frame. A sample line configuration file is provided for the [sample](./notebooks/documents/sample.mkv) video file at your convenience. However, to learn more about configuring your own lines of interest, please read this [section.](./notebooks/06_line_configuration.md)
+
+3. Follow this [section](./notebooks/07_deploy_to_iot_edge_device.ipynb) to deploy LVA & Rocket to your IoT Edge Device.  
+
+### Monitor and Interpret the Output
+
+1. Read and follow this [section](./notebooks/08_output_format_and_interpretations.md) to learn how to monitor and interpret the output from LVA & Rocket. 
+
+### Tested Specifications 
+| Setup | Development PC                                                   | IoT Edge Device             | Testing Status |
+|-------|------------------------------------------------------------------|-----------------------------|----------------|
+| 1     | Physical PC - OS: Ubuntu 18.04 - Python 3.6.9, Pip 3             | Azure VM - OS: Ubuntu 18.04 | Passed         |
+| 2     | Azure VM - OS: Ubuntu 18.04 - Python 3.6.9, Pip 3                | Azure VM - OS: Ubuntu 18.04 | Passed         |
+| 3     | Physical PC - OS: MacOS 15 - Python 3.6.9, Pip 3                 | Azure VM - OS: Ubuntu 18.04 | Passed         |
+| 4     | Physical PC - OS: Windows 10 with Git Bash - Python 3.8.3, Pip 3 | Azure VM - OS: Ubuntu 18.04 | Untested       |
+
 
 
 ## Information links
