@@ -2,7 +2,7 @@
   "@apiVersion": "1.0",
   "name": "SampleTopology",
   "properties": {
-    "description": "Record on motion to AMS Asset and record events from external models through gRPC Extension",
+    "description": "Record on motion to AMS Asset and record events from external models through HTTP Extension",
     "parameters": [
       {
         "name": "rtspUrl",
