@@ -8,6 +8,9 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
    
    <img src="../../../../../../images/_markdown_preview.png" width=300px/> 
    
+   ><span>[!NOTE]</span>
+   >For pictures to render on VSCode, you must have the entire [live-video-analytics](/../..) folder in your VSCode workspace.
+   
 ## Getting Started
 1. On VSCode, [set up the environment](../../../commons/02_setup_environment.ipynb) so that we can test and deploy LVA.
    ><span>[!NOTE]</span>
