@@ -1,5 +1,4 @@
-# YoloV3 folders - Under Construction
-
+# YoloV3 folder
 This folder has a set of video analysis related utilities
 
 ## Contents
