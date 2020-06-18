@@ -30,7 +30,7 @@ All cameras that use RTSP streaming for their live videos are supported by this 
 
 ## Running LVA & Rocket Sample on Jupyter Notebooks
 
-### Prerequsites 
+### Prerequsites (~15 minutes)
 
 1. Install the [requirements for running LVA on Jupyter](../../utilities/video-analysis/notebooks/commons/01_requirements.md) on your development PC.
 
@@ -40,7 +40,7 @@ All cameras that use RTSP streaming for their live videos are supported by this 
    
    <img src="../../images/_markdown_preview.png" width=300px/> 
 
-### Getting Started
+### Getting Started (~30 minutes)
 
 1. On VSCode, [set up the environment](../../utilities/video-analysis/notebooks/commons/02_setup_environment.ipynb) so that we can test and deploy LVA.
    ><span>[!NOTE]</span>
@@ -53,15 +53,15 @@ All cameras that use RTSP streaming for their live videos are supported by this 
     > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
 
 
-### Run LVA & Rocket on an IoT Edge Device
+### Run LVA & Rocket on an IoT Edge Device (~25 minutes)
 
-1. **Optional:** [Build your own customized Rocket Docker image.](./notebooks/05_build_rocket_image.ipynb) You can also choose to deploy pre-built Rocket images with LVA and skip this step. The pre-built image is used by default in Step 3 below.
+1. **Optional:** [Build your own customized Rocket Docker image.](./notebooks/05_build_rocket_image.ipynb) You can also choose to deploy a pre-built Rocket image with LVA and skip this step. The pre-built image is used by default in Step 3 below.
 
-2. For this sample, you are going to utilize Rocket’s ability to count and alert when objects cross lines of interest in a frame. A sample line configuration file is provided for the [sample](./notebooks/documents/sample.mkv) video file at your convenience. However, to learn more about configuring your own lines of interest, please read this [section.](./notebooks/06_line_configuration.md)
+2. For this sample, you are going to utilize Rocket’s ability to count and alert when objects cross lines of interest in a frame. A sample line configuration file is provided for the [sample video file](./notebooks/documents/sample.mkv) at your convenience. However, to learn more about configuring your own lines of interest, please read this [section.](./notebooks/06_line_configuration.md)
 
 3. Follow this [section](./notebooks/07_deploy_to_iot_edge_device.ipynb) to deploy LVA & Rocket to your IoT Edge Device.  
 
-### Monitor and Interpret the Output
+### Monitor and Interpret the Output (~20 minutes)
 
 1. Read and follow this [section](./notebooks/08_output_format_and_interpretations.md) to learn how to monitor and interpret the output from LVA & Rocket. 
 
@@ -73,7 +73,8 @@ All cameras that use RTSP streaming for their live videos are supported by this 
 | 3     | Physical PC - OS: MacOS 15 - Python 3.6.9, Pip 3                 | Azure VM - OS: Ubuntu 18.04 | Passed         |
 | 4     | Physical PC - OS: Windows 10 with Git Bash - Python 3.8.3, Pip 3 | Azure VM - OS: Ubuntu 18.04 | Untested       |
 
-
+## Terminology
+Please see [this section](../../utilities/video-analysis/notebooks/readme.md#terminology) for unfamiliar terms. 
 
 ## Information links
 
