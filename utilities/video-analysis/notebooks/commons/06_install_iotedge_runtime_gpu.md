@@ -107,7 +107,7 @@ Your IoT Edge Device connection string value is stored in the [.env file](.env) 
 Now continue running the following shell commands by replacing the placeholder <IOT_EDGE_DEVICE_CONN_STRING> in the below commands with the IoT Edge Device connection string value mentioned above.
 
 ```shell
-iotHubConnStr=<IOT_EDGE_DEVICE_CONN_STRING>
+iotHubConnStr="<IOT_EDGE_DEVICE_CONN_STRING>"
 configFile=/etc/iotedge/config.yaml
 sudo sed -i "s#\(device_connection_string: \).*#\1\'$iotHubConnStr\'#g" $configFile
 sudo systemctl restart iotedge
