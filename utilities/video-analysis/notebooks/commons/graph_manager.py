@@ -43,11 +43,13 @@ class GraphManager:
         if opParams.get('topologyUrl') is not None:
             topologyJsonString = urlToText(opParams['topologyUrl'])
         elif opParams.get('topologyFile') is not None:
-            fpath = 'file://' + path.join(pathlib.Path(__file__).parent.absolute(), opParams['topologyFile'])
+            from sys import platform
 
-            #Uncomment the following line if you are using Windows Git Bash and comment out the line above:
-            #fpath = 'file:///' + path.join(pathlib.Path(__file__).parent.absolute(), opParams['topologyFile'])
-
+            if platform == "win32": #Windows
+                fpath = 'file:///' + path.join(pathlib.Path(__file__).parent.absolute(), opParams['topologyFile'])
+            else: #Linux or MacOS
+                fpath = 'file://' + path.join(pathlib.Path(__file__).parent.absolute(), opParams['topologyFile'])
+              
             topologyJsonString = urlToText(fpath)
         else:
             logging.info('Neither topologyUrl nor topologyFile specified')
