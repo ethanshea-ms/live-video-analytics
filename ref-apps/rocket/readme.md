@@ -2,7 +2,7 @@
 
 [Live video analytics on IoT Edge](https://azure.microsoft.com/en-us/services/media-services/live-video-analytics/) is a new capability of Azure Media Services. LVA provides a platform for you to build intelligent video applications that span the edge and the cloud. The platform offers the capability to capture, record, analyze live video and publish the results (video and/or video analytics) to Azure services (in the cloud and/or the edge). The platform can be used to enhance IoT solutions with video analytics.
 
-[Project Rocket](https://aka.ms/rocketcode) is  highly extensible software stack to empower everyone to build practical real-world live video analytics applications for object detection & object counting (e.g., cars driving through an intersection), and alerting on objects of interest (e.g., when a customer enters a store). Rocket supports (and has been tested) in many real-world use cases including [directional traffic volumes on live videos from traffic intersections](https://bellevuewa.gov/sites/default/files/media/pdf_document/2020/Video%20Analytics%20Towards%20Vision%20Zero-Traffic%20Video%20Analytics-12262019.pdf), monitoring parking lot occupancies, and counting passengers entering & exiting train stations. Rocket platform’s features are summarized inside :memo:[Rocket-features-and-pipelines.pdf](https://aka.ms/Microsoft-Rocket-LVA-features-and-pipelines.pdf).
+[Project Rocket](https://aka.ms/rocket) is  highly extensible software stack to empower everyone to build practical real-world live video analytics applications for object detection & object counting (e.g., cars driving through an intersection), and alerting on objects of interest (e.g., when a customer enters a store). Rocket supports (and has been tested) in many real-world use cases including [directional traffic volumes on live videos from traffic intersections](https://bellevuewa.gov/sites/default/files/media/pdf_document/2020/Video%20Analytics%20Towards%20Vision%20Zero-Traffic%20Video%20Analytics-12262019.pdf), monitoring parking lot occupancies, and counting passengers entering & exiting train stations. Rocket platform’s features are summarized inside :memo:[Rocket-features-and-pipelines.pdf](https://aka.ms/Microsoft-Rocket-LVA-features-and-pipelines.pdf).
 
 We provide a reference architecture with instructions to build and deploy a live video analytics application using [Azure Live Video Analytics](https://azuremarketplace.microsoft.com/en/marketplace/apps/azure-media-services.live-video-analytics-edge?tab=Overview), [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/), and [Rocket video analytics platform](https://aka.ms/rocket). While the instructions enable the deployment of pre-built Rocket containers, we also provide the steps to checkout the Rocket code, modify the solution, and build your own custom Rocket container.
 
@@ -11,9 +11,8 @@ We provide a reference architecture with instructions to build and deploy a live
 
 This reference application sample includes: 
 1)	Rocket docker containers with OpenCV vision modules as well as the YOLOv3 DNN pre-trained with the [MS-COCO classes](https://gist.github.com/AruniRC/7b3dadd004da04c80198557db5da4bda). It supports GPU execution.
-2)	Sample code to use the Rocket docker container with Azure Live Video Analytics on IoT Edge.
-3)	Graph topology used to orchestrate the live video analytics pipeline. 
-4)	IoT Edge deployment manifest template.
+2)	Sample Jupyter notebook code to use the Rocket docker container with Azure Live Video Analytics on IoT Edge.
+3)	Graph topology and IoT Edge deployment manifest template to orchestrate the live video analytics pipeline. 
 
 
 ## Architecture Diagram
@@ -25,18 +24,29 @@ Below is the general architecture of the video analytics pipeline used in this s
 
 ## Supported Cameras
 
-All cameras that use RTSP streaming for their live videos are supported by this reference application. To analyze stored video files, please check out this [sample project](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) for instructions on simulating a RTSP stream from a video file, packaging your simulator, and deploying it as an edge module into your container registry. You can analyze your video file by pointing this reference application to the simulated RTSP stream of the video file.
+All cameras that use RTSP streaming for their live videos are supported by this reference application. To analyze stored video files, please check out this [sample project](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) for instructions on simulating a RTSP stream from a video file, and deploying it as an edge module into your container registry. You can analyze your video file by pointing this reference application to the simulated RTSP stream of the video file.
 
 
 ## Running LVA & Rocket Sample on Jupyter Notebooks
 
-### Prerequsites (~15 minutes)
+### Terminology
+Throughout the samples, we refer to three different terms. Here are descriptions for each of them for future reference:
+
+<ol type="a">
+  <li>Development PC: the machine you are currently using to run this sample.</li>
+  <li>IoT Edge Device: another machine (be it a virtual machine or a computationally light powered mini PC) used to run LVA on the Edge. This IoT Edge device must be installed with a Debian-based Unix system with x64/AMD64 architecture. ARM processors are not supported yet.  </li>
+  <li>Azure Cloud Services: cloud-based services run on Azure datacenters (e.g., Azure Media Services, Azure Storage).  </li>
+</ol>
+
+Per your preference, your development PC and your IoT Edge device can be the same machine (i.e., developing, debugging, and deploying this sample all on the same IoT Edge device).
+
+### Pre-requisites (~15 minutes)
 
 1. Install the [requirements for running LVA on Jupyter](../../utilities/video-analysis/notebooks/commons/01_requirements.md) on your development PC.
 
 2. After installing all of the requirements, [clone](https://code.visualstudio.com/Docs/editor/versioncontrol#_cloning-a-repository) the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
 
-3. Locate this Readme page in your local repository and continue reading the following sections on VSCode. You can preview Markdown (`.md`) pages by pressing `Ctrl+Shift+V` to open a full-screen window or by clicking the preview button on the top toolbar in VSCode.  
+3. Locate this Readme page in your local repository and it may be easier to continue reading the following sections in VSCode. You can preview Markdown (`.md`) pages by pressing `Ctrl+Shift+V` to open a full-screen window or by clicking the preview button on the top toolbar in VSCode.   
    
    <img src="../../images/_markdown_preview.png" width=300px/> 
 
@@ -48,7 +58,7 @@ All cameras that use RTSP streaming for their live videos are supported by this 
 
 2. Create the required [Azure services.](../../utilities/video-analysis/notebooks/commons/03_create_azure_services.ipynb)
 
-3. As mentioned [here,](../../utilities/video-analysis/notebooks/readme.md) in addition to a development PC, you will also need an IoT Edge device to run LVA. If you don't have a physical IoT Edge device, you can [create an Azure virtual machine and configure it properly.](./notebooks/04_setup_iotedge_device.ipynb)
+3. You will need a development PC and also an IoT Edge device to run LVA and Rocket containers. If you don't have a physical IoT Edge device, you can [create an Azure virtual machine and configure it properly.](./notebooks/04_setup_iotedge_device.ipynb)
     > <span>[!NOTE]</span>
     > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
 
@@ -63,7 +73,7 @@ All cameras that use RTSP streaming for their live videos are supported by this 
 
 ### Monitor and Interpret the Output (~20 minutes)
 
-1. Read and follow this [section](./notebooks/08_output_format_and_interpretations.md) to learn how to monitor and interpret the output from LVA & Rocket. 
+1. Read and follow the [final section](./notebooks/08_output_format_and_interpretations.md) to learn how to monitor and interpret the output from LVA & Rocket. 
 
 ### Tested Specifications 
 | Setup | Development PC                                                   | IoT Edge Device             | Testing Status |
@@ -73,8 +83,6 @@ All cameras that use RTSP streaming for their live videos are supported by this 
 | 3     | Physical PC - OS: MacOS 15 - Python 3.6.9, Pip 3                 | Azure VM - OS: Ubuntu 18.04 | Passed         |
 | 4     | Physical PC - OS: Windows 10 with Git Bash - Python 3.8.3, Pip 3 | Azure VM - OS: Ubuntu 18.04 | Untested       |
 
-## Terminology
-Please see [this section](../../utilities/video-analysis/notebooks/readme.md#terminology) for unfamiliar terms. 
 
 ## Information links
 
