@@ -44,6 +44,10 @@ class GraphManager:
             topologyJsonString = urlToText(opParams['topologyUrl'])
         elif opParams.get('topologyFile') is not None:
             fpath = 'file://' + path.join(pathlib.Path(__file__).parent.absolute(), opParams['topologyFile'])
+
+            #Uncomment the following line if you are using Windows Git Bash and comment out the line above:
+            #fpath = 'file:///' + path.join(pathlib.Path(__file__).parent.absolute(), opParams['topologyFile'])
+
             topologyJsonString = urlToText(fpath)
         else:
             logging.info('Neither topologyUrl nor topologyFile specified')
