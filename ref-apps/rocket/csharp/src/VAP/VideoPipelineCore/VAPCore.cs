@@ -325,7 +325,7 @@ namespace VideoPipelineCore
             string resultStringCounting = "";
             if (new int[] { 5, 6 }.Contains(pplConfig))
             {
-                resultStringDetection = LVAPostProcessor.SerializeDetectionResult(itemList);
+                resultStringDetection = LVAPostProcessor.SerializeDetectionResult(itemList, processTime, frame.Width, frame.Height);
                 Console.WriteLine(resultStringDetection);
             }
             else if (new int[] { 0 }.Contains(pplConfig))
@@ -352,7 +352,7 @@ namespace VideoPipelineCore
 
 
             isDNNRunning = false;
-            if (new int[] { 5 }.Contains(pplConfig))
+            if (new int[] { 5, 6 }.Contains(pplConfig))
             {
                 return resultStringDetection;
             }

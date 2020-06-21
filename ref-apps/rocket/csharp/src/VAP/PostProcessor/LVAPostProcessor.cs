@@ -5,6 +5,7 @@ using DNNDetector.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
@@ -14,7 +15,7 @@ namespace PostProcessor
     {
         static Model.LVACountingResults countingConsolidation;
 
-        public static string SerializeDetectionResult(List<Item> detectionItems)
+        public static string SerializeDetectionResult(List<Item> detectionItems, double processTime, int w, int h)
         {
             if (detectionItems != null && detectionItems.Count != 0)
             {
@@ -24,26 +25,38 @@ namespace PostProcessor
                 }
 
                 Model.LVADetectionResults detectionConsolidation = new Model.LVADetectionResults();
-                detectionConsolidation.Status = 0;
-                detectionConsolidation.ObjectCount = detectionItems.Count;
-                detectionConsolidation.Time = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffff");
+                detectionConsolidation.dInference = new object[detectionItems.Count + 1];
+                
+                //Compose other
+                Model.LVAOther other = new Model.LVAOther();
+                other.other = new Model.LVAOther.Oth();
+                other.other.inferenceTime = processTime;
+                other.other.count = detectionItems.Count;
+                detectionConsolidation.dInference[0] = other;
 
-                Model.LVAObject[] objects = new Model.LVAObject[detectionItems.Count];
+                //Compose entity
                 for (int i = 0; i < detectionItems.Count; i++)
                 {
-                    objects[i] = new Model.LVAObject();
-                    objects[i].ObjID = detectionItems[i].ObjId;
-                    objects[i].ObjName = detectionItems[i].ObjName;
-                    objects[i].Prob = detectionItems[i].Confidence;
-                    objects[i].Bbox = new int[] { detectionItems[i].X, detectionItems[i].Y, detectionItems[i].Width, detectionItems[i].Height };
+                    Model.LVAEntity obj = new Model.LVAEntity();
+                    obj.entity = new Model.LVAEntity.Entity();
+                    obj.entity.tag = new Model.LVAEntity.Entity.Tag();
+                    obj.entity.tag.value = detectionItems[i].ObjName;
+                    obj.entity.tag.confidence = detectionItems[i].Confidence;
+                    obj.entity.box = new Model.LVAEntity.Entity.Box();
+                    obj.entity.box.t = (double)detectionItems[i].Y / h;
+                    obj.entity.box.l = (double)detectionItems[i].X / w;
+                    obj.entity.box.w = (double)detectionItems[i].Width / w;
+                    obj.entity.box.h = (double)detectionItems[i].Height / h;
+                    detectionConsolidation.dInference[i + 1] = obj;
                 }
-                detectionConsolidation.Objects = objects;
 
                 //Create a stream to serialize the object to.  
                 MemoryStream ms = new MemoryStream();
 
-                // Serializer the User object to the stream.  
-                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Model.LVADetectionResults));
+                //Serializer the User object to the stream.
+                var settings = new DataContractJsonSerializerSettings();
+                settings.EmitTypeInformation = EmitTypeInformation.Never;
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Model.LVADetectionResults), settings);
                 ser.WriteObject(ms, detectionConsolidation);
                 byte[] json = ms.ToArray();
                 ms.Close();
