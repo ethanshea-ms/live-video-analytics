@@ -202,7 +202,7 @@ namespace VideoPipelineCore
                 Utils.Utils.cleanFolder(@OutputFolder.OutputFolderFrameDNNONNX);
             }
             //----------
-            if (new int[] { 2 }.Contains(pplConfig))
+            if (new int[] { 2, 6 }.Contains(pplConfig))
             {
                 frameDNNOnnxYolo = new FrameDNNOnnxYolo(lines, "yolov3tiny", DNNMode.Frame);
                 frameDNNOnnxItemList = new List<Item>();
@@ -309,7 +309,7 @@ namespace VideoPipelineCore
 
 
             //frame DNN ORTONNXYolo for object detection
-            if (new int[] { 5 }.Contains(pplConfig))
+            if (new int[] { 5, 6 }.Contains(pplConfig))
             {
                 frameDNNOnnxItemList = frameDNNOnnxYolo.Run(frame, frameIndex, category, Brushes.Pink, 0, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_SMALL, true);
                 itemList = frameDNNOnnxItemList;
@@ -323,7 +323,7 @@ namespace VideoPipelineCore
             double processTime = (DateTime.Now - prevTime).TotalMilliseconds;
             string resultStringDetection = "";
             string resultStringCounting = "";
-            if (new int[] { 5 }.Contains(pplConfig))
+            if (new int[] { 5, 6 }.Contains(pplConfig))
             {
                 resultStringDetection = LVAPostProcessor.SerializeDetectionResult(itemList);
                 Console.WriteLine(resultStringDetection);
