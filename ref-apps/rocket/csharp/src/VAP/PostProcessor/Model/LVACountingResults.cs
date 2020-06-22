@@ -8,43 +8,28 @@ using System.Collections.Generic;
 namespace PostProcessor.Model
 {
     [DataContract(Name = "LVACountingResults")]
+    [KnownType(typeof(LVAOther))]
+    [KnownType(typeof(LVAEvent))]
     public class LVACountingResults
     {
-        [DataMember(Name = "status")]
-        public int Status { get; set; }
-
-        [DataMember(Name = "timestamp")]
-        public string Timestamp { get; set; }
-
-        [DataMember(Name = "time")]
-        public double ProcessTime { get; set; }
-
-        [DataMember(Name = "result")]
-        public List<LineResult> Result { get; set; }
-
-        [DataContract]
-        public class LineResult
-        {
-            [DataMember(Name = "line")]
-            public string Line { get; set; }
-
-            [DataMember(Name = "counts")]
-            public int Counts { get; set; }
-
-            [DataMember(Name = "accumulativecounts")]
-            public int AccuCounts { get; set; }
-        }
+        [DataMember(Name = "inferences")]
+        public object[] cInference { get; set; }
 
         public LVACountingResults(List<Tuple<string, int[]>> lines)
         {
-            Result = new List<LineResult>();
-            foreach (Tuple<string, int[]> line in lines)
+            cInference = new object[lines.Count + 1];
+            LVAOther other = new LVAOther();
+            other.other.count = lines.Count;
+            cInference[0] = other;
+            
+            for (int i = 0; i < lines.Count; i++)
             {
-                LineResult lResult = new LineResult();
-                lResult.Line = line.Item1;
-                lResult.Counts = 0;
-                Result.Add(lResult);
-            }            
+                LVAEvent lineResult = new LVAEvent();
+                lineResult.evt.name = lines[i].Item1;
+                lineResult.evt.properties.count = 0;
+                lineResult.evt.properties.accumulated = 0;
+                cInference[i + 1] = lineResult;
+            }    
         }
     }
 }

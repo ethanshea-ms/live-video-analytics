@@ -18,48 +18,84 @@ Sample Rocket counting and detection results in JSON are shown below.
 ### 8.2.1. Sample Rocket counting result
 ```json
 {
-  "result": [
+  "inferences": [
     {
-      "accumulativecounts": 1, //accumulated counts
-      "counts": 1, //counts from the current frame
-      "line": "Parking-Entrance-A1-Left-To-Right" //name of the line defined in line configuration file
+      "other": {
+        "count": 2, //number of lines defined in line configuration file
+        "inferenceTime": 11.6495 //processing time of the frame
+      },
+      "subtype": "statistics",
+      "type": "other"
     },
     {
-      "accumulativecounts": 5,
-      "counts": 0,
-      "line": "Parking-Entrance-A1-Right-To-Left"
+      "event": {
+        "name": "Left-entrance", //name of the line defined in line configuration file
+        "properties": {
+          "accumulated": 0, //accumulated counts
+          "count": 0 //counts from the current frame
+        }
+      },
+      "subtype": "lineCounting",
+      "type": "event"
+    },
+    {
+      "event": {
+        "name": "Right-exit",
+        "properties": {
+          "accumulated": 0,
+          "count": 0
+        }
+      },
+      "subtype": "lineCounting",
+      "type": "event"
     }
-  ],
-  "status": 0, // 0: frame successfully processed by rocket; 1: exception happened during processing
-  "time": 216.2312, //processing time of the frame
-  "timestamp": "2020-04-17T17:10:41.6020630" //UTC time of the response
+  ]
 }
 ```
 
 ### 8.2.2. Sample Rocket detection result
 ```json
 {
-  "status": 0, // 0: frame successfully processed by rocket; 1: exception happened during processing
-  "time": 45.6475, //processing time of the frame
-  "object_count": 2, //number of objects detected in the frame
-  "result": { //details of each object
-    "0": {
-      "label": 1,
-      "confidence": 0.86,
-      "xmin": 304,
-      "ymin": 169,
-      "xmax": 398,
-      "ymax": 436
-    },
-    "1": {
-      "label": 2,
-      "confidence": 0.99,
-      "xmin": 474,
-      "ymin": 201,
-      "xmax": 586,
-      "ymax": 485
-    }
-  }
+    "inferences": [
+        {
+            "other": {
+                "count": 3, //number of objects detected in the frame
+                "inferenceTime": 375.0266 //processing time of the frame
+            },
+            "subtype": "statistics",
+            "type": "other"
+        },
+        {
+            "entity": {
+                "box": {
+                    "h": 0.5625,
+                    "l": 0.2109375,
+                    "t": 0.203125,
+                    "w": 0.5221354166666666
+                },
+                "tag": {
+                    "confidence": 0.9932199120521545,
+                    "value": "bicycle"
+                }
+            },
+            "type": "entity"
+        },
+        {
+            "entity": {
+                "box": {
+                    "h": 0.14583333333333334,
+                    "l": 0.6171875,
+                    "t": 0.14756944444444445,
+                    "w": 0.27734375
+                },
+                "tag": {
+                    "confidence": 0.913067102432251,
+                    "value": "truck"
+                }
+            },
+            "type": "entity"
+        }
+    ]
 }
 ```
 

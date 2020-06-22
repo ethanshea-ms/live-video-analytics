@@ -6,18 +6,11 @@ using System.Runtime.Serialization;
 namespace PostProcessor.Model
 {
     [DataContract(Name = "LVADetectionResults")]
+    [KnownType(typeof(LVAOther))]
+    [KnownType(typeof(LVAEntity))]
     public class LVADetectionResults
     {
-        [DataMember(Name = "status")]
-        public int Status { get; set; }
-
-        [DataMember(Name = "time")]
-        public string Time { get; set; }
-        
-        [DataMember(Name = "object_count")]
-        public int ObjectCount { get; set; }
-
-        [DataMember(Name = "objects")]
-        public LVAObject[] Objects { get; set; }
+        [DataMember(Name = "inferences")]
+        public object[] dInference { get; set; }
     }
 }
