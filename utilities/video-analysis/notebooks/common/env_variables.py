@@ -11,12 +11,11 @@ except IOError:
     import os
     from pathlib import Path
 
-    project_folder = os.path.expanduser('../../../commons')  # go three folders back
-    envPath = find_dotenv(os.path.join(project_folder, '.env'))
-
-    if envPath=="": #if no .env exists
-        Path(".env").touch()
-        envPath = find_dotenv()
+    try:
+        project_folder = Path(__file__).parent.absolute()
+        envPath = find_dotenv(os.path.join(project_folder, '.env'))
+    except Exception:
+        print(".env not found")
 
 azureSubscriptionId = get_key(envPath, "SUBSCRIPTION_ID")
 resourceLocation = get_key(envPath, "RESOURCE_LOCATION")
