@@ -45,6 +45,17 @@ namespace PostProcessor.Model
                 [DataMember(Name = "height")]
                 public double h { get; set; }
             }
+
+            public Entity()
+            {
+                tag = new Tag();
+                box = new Box();
+            }
+        }
+
+        public LVAEntity()
+        {
+            entity = new Entity();
         }
     }
 }

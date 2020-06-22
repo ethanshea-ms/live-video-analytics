@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace PostProcessor.Model
 {
-    [DataContract(Name = "LVAEvent")]
+    [DataContract(Name = "LVAEvent")] //LineResult
     public class LVAEvent
     {
         [DataMember(Name = "type")]
@@ -33,6 +33,16 @@ namespace PostProcessor.Model
                 [DataMember(Name = "accumulated")]
                 public int accumulated { get; set; }
             }
+
+            public Event()
+            {
+                properties = new Properties();
+            }
+        }
+
+        public LVAEvent()
+        {
+            evt = new Event();
         }
     }
 }

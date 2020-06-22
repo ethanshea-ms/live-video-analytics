@@ -25,5 +25,10 @@ namespace PostProcessor.Model
             [DataMember(Name = "count")]
             public int count { get; set; }
         }
+
+        public LVAOther()
+        {
+            other = new Oth();
+        }
     }
 }
