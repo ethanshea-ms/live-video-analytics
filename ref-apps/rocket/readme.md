@@ -42,7 +42,7 @@ Per your preference, your development PC and your IoT Edge device can be the sam
 
 ### Pre-requisites (~15 minutes)
 
-1. Install the [requirements for running LVA on Jupyter](../../utilities/video-analysis/notebooks/common/01_requirements.md) on your development PC.
+1. Install the [requirements for running LVA on Jupyter](../../utilities/video-analysis/notebooks/common/requirements.md) on your development PC.
 
 2. After installing all of the requirements, [clone](https://code.visualstudio.com/Docs/editor/versioncontrol#_cloning-a-repository) the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
 
@@ -52,11 +52,11 @@ Per your preference, your development PC and your IoT Edge device can be the sam
 
 ### Getting Started (~30 minutes)
 
-1. On VSCode, [set up the environment](../../utilities/video-analysis/notebooks/common/02_setup_environment.ipynb) so that we can test and deploy LVA.
+1. On VSCode, [set up the environment](../../utilities/video-analysis/notebooks/common/setup_environment.ipynb) so that we can test and deploy LVA.
    ><span>[!NOTE]</span>
    >Jupyter notebooks (`.ipynb`) may take several seconds to render in VSCode, and possibly more than 30 seconds on GitHub.
 
-2. Create the required [Azure services.](../../utilities/video-analysis/notebooks/common/03_create_azure_services.ipynb)
+2. Create the required [Azure services.](../../utilities/video-analysis/notebooks/common/create_azure_services.ipynb)
 
 3. You will need a development PC and also an IoT Edge device to run LVA and Rocket containers. If you don't have a physical IoT Edge device, you can [create an Azure virtual machine and configure it properly.](./notebooks/04_setup_iotedge_device.ipynb)
     > <span>[!NOTE]</span>
