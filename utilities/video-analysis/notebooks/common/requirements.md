@@ -20,7 +20,7 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     python3 --version
     ``` 
 
-    You can also check which version of [Pip](https://pip.pypa.io/en/stable/installing/) you have by running the commands below:
+    You can also check which version of Pip you have by running the commands below:
     ```
     pip --version
     ```
@@ -28,8 +28,16 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     pip3 --version
     ``` 
    
-     ><span>[!NOTE]</span>
-    > Pip is a package management system used to install and manage software packages written in Python. Installing the latest version of Python should also install the latest version of Pip. 
+    > <span>[!NOTE]</span>
+    > Pip is a package management system used to install and manage software packages written in Python.
+
+    If you do not have Pip installed, you can install Pip by running the following command, based on your version of Python: 
+
+    ```
+    sudo apt install python3-pip
+    ```
+    > <span style="color:red; font-weight:bold"> [!WARNING] </span>  
+    > We used `python3` in the command above because we are running Python 3. In your case, use `python` or `python3` depending on your installed version of Python.
 
 3. If your machine only has one installation of Python 3, running `python` should refer to Python 3. However, if have multiple Python installations, such as Python 2 (which comes pre-installed with many Linux machines) and Python 3, make sure you are using the appropriate version of `python` and `pip`. Use the commands `python` and `pip` for Python 2 or `python3` and `pip3` for Python 3. Based on the version of Python you are running, you may need to update the code cells below with either `pip` or `pip3`. 
 
@@ -48,7 +56,7 @@ Later in this sample, we will be using Docker to containerize our inference serv
 * [Windows on Git Bash](https://docs.docker.com/docker-for-windows/install/)
 
 > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
-> If you are using a machine that runs Linux, you may run into Docker issues related to account permissions in later sections of this sample. Instead of the command `sudo docker`, we recommend using the `docker` command without the `sudo` prefix. To run Docker commands on Linux without the `sudo` command, follow the Docker instructions for [managing Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/). Afterwards, you will have to log out from your development PC and log back in.
+> If you are using a Unix-based development PC (e.g., running Ubuntu, MacOS, or Windows with WSL), you may run into Docker issues related to account permissions in later sections of this sample. Instead of the command `sudo docker`, we recommend using the `docker` command without the `sudo` prefix. To run Docker commands on Linux without the `sudo` command, follow the Docker instructions for [managing Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/). Afterwards, you will have to log out from your development PC and log back in.
 
 ## Create Azure Account
 Because this sample utilizes Azure, you will need an active Azure subscription to run the following sections. If you do not have an active Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
@@ -64,11 +72,11 @@ In VSCode, open a terminal window and run the following command:
 ```
 pip3 install jupyter
 ```
-> <span> [!WARNING] </span>  
-> Use `pip` or `pip3` based on your version of Python.
+> <span style="color:red; font-weight:bold"> [!WARNING] </span>  
+> We used `pip3` in the command above because we are running Python 3. In your case, use `pip` or `pip3` depending on your installed version of Python.
 
 ## Working with Jupyter Notebooks on VSCode
-If you are not familiar with running Jupyter notebooks, we recommend getting started with this tutorial on running [Jupyter on VSCode](https://code.visualstudio.com/docs/python/jupyter-support). When you are running Jupyer on VSCode, be sure to activate the right Python environment for VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for `Python: Select Interpreter`. Choose the appropriate version of Python that matches your needs.
+If you are not familiar with running Jupyter notebooks, we recommend getting started with this tutorial on running [Jupyter on VSCode](https://code.visualstudio.com/docs/python/jupyter-support). When you are running Jupyer on VSCode, be sure to activate the right Python environment for VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for `Python: Select Interpreter to start Jupyter server`. Choose the appropriate version of Python that matches your needs.
 
 <img src="../../../../images/_python_interpreter.png" width=500px />
 

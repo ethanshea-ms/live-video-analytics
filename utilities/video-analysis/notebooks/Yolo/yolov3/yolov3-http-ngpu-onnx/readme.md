@@ -17,9 +17,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
    ><span>[!NOTE]</span>
    >Jupyter notebooks (`.ipynb`) may take several seconds to render in VSCode.
 2. Create the required [Azure services](../../../common/create_azure_services.ipynb).
-3. You will need a development PC and also an IoT Edge device to run LVA containers. 
-   * If you have a physical IoT Edge device, you can proceed to [set up your IoT Edge device](../../../common/setup_iotedge_device.md).
-   * If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../../../common/create_azure_vm.ipynb).
+3. You will need a development PC and also an IoT Edge device to run LVA containers. If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../../../common/create_azure_vm.ipynb).
 
     > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
     > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.

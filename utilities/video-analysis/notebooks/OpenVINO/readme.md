@@ -1,4 +1,4 @@
-# OpenVINO™™<sup>TM</sup>
+# OpenVINO™
 This folder has a set of video analysis related utilities
 
 ## Contents
@@ -6,8 +6,5 @@ This folder has a set of video analysis related utilities
 | Folders              		    | Description                                       |
 |-------------------------------|---------------------------------------------------|
 | `openvino`                  	|										            |
-|                               | 											        |
-|                           	| 									    	        |
-|                           	| 											        |
 
 

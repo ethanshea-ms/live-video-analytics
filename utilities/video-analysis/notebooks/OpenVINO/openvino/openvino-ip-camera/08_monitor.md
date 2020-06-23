@@ -23,8 +23,8 @@ mksa@mksa-NUC7i7BNHX:~$ clear && sudo iotedge logs mkov01aimodule --tail 1000
 If you enable the debug mode with direct method invocation mentioned very below, or if you customize the score.py or app.py to add some debug details with logger.log(..) command, you should see these logs like:
 
 ...
-{"timestamp": "2020-03-11T22:26:25.850485Z", "message": "[AI EXT] Received scoring request", "host": "26b857c7cd8a", "path": "/code/app.py", "tags": [], "level": "INFO", "logger": "AnalyticsAPILogger", "stack_info": null}
-{"timestamp": "2020-03-11T22:26:25.917537Z", "message": "[AI EXT] Sending response.", "host": "26b857c7cd8a", "path": "/code/app.py", "tags": [], "level": "INFO", "logger": "AnalyticsAPILogger", "stack_info": null}
+{"timestamp": "2020-03-11T22:26:25.850485Z", "message": "[AI EXT] Received scoring request", "host": "26b857c7cd8a", "path": "/isserver/app.py", "tags": [], "level": "INFO", "logger": "AnalyticsAPILogger", "stack_info": null}
+{"timestamp": "2020-03-11T22:26:25.917537Z", "message": "[AI EXT] Sending response.", "host": "26b857c7cd8a", "path": "/isserver/app.py", "tags": [], "level": "INFO", "logger": "AnalyticsAPILogger", "stack_info": null}
 {"timestamp": "2020-03-11T22:26:25.917841Z", "message": "127.0.0.1 - - [11/Mar/2020 22:26:25] \"\u001b[37mPOST /score HTTP/1.0\u001b[0m\" 200 -", "host": "26b857c7cd8a", "path": "/opt/miniconda/lib/python3.7/site-packages/werkzeug/_internal.py", "tags": [], "level": "INFO", "logger": "werkzeug", "stack_info": null}
 mksa@mksa-NUC7i7BNHX:~$ 
 ```
@@ -40,25 +40,25 @@ If you havent already, download the VSCode here: https://code.visualstudio.com/
 Once you have the VSCode, install the IoT Edge extension which will let us monitor LVA edge modules' messages. IoT Edge extension can be found here: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge  
 
 Click on the three dots on:  
-<img src="../doc_imgs/img_03_004.jpg" width=400 alt="> Figure: monitorin 1."/>  
+<img src="../../../../../../images/_openvino_img_03_004.jpg" width=400 alt="> Figure: monitorin 1."/>  
 
 in the pop-up menu, click "Select IOT Hub" menu item:  
-<img src="../doc_imgs/img_03_005.jpg" width=400 alt="> Figure: monitorin 2."/>  
+<img src="../../../../../../images/_openvino_img_03_005.jpg" width=400 alt="> Figure: monitorin 2."/>  
 
 Select the subscription where the IoT Hub hosted:  
-<img src="../doc_imgs/img_03_006.jpg" width=400 alt="> Figure: monitorin 3."/>  
+<img src="../../../../../../images/_openvino_img_03_006.jpg" width=400 alt="> Figure: monitorin 3."/>  
 
 Select the IoT Hub from the list:  
-<img src="../doc_imgs/img_03_007.jpg" width=400 alt="> Figure: monitorin 4."/>  
+<img src="../../../../../../images/_openvino_img_03_007.jpg" width=400 alt="> Figure: monitorin 4."/>  
 
 Select the IoT Edge device that you created:  
-<img src="../doc_imgs/img_03_008.jpg" width=300 alt="> Figure: monitorin 5."/>  
+<img src="../../../../../../images/_openvino_img_03_008.jpg" width=300 alt="> Figure: monitorin 5."/>  
 
 Now right click on the edge device and start monitoring the messages, analytics module's outputs:  
-<img src="../doc_imgs/img_03_009.jpg" width=400 alt="> Figure: monitorin 6."/>  
+<img src="../../../../../../images/_openvino_img_03_009.jpg" width=400 alt="> Figure: monitorin 6."/>  
 
 "Output" window will open in VSCode. In that window you can monitor the result of the AI module's output in a live stream. Messages are in Json format (see section 1):  
-<img src="../doc_imgs/img_03_010.jpg" width=800 alt="> Figure: monitorin 7."/>  
+<img src="../../../../../../images/_openvino_img_03_010.jpg" width=800 alt="> Figure: monitorin 7."/>  
 
 In the above window, section 2, there is a stop button that you can use to stop monitoring... (or you can again right click on the edge device name and click stop monitoring)  
 
@@ -71,13 +71,13 @@ We will monitor messages and visualize the data with Azure Time Series Insights 
 1) From the portal, create an ATSI service https://portal.azure.com (Details on how to create and more: https://docs.microsoft.com/en-us/azure/time-series-insights/)
 
 2) Give a name and set related fields in ATSI Create window. Finally click on the "Next: Event Source" button (see 3 on the image below)  
-<img src="../doc_imgs/img_03_011.jpg" width=800 alt="> Figure: Azure Time Series Insights 1."/>  
+<img src="../../../../../../images/_openvino_img_03_011.jpg" width=800 alt="> Figure: Azure Time Series Insights 1."/>  
 
 3) Fill in the form by selecting existing IoT Hub (which you created before). Fill the rest of the fields and finally click create.  
-<img src="../doc_imgs/img_03_012.jpg" width=800 alt="> Figure: Azure Time Series Insights 2."/>  
+<img src="../../../../../../images/_openvino_img_03_012.jpg" width=800 alt="> Figure: Azure Time Series Insights 2."/>  
 
 4) Click the link to open the explorer UI:  
-<img src="../doc_imgs/img_03_013.jpg" width=800 alt="> Figure: Azure Time Series Insights 3."/>  
+<img src="../../../../../../images/_openvino_img_03_013.jpg" width=800 alt="> Figure: Azure Time Series Insights 3."/>  
 
 
 Referring to inference result which is in JSon file format, we have:
@@ -121,23 +121,23 @@ Referring to inference result which is in JSon file format, we have:
 Based on above output fields, we can filter out specific object types (classes like view just cars, people, bicycles etc.), we can visualize specific timer range or view message details. Below some screenshots from ATSI:
 
 1) Initial ATSI window. Select time range to monitor the events.  
-<img src="../doc_imgs/img_03_014.jpg" width=800 alt="> Figure: Azure Time Series Insights 4."/>  
+<img src="../../../../../../images/_openvino_img_03_014.jpg" width=800 alt="> Figure: Azure Time Series Insights 4."/>  
 
 2) Select time range (1: refresh chart, 2: select time 3: apply and search time range)  
-<img src="../doc_imgs/img_03_015.jpg" width=800 alt="> Figure: Azure Time Series Insights 5."/>  
+<img src="../../../../../../images/_openvino_img_03_015.jpg" width=800 alt="> Figure: Azure Time Series Insights 5."/>  
 
 3) Visualize the event counts. This chart looks straigth line. Because it continuously analyse 2 fps and generates 2 messages per second. So the count of the event is static. If there is a drop, gap etc. means that it couldnt ingest data from camera.  
-<img src="../doc_imgs/img_03_016.jpg" width=800 alt="> Figure: Azure Time Series Insights 6."/>  
+<img src="../../../../../../images/_openvino_img_03_016.jpg" width=800 alt="> Figure: Azure Time Series Insights 6."/>  
 
 4) View the analytic module's output, json messages in a table format:  
-<img src="../doc_imgs/img_03_017.jpg" width=800 alt="> Figure: Azure Time Series Insights 7."/>  
-<img src="../doc_imgs/img_03_018.jpg" width=800 alt="> Figure: Azure Time Series Insights 8."/>  
+<img src="../../../../../../images/_openvino_img_03_017.jpg" width=800 alt="> Figure: Azure Time Series Insights 7."/>  
+<img src="../../../../../../images/_openvino_img_03_018.jpg" width=800 alt="> Figure: Azure Time Series Insights 8."/>  
 
 5) Now add number of objects (vehicle, person, etc.) detected in the video stream over time.  
-<img src="../doc_imgs/img_03_019.jpg" width=800 alt="> Figure: Azure Time Series Insights 9."/>  
+<img src="../../../../../../images/_openvino_img_03_019.jpg" width=800 alt="> Figure: Azure Time Series Insights 9."/>  
 
 6) Visualize detected object count as a heat map. First remove the event count and just keep the orange (object count) chart. Finally switch to Heat map visualization tab.  
-<img src="../doc_imgs/img_03_020.jpg" width=800 alt="> Figure: Azure Time Series Insights 10."/>  
+<img src="../../../../../../images/_openvino_img_03_020.jpg" width=800 alt="> Figure: Azure Time Series Insights 10."/>  
 
 #### Update the Analytics module (ML Solution) parameters in runtime through cloud
 As reference sample, we add few settings over the edge device AI module that you can update at anytime while the module is running.  
@@ -162,8 +162,8 @@ Referring to the "app.py" code in our ML solution folder, we have following para
                 callResult = analyticsAPI.getTargetDevice()
 
             elif methodRequest.name == "SetDebug":
-                AIX_DEBUG = bool(methodRequest.payload)
-                callResult = str(AIX_DEBUG)
+                IS_DEBUG = bool(methodRequest.payload)
+                callResult = str(IS_DEBUG)
 
 ```
 
@@ -171,26 +171,26 @@ If you want to reduce the detection threshold (i.e. only detect object with conf
 1) Through the VSCode (also many other methods exist), right click on the edge device name in "IoT Hub" window.
 
 2) on the pop-up menu, click on the "Invoke Device Direct Method" menu item.  
-<img src="../doc_imgs/img_03_021.jpg" width=400 alt="> Figure: Invoke Device Direct Method 1."/>  
+<img src="../../../../../../images/_openvino_img_03_021.jpg" width=400 alt="> Figure: Invoke Device Direct Method 1."/>  
 
 3) On top of the VSCode window, there will be an input window that you can type any of the above method names. Here we type "SetProbabilityThreshold" (without quotes) and press ENTER  
-<img src="../doc_imgs/img_03_022.jpg" width=600 alt="> Figure: Invoke Device Direct Method 2."/>  
+<img src="../../../../../../images/_openvino_img_03_022.jpg" width=600 alt="> Figure: Invoke Device Direct Method 2."/>  
 
 4) Now in the same window, enter value. We type i.e. 0.5 and press ENTER.  
-<img src="../doc_imgs/img_03_023.jpg" width=600 alt="> Figure: Invoke Device Direct Method 3."/>  
+<img src="../../../../../../images/_openvino_img_03_023.jpg" width=600 alt="> Figure: Invoke Device Direct Method 3."/>  
 
 5) Now you can visualize the result of this method call in the Output window (or in the module logs as mentioned in previous steps)  
-<img src="../doc_imgs/img_03_024.jpg" width=600 alt="> Figure: Invoke Device Direct Method 4."/>  
+<img src="../../../../../../images/_openvino_img_03_024.jpg" width=600 alt="> Figure: Invoke Device Direct Method 4."/>  
 
 
 #### Debugging
 It is possible to set the debug flag by "Invoke Device Direct Method" by calling "SetDebug" method. It takes int value : 0: no debug, 1: log debug details and write video frame into host debug dir in case object detected 2: same as 1 but here no condition of detecting an object.  
 
-Once the flag is set, it will output processed camera frames in the host computer's (edge device's) storage. Since we set this folder to be "/tmp/aix_debug", you can look in that folder to see the debug outputs as jpeg images. 
+Once the flag is set, it will output processed camera frames in the host computer's (edge device's) storage. Since we set this folder to be "/tmp/IS_DEBUG", you can look in that folder to see the debug outputs as jpeg images. 
 
-<img src="../doc_imgs/s1.jpg" width=800 alt="> Figure: Sample frame 1."/>  
-<img src="../doc_imgs/s2.jpg" width=800 alt="> Figure: Sample frame 2."/>  
-<img src="../doc_imgs/s3.jpg" width=800 alt="> Figure: Sample frame 3."/>  
+<img src="../../../../../../images/_openvino_s1.jpg" width=800 alt="> Figure: Sample frame 1."/>  
+<img src="../../../../../../images/_openvino_s2.jpg" width=800 alt="> Figure: Sample frame 2."/>  
+<img src="../../../../../../images/_openvino_s3.jpg" width=800 alt="> Figure: Sample frame 3."/>  
 
 
 #### Daily Debug Preview
