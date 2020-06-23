@@ -42,7 +42,7 @@ Per your preference, your development PC and your IoT Edge device can be the sam
 
 ### Pre-requisites (~15 minutes)
 
-1. Install the [requirements for running LVA on Jupyter](../../utilities/video-analysis/notebooks/commons/01_requirements.md) on your development PC.
+1. Install the [requirements for running LVA on Jupyter](../../utilities/video-analysis/notebooks/common/requirements.md) on your development PC.
 
 2. After installing all of the requirements, [clone](https://code.visualstudio.com/Docs/editor/versioncontrol#_cloning-a-repository) the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
 
@@ -52,28 +52,28 @@ Per your preference, your development PC and your IoT Edge device can be the sam
 
 ### Getting Started (~30 minutes)
 
-1. On VSCode, [set up the environment](../../utilities/video-analysis/notebooks/commons/02_setup_environment.ipynb) so that we can test and deploy LVA.
+1. On VSCode, [set up the environment](../../utilities/video-analysis/notebooks/common/setup_environment.ipynb) so that we can test and deploy LVA.
    ><span>[!NOTE]</span>
    >Jupyter notebooks (`.ipynb`) may take several seconds to render in VSCode, and possibly more than 30 seconds on GitHub.
 
-2. Create the required [Azure services.](../../utilities/video-analysis/notebooks/commons/03_create_azure_services.ipynb)
+2. Create the required [Azure services.](../../utilities/video-analysis/notebooks/common/create_azure_services.ipynb)
 
-3. You will need a development PC and also an IoT Edge device to run LVA and Rocket containers. If you don't have a physical IoT Edge device, you can [create an Azure virtual machine and configure it properly.](./notebooks/04_setup_iotedge_device.ipynb)
+3. You will need a development PC and also an IoT Edge device to run LVA and Rocket containers. If you don't have a physical IoT Edge device, you can [create an Azure virtual machine and configure it properly.](./notebooks/setup_iotedge_device.ipynb)
     > <span>[!NOTE]</span>
     > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
 
 
 ### Run LVA & Rocket on an IoT Edge Device (~25 minutes)
 
-1. **Optional:** [Build your own customized Rocket Docker image.](./notebooks/05_build_rocket_image.ipynb) You can also choose to deploy a pre-built Rocket image with LVA and skip this step. The pre-built image is used by default in Step 3 below.
+1. **Optional:** [Build your own customized Rocket Docker image.](./notebooks/build_rocket_image.ipynb) You can also choose to deploy a pre-built Rocket image with LVA and skip this step. The pre-built image is used by default in Step 3 below.
 
-2. For this sample, you are going to utilize Rocket’s ability to count and alert when objects cross lines of interest in a frame. A sample line configuration file is provided for the [sample video file](./notebooks/documents/sample.mkv) at your convenience. However, to learn more about configuring your own lines of interest, please read this [section.](./notebooks/06_line_configuration.md)
+2. For this sample, you are going to utilize Rocket’s ability to count and alert when objects cross lines of interest in a frame. A sample line configuration file is provided for the [sample video file](./notebooks/documents/sample.mkv) at your convenience. However, to learn more about configuring your own lines of interest, please read this [section.](./notebooks/line_configuration.md)
 
-3. Follow this [section](./notebooks/07_deploy_to_iot_edge_device.ipynb) to deploy LVA & Rocket to your IoT Edge Device.  
+3. Follow this [section](./notebooks/deploy_to_iot_edge_device.ipynb) to deploy LVA & Rocket to your IoT Edge Device.  
 
 ### Monitor and Interpret the Output (~20 minutes)
 
-1. Read and follow the [final section](./notebooks/08_output_format_and_interpretations.md) to learn how to monitor and interpret the output from LVA & Rocket. 
+1. Read and follow the [final section](./notebooks/output_format_and_interpretations.md) to learn how to monitor and interpret the output from LVA & Rocket. 
 
 ### Tested Specifications 
 | Setup | Development PC                                                   | IoT Edge Device             | Testing Status |
