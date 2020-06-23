@@ -28,10 +28,40 @@
         "default": "medium"
       },
       {
+        "name": "httpAIServerAddress",
+        "type": "String",
+        "description": "AI Server Address",
+        "default": "http://yolov3/score"
+      },
+      {
         "name": "hubSinkOutputName",
         "type": "String",
         "description": "hub sink output name",
         "default": "inferenceOutput"
+      },
+      {
+        "name": "imageEncoding",
+        "type": "String",
+        "description": "image encoding for frames",
+        "default": "bmp"
+      },
+      {
+        "name": "frameWidth",
+        "type": "String",
+        "description": "Width of the video frame to be received from LVA.",
+        "default": "416"
+      },
+      {
+        "name": "frameHeight",
+        "type": "String",
+        "description": "Height of the video frame to be received from LVA.",
+        "default": "416"
+      },
+      {
+        "name": "frameRate",
+        "type": "String",
+        "description": "Rate of the frames per second to be received from LVA.",
+        "default": "2"
       }
     ],
     "sources": [
@@ -68,7 +98,7 @@
             "nodeName": "motionDetection"
           }
         ],
-        "maximumFps": 2
+        "maximumFps": "${frameRate}"
       },
       {
         "@type": "#Microsoft.Media.MediaGraphSignalGateProcessor",
@@ -91,7 +121,7 @@
         "name": "httpExtension",
         "endpoint": {
           "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-          "url": "http://yolov3/score",
+          "url": "${httpAIServerAddress}",
           "credentials": {
             "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
             "username": "user",
@@ -101,12 +131,12 @@
         "image": {
           "scale": {
             "mode": "preserveAspectRatio",
-            "width": "416",
-            "height": "416"
+            "width": "${frameWidth}",
+            "height": "${frameHeight}"
           },
           "format": {
             "@type": "#Microsoft.Media.MediaGraphImageFormatEncoded",
-            "encoding": "bmp"
+            "encoding": "${imageEncoding}"
           }
         },
         "inputs": [
