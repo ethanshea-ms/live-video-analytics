@@ -1,10 +1,10 @@
-# 6. Install IoT Edge runtime for NVidia GPU Accelerated IoT Edge Devices
+# Install IoT Edge runtime for NVidia GPU Accelerated IoT Edge Devices
 
 This section assumes that your PC have NVidia Tesla K80 GPU card installed and you are using Ubuntu OS version 18.04. For other operating system versions and GPU types, the commands below may need to be updated (e.g., find the appropriate GPU drivers for your Edge device).
 
 If you are using a virtual machine, you can use the SSH connection string located in the [.env file](.env) to create a terminal session over the VM. Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
 
-## 6.1. Install NVidia Cuda Drivers for your nGPU (Tesla K80 in this case)
+## Install NVidia Cuda Drivers for your nGPU (Tesla K80 in this case)
 First, install the `curl` command line tool on your Iot Edge device's terminal.
 
 ```shell
@@ -27,7 +27,7 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-## 6.2. Install Docker Engine on Ubuntu
+## Install Docker Engine on Ubuntu
 After your IoT Edge device restarts (the last command above restarts it), install Docker engine by running the code snippets bellow. You can learn more about [Docker engine](https://docs.docker.com/engine/install/ubuntu/) here.
 
 ```shell
@@ -51,7 +51,7 @@ sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 ```
 
-## 6.3. Install NVIDIA Container Toolkit
+## Install NVIDIA Container Toolkit
 Follow the instructions listed on the [NVidia Docker 2](https://github.com/NVIDIA/nvidia-docker#upgrading-with-nvidia-docker2-deprecated) Github repo.
 
 > <span>[!NOTE]</span>
@@ -71,13 +71,13 @@ sudo apt-get install -y nvidia-docker2
 sudo systemctl restart docker
 ```
 
-## 6.4. Test the Installation and Access to GPU Within a Container
+## Test the Installation and Access to GPU Within a Container
 <!-- # sudo docker run --gpus all nvidia/cuda:10.0-base nvidia-smi -->
 ```shell
 sudo docker run --runtime nvidia nvidia/cuda:10.0-base nvidia-smi
 ```
 
-## 6.5. Install the Azure IoT Edge Runtime
+## Install the Azure IoT Edge Runtime
 To install the IoT Edge Runtime, in order run the below commands in the terminal window. Be sure the following URL in the below commands reflects the right version of your OS in the IoT Edge Device:  
 ```
 https://packages.microsoft.com/config/ubuntu/<YOUR_OS_VERSION>/multiarch/prod.list
@@ -95,8 +95,8 @@ sudo apt-get -y update
 sudo apt-get -y install iotedge
 ```
 
-## 6.6. Configure the IoT Edge Runtime Service
-You need to configure the IoT Edge Runtime service, so it will connect to the IoT Hub service in the cloud. To do so, you need IoT Edge Device connection string, which looks like something:  
+## Configure the IoT Edge Runtime Service
+You need to configure the IoT Edge Runtime service, so it will connect to the IoT Hub service in the Cloud. To do so, you need IoT Edge Device connection string, which looks like something:  
 
 ```
 HostName=mkov01iothub.azure-devices.net;DeviceId=mkov01iotdevid;SharedAccessKey=QK+TiYdf1WJQJf5..........oczt1S634yI=  
@@ -113,7 +113,7 @@ sudo sed -i "s#\(device_connection_string: \).*#\1\'$iotHubConnStr\'#g" $configF
 sudo systemctl restart iotedge
 ```  
 
-## 6.7. Restart the machine
+## Restart the machine
 Run the following command in the terminal window to the IoT Edge device:
 
 ```shell
