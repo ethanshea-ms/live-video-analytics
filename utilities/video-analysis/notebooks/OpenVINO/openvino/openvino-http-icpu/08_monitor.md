@@ -213,7 +213,7 @@ Since the size of the debug files (*.jpg) may reach to thousands, simple "rm -rf
 
 
 #### Changing compute target
-As this sample uses OpenVino, we can change the compute target to any available target we want. You can use "SetTargetDevice" direct method to change the compute target to any of the following:  
+As this sample uses OpenVINO™, we can change the compute target to any available target we want. You can use "SetTargetDevice" direct method to change the compute target to any of the following:  
 CPU : Intel CPU  
 GPU : Intel GPU  
 MYRIAD: Intel VPU  

@@ -34,8 +34,8 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 
 ## Build a Docker Image of the Inference Server
 The following sections will explain how to build a Docker image of an inference server that uses AI logic (i.e., YoloV3 for object detection) on a GPU accelerated VM.
-1. Create a [YoloV3 inference engine](create_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
-2. Create a [local Docker image](create_local_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
+1. Create a [YoloV3 inference engine](create_yolov3_ngpu_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
+2. Create a [local Docker image](create_yolov3_ngpu_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
 3. Optional: You may want to test the Docker image locally before uploading the Docker image to a container registry, to ensure that it runs as expected. To do this, you must meet the following requirements. (If you do not meet all of the requirements, you can skip this.)
    * Your development PC has the same GPU as your IoT Edge device
    * Your development PC has the same GPU drivers installed as your IoT Edge device
