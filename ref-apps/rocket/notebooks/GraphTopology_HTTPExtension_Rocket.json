@@ -58,7 +58,7 @@
                   "nodeName": "rtspSource"
               }
           ],
-          "maximumFps": 15
+          "maximumFps": 30
         },
         {
           "@type": "#Microsoft.Media.MediaGraphHttpExtension",
@@ -75,8 +75,8 @@
           "image": {
             "scale": {
               "mode": "pad",
-              "width": "640",
-              "height": "480"
+              "width": "720",
+              "height": "400"
             },
             "format": {
               "@type": "#Microsoft.Media.MediaGraphImageFormatEncoded",
