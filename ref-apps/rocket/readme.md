@@ -62,6 +62,7 @@ Per your preference, your development PC and your IoT Edge device can be the sam
     > <span>[!NOTE]</span>
     > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
 
+4. Please [install the appropriate drivers and IoT Edge Runtime](../../utilities/video-analysis/notebooks/common/install_iotedge_runtime_gpu.md) on the Azure VM. 
 
 ### Run LVA & Rocket on an IoT Edge Device (~25 minutes)
 
