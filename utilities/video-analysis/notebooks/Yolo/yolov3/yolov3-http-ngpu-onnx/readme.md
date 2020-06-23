@@ -6,7 +6,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 2. After installing all of the requirements, [clone](https://code.visualstudio.com/Docs/editor/versioncontrol#_cloning-a-repository) the [LVA repository](/../../) locally into your development PC and open the repository with VSCode. 
 3. Locate this Readme page in your local repository and continue reading the following sections on VSCode. You can preview Markdown (`.md`) pages by pressing `Ctrl+Shift+V` to open a full-screen window or by clicking the preview button on the top toolbar in VSCode.  
    
-   <img src="../../../../../../images/_markdown_preview.png" width=300px/> 
+   <img src="../../../../../../images/_markdown_preview.png" width=200px/> 
    <br>
 
    > <span>[!NOTE]</span>
