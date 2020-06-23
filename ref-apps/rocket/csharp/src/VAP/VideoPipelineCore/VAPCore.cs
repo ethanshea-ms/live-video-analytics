@@ -62,12 +62,7 @@ namespace VideoPipelineCore
 
         public static void Initialize(string[] args)
         {
-            if (args.Length < 4)
-            {
-                Console.WriteLine(args.Length);
-                Console.WriteLine("Usage: <exe> <video url> <cfg file> <samplingFactor> <resolutionFactor> <buffersize> <uptran> <downtran> <category1> <category2> ...");
-                return;
-            }
+            //Console.WriteLine("Usage: <exe> <video url> <pipeline> <cfg file> <samplingFactor> <resolutionFactor> <buffersize> <uptran> <downtran> <category1> <category2> ...");
             
             videoUrl = args[0];
             switch (ConfigurationManager.AppSettings["Runtime"])
@@ -81,48 +76,52 @@ namespace VideoPipelineCore
             }
             if (args[1] != null)
             {
+                pplConfig = int.Parse(args[1]);
+            }
+            if (args[2] != null)
+            {
                 switch (ConfigurationManager.AppSettings["Runtime"])
                 {
                     case "docker":
-                        if (args[1].Substring(0, 4) != "http")
+                        if (args[2].Substring(0, 4) != "http")
                         {
-                            lineFile = $@"./cfg/{args[1]}";
+                            lineFile = $@"./cfg/{args[2]}";
                         }
                         else
                         {
                             using (var client = new WebClient())
                             {
-                                client.DownloadFile(args[1], @"./cfg/line.txt");
+                                client.DownloadFile(args[2], @"./cfg/line.txt");
                             }
                             lineFile = @"./cfg/line.txt";
                         }
                         break;
                     case "vs":
-                        if (args[1].Substring(0, 4) != "http")
+                        if (args[2].Substring(0, 4) != "http")
                         {
-                            lineFile = $@"..\..\..\cfg\{args[1]}";
+                            lineFile = $@"..\..\..\cfg\{args[2]}";
                         }
                         else
                         {
                             using (var client = new WebClient())
                             {
-                                client.DownloadFile(args[1], @"..\..\..\cfg\line.txt");
+                                client.DownloadFile(args[2], @"..\..\..\cfg\line.txt");
                             }
                             lineFile = @"..\..\..\cfg\line.txt";
                         }
                         break;
                 }
             }
-            if (args[2] != null) SAMPLING_FACTOR = int.Parse(args[2]);
-            if (args[3] != null) RESOLUTION_FACTOR = double.Parse(args[3]);
-            if (args[4] != null) DNNConfig.FRAME_SEARCH_RANGE = int.Parse(args[4]);
-            if (args[5] != null) LineDetectorConfig.UP_STATE_TRANSITION_LENGTH = int.Parse(args[5]);
-            if (args[6] != null) LineDetectorConfig.DOWN_STATE_TRANSITION_LENGTH = int.Parse(args[6]);
+            if (args[3] != null) SAMPLING_FACTOR = int.Parse(args[2]);
+            if (args[4] != null) RESOLUTION_FACTOR = double.Parse(args[3]);
+            if (args[5] != null) DNNConfig.FRAME_SEARCH_RANGE = int.Parse(args[4]);
+            if (args[6] != null) LineDetectorConfig.UP_STATE_TRANSITION_LENGTH = int.Parse(args[5]);
+            if (args[7] != null) LineDetectorConfig.DOWN_STATE_TRANSITION_LENGTH = int.Parse(args[6]);
 
             //if no categpry is specified, add all classes from coco dataset
-            if (args.Length > 7)
+            if (args.Length > 8)
             {
-                for (int i = 7; i < args.Length; i++)
+                for (int i = 8; i < args.Length; i++)
                 {
                     category.Add(args[i], 0);
                 }
@@ -157,7 +156,7 @@ namespace VideoPipelineCore
             //----------
             //initialize pipeline components
             Utils.Utils.cleanFolder(@OutputFolder.OutputFolderAll);
-            decoder = new Decoder.Decoder(videoUrl, loop);
+            decoder = new Decoder.Decoder(videoUrl, loop); //decoder is not used in integration with LVA
             //----------
             if (new int[] { 5, 1, 2, 3, 4 }.Contains(pplConfig))
             {
