@@ -159,7 +159,7 @@ namespace VideoPipelineCore
             Utils.Utils.cleanFolder(@OutputFolder.OutputFolderAll);
             decoder = new Decoder.Decoder(videoUrl, loop);
             //----------
-            if (new int[] { 0, 1, 2, 3, 4 }.Contains(pplConfig))
+            if (new int[] { 5, 1, 2, 3, 4 }.Contains(pplConfig))
             {
                 bgs = new BGSObjectDetector.BGSObjectDetector();
                 foregroundBoxes = null;
@@ -173,19 +173,19 @@ namespace VideoPipelineCore
             //LineTriggeredDNNTF ltDNN = new LineTriggeredDNNTF(lines);
             //List<Item> ltDNNItemList = new List<Item>();
             //----------
-            if (new int[] { 3 }.Contains(pplConfig))
+            if (new int[] { 2 }.Contains(pplConfig))
             {
                 ltDNN = new LineTriggeredDNNORTYolo(lines, "yolov3");
                 ltDNNItemList = new List<Item>();
             }
             //----------
-            if (new int[] { 4 }.Contains(pplConfig))
+            if (new int[] { 1 }.Contains(pplConfig))
             {
                 ltDNN = new LineTriggeredDNNORTYolo(lines, "yolov3tiny");
                 ltDNNItemList = new List<Item>();
             }
             //----------
-            if (new int[] { 4 }.Contains(pplConfig))
+            if (new int[] { 1 }.Contains(pplConfig))
             {
                 ccDNN = new CascadedDNNORTYolo(lines, "yolov3");
                 ccDNNItemList = new List<Item>();
@@ -195,14 +195,14 @@ namespace VideoPipelineCore
             //List<Item> frameDNNTFItemList = new List<Item>();
             //Utils.Utils.cleanFolder(@OutputFolder.OutputFolderFrameDNNTF);
             //----------
-            if (new int[] { 1, 5 }.Contains(pplConfig))
+            if (new int[] { 3, 6 }.Contains(pplConfig))
             {
                 frameDNNOnnxYolo = new FrameDNNOnnxYolo(lines, "yolov3", DNNMode.Frame);
                 frameDNNOnnxItemList = new List<Item>();
                 Utils.Utils.cleanFolder(@OutputFolder.OutputFolderFrameDNNONNX);
             }
             //----------
-            if (new int[] { 2, 6 }.Contains(pplConfig))
+            if (new int[] { 4, 7 }.Contains(pplConfig))
             {
                 frameDNNOnnxYolo = new FrameDNNOnnxYolo(lines, "yolov3tiny", DNNMode.Frame);
                 frameDNNOnnxItemList = new List<Item>();
@@ -257,21 +257,21 @@ namespace VideoPipelineCore
 
             //background subtractor
             Mat fgmask = null;
-            if (new int[] { 0, 3, 4 }.Contains(pplConfig))
+            if (new int[] { 5, 2, 1 }.Contains(pplConfig))
             {
                 foregroundBoxes = bgs.DetectObjects(DateTime.Now, frame, frameIndex, out fgmask);
             }
 
 
             //line counter
-            if (new int[] { 0, 3, 4 }.Contains(pplConfig))
+            if (new int[] { 5, 2, 1 }.Contains(pplConfig))
             {
                 (counts, occupancy) = lineDetector.updateLineResults(frame, frameIndex, fgmask, foregroundBoxes, ref teleCountsBGS);
             }
 
 
             //cheap DNN
-            if (new int[] { 3, 4 }.Contains(pplConfig))
+            if (new int[] { 2, 1 }.Contains(pplConfig))
             {
                 ltDNNItemList = ltDNN.Run(frame, frameIndex, counts, lines, category, ref teleCountsCheapDNN, true);
                 if (ltDNNItemList != null)
@@ -282,7 +282,7 @@ namespace VideoPipelineCore
 
 
             //heavy DNN
-            if (new int[] { 4 }.Contains(pplConfig))
+            if (new int[] { 1 }.Contains(pplConfig))
             {
                 ccDNNItemList = ccDNN.Run(frameIndex, ltDNNItemList, lines, category, ref teleCountsHeavyDNN, true);
                 if (ccDNNItemList != null)
@@ -301,7 +301,7 @@ namespace VideoPipelineCore
 
 
             //frame DNN ORTONNXYolo
-            if (new int[] { 1, 2 }.Contains(pplConfig))
+            if (new int[] { 3, 4 }.Contains(pplConfig))
             {
                 frameDNNOnnxItemList = frameDNNOnnxYolo.Run(frame, frameIndex, category, Brushes.Pink, 0, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_LARGE, true);
                 itemList = frameDNNOnnxItemList;
@@ -309,7 +309,7 @@ namespace VideoPipelineCore
 
 
             //frame DNN ORTONNXYolo for object detection
-            if (new int[] { 5, 6 }.Contains(pplConfig))
+            if (new int[] { 6, 7 }.Contains(pplConfig))
             {
                 frameDNNOnnxItemList = frameDNNOnnxYolo.Run(frame, frameIndex, category, Brushes.Pink, 0, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_SMALL, true);
                 itemList = frameDNNOnnxItemList;
@@ -323,12 +323,12 @@ namespace VideoPipelineCore
             double processTime = (DateTime.Now - prevTime).TotalMilliseconds;
             string resultStringDetection = "";
             string resultStringCounting = "";
-            if (new int[] { 5, 6 }.Contains(pplConfig))
+            if (new int[] { 6, 7 }.Contains(pplConfig))
             {
                 resultStringDetection = LVAPostProcessor.SerializeDetectionResult(itemList, processTime, frame.Width, frame.Height);
                 Console.WriteLine(resultStringDetection);
             }
-            else if (new int[] { 0 }.Contains(pplConfig))
+            else if (new int[] { 5 }.Contains(pplConfig))
             {
                 resultStringCounting = LVAPostProcessor.SerializeCountingResultFromCounts(counts, processTime);
                 Console.WriteLine(resultStringCounting);
@@ -352,7 +352,7 @@ namespace VideoPipelineCore
 
 
             isDNNRunning = false;
-            if (new int[] { 5, 6 }.Contains(pplConfig))
+            if (new int[] { 6, 7 }.Contains(pplConfig))
             {
                 return resultStringDetection;
             }
