@@ -23,12 +23,19 @@ Run the following commands to install the IoT Edge Runtime:
 
 ```shell
 curl https://packages.microsoft.com/config/ubuntu/<YOUR_OS_VERSION>/multiarch/prod.list > ./microsoft-prod.list
+
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+
 sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+
 sudo apt-get -y update
+
 sudo apt-get -y install moby-engine
+
 sudo apt-get -y update
+
 sudo apt-get -y install iotedge
 ```
 
@@ -45,8 +52,11 @@ Now continue running the following shell commands by replacing the placeholder <
 
 ```shell
 iotHubConnStr=<IOT_EDGE_DEVICE_CONN_STRING>
+
 configFile=/etc/iotedge/config.yaml
+
 sudo sed -i "s#\(device_connection_string: \).*#\1\'$iotHubConnStr\'#g" $configFile
+
 sudo systemctl restart iotedge
 ```  
 

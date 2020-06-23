@@ -17,10 +17,15 @@ Next, install the drivers for your nGPU. Note that the installation may take a f
 ```shell
 # Install driver
 wget -O /tmp/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb 
+
 sudo dpkg -i /tmp/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+
 sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub 
+
 rm -f /tmp/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+
 sudo apt-get update
+
 sudo apt-get install cuda-drivers
 
 # Restart the VM
@@ -62,6 +67,7 @@ Since current version of IoT Edge Runtime (1.0.9) supports this V2, we are going
 
 ```shell
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+
 curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 
 sudo apt-get update
@@ -88,10 +94,15 @@ Commands to install the IoT Edge Runtime:
 
 ```shell
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+
 sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+
 sudo apt-get -y update
+
 sudo apt-get -y install iotedge
 ```
 
@@ -108,8 +119,11 @@ Now continue running the following shell commands by replacing the placeholder <
 
 ```shell
 iotHubConnStr="<IOT_EDGE_DEVICE_CONN_STRING>"
+
 configFile=/etc/iotedge/config.yaml
+
 sudo sed -i "s#\(device_connection_string: \).*#\1\'$iotHubConnStr\'#g" $configFile
+
 sudo systemctl restart iotedge
 ```  
 
