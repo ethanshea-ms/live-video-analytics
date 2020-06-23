@@ -1,4 +1,4 @@
-# 6. Configure lines of interest
+# Configure lines of interest
 
 Rocket enables counting and alerting when objects cross lines of interest in the frame, e.g., cars entering a driveway or people walking into the shop. Rocket takes a line-file as input for its line-based counting/alerting and cascaded DNN calls. 
 
