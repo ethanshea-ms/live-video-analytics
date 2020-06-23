@@ -58,10 +58,11 @@ Per your preference, your development PC and your IoT Edge device can be the sam
 
 2. Create the required [Azure services.](../../utilities/video-analysis/notebooks/common/create_azure_services.ipynb)
 
-3. You will need a development PC and also an IoT Edge device to run LVA and Rocket containers. If you don't have a physical IoT Edge device, you can [create an Azure virtual machine and configure it properly.](./notebooks/setup_iotedge_device.ipynb)
+3. You will need a development PC and also an IoT Edge device to run LVA and Rocket containers. If you don't have a physical IoT Edge device, you can [create an Azure virtual machine and configure it properly.](../../utilities/video-analysis/notebooks/common/create_azure_vm.ipynb)
     > <span>[!NOTE]</span>
     > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
 
+4. Please [install the appropriate drivers and IoT Edge Runtime](../../utilities/video-analysis/notebooks/common/install_iotedge_runtime_gpu.md) on the Azure VM. 
 
 ### Run LVA & Rocket on an IoT Edge Device (~25 minutes)
 

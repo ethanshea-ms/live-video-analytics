@@ -1,8 +1,8 @@
-# 8. Output Format & Interpretations
+# Output Format & Interpretations
 
 LVA sends decoded frames as binary data to Rocket using HTTP POST at a frequency of <camFPSFilterRate>. Counting results from Rocket are serialized as a JSON object, and sent back to LVA as response of the corresponding POST request. 
 
-## 8.1. Local image output
+## Local image output
 You can view the output images inside `/lvarocket/output` on the edge device. Results from different modules are sent to different directories (e.g., `output_bgsline` for background subtraction-based detector) whereas `output_all` has images from all modules. Name of each file consists of frame ID, module name, and confidence score. Below are few sample results from running pipeline `rocket-count-fullcascade` on `sample.mkv`. You should also see results printed in [OUTPUT in VS Code](#831-monitoring-iot-edge-module-to-iot-hub-message-flow) during running.   
 <img src="documents/_localoutput_1.png" alt="localoutput" width="1280">  
 The above illustration shows that at frame 415, background subtraction detected an object, tiny YOLO DNN confirmed it was a car with a confidence of 0.69, which is below the pre-defined threshold of 0.8. Hence, heavy YOLOv3 was called and a car was confirmed with a confidence of 0.81. 
@@ -12,10 +12,10 @@ In another example, at frame 3768, tiny YOLO detected a car with confidence scor
 Finally, at frame 1826, background subtraction detected a moving object but tiny YOLO model found it does not belong to the class of interest (i.e., car). Hence, heavy model was not called and counts remained the same. 
 
 
-## 8.2. Output data format
+## Output data format
 Sample Rocket counting and detection results in JSON are shown below.
 
-### 8.2.1. Sample Rocket counting result
+### Sample Rocket counting result
 ```json
 {
   "inferences": [
@@ -53,7 +53,7 @@ Sample Rocket counting and detection results in JSON are shown below.
 }
 ```
 
-### 8.2.2. Sample Rocket detection result
+### Sample Rocket detection result
 ```json
 {
     "inferences": [
@@ -99,10 +99,10 @@ Sample Rocket counting and detection results in JSON are shown below.
 }
 ```
 
-## 8.3. Monitoring the output of the LVA edge module
+## Monitoring the output of the LVA edge module
 In the sample media graph topology, we define the pipeline to send video analytics inference result (json payload) to IoT Hub Sink. Below we show two ways to examine the output. 
 
-### 8.3.1. Monitoring IoT Edge Module to IoT Hub Message flow
+### Monitoring IoT Edge Module to IoT Hub Message flow
 In VSCode, under "AZURE IOT HUB" panel (shown in the below screenshot):
 * Right click on the device name
 * "Start Monitoring Built-In Event Endpoint"  
@@ -110,7 +110,7 @@ In VSCode, under "AZURE IOT HUB" panel (shown in the below screenshot):
 * You will see the message flow with inference results and the video chunk logs that are sent to Cloud AMS service
 <img src="documents/_monitor02.png" alt="vsoutput2" width="1200">
 
-### 8.3.2. Monitoring the output using Azure Time Series Insights
+### Monitoring the output using Azure Time Series Insights
 We can also monitor messages and visualize the data with Azure Time Series Insights (ATSI) service.  
 
 1) From the portal, create an ATSI service https://portal.azure.com (Details on how to create and more: https://docs.microsoft.com/en-us/azure/time-series-insights/)
