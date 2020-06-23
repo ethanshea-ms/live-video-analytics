@@ -14,7 +14,7 @@ The fields signify the following:
 * x_1, y_1, x_2, y_2 - the X and Y coordinates of the line's endpoints.
 * overlap_threshold - this is the fraction of the line that the object is expected to cover for the count/alert to be triggered.  
 
-The file is supplied as a URL during [Rocket deployment](./07_deploy_to_iot_edge_device.ipynb). Here is a [sample line configuration file](https://aka.ms/linesample) manually created for `sample.mkv` inside `\media\`. The two lines are also shown in the picture below, which is a frame from the `sample.mkv` video. (An easy way to mark the lines is to take a "snapshot" from the video, say using VLC, mark the lines on the snapshot frame, and then list the coordinates and parameters of the line in the format specified above to create the line-file.)  
+The file is supplied as a URL during [Rocket deployment](./deploy_to_iot_edge_device.ipynb). Here is a [sample line configuration file](https://aka.ms/linesample) manually created for `sample.mkv` inside `\media\`. The two lines are also shown in the picture below, which is a frame from the `sample.mkv` video. (An easy way to mark the lines is to take a "snapshot" from the video, say using VLC, mark the lines on the snapshot frame, and then list the coordinates and parameters of the line in the format specified above to create the line-file.)  
 	<img src="documents/_line_sample.png" alt="sampleline" width="700">
 
 When the number_of_lines is 2, this means that two lines are used to count the object in the same direction. That is, the object overlaps the two lines in succession, within a specified time windows. The format for specification becomes more complex as follows. We recommend using number_of_lines to be 2 only if necessary.  
