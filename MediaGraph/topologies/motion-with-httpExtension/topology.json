@@ -46,6 +46,12 @@
         "default": "bmp"
       },
       {
+        "name": "imageScaleMode",
+        "type": "String",
+        "description": "image scaling mode",
+        "default": "preserveAspectRatio"
+      },
+      {
         "name": "frameWidth",
         "type": "String",
         "description": "Width of the video frame to be received from LVA.",
@@ -130,7 +136,7 @@
         },
         "image": {
           "scale": {
-            "mode": "preserveAspectRatio",
+            "mode": "${imageScaleMode}",
             "width": "${frameWidth}",
             "height": "${frameHeight}"
           },

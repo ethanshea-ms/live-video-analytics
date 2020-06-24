@@ -68,7 +68,7 @@ Per your preference, your development PC and your IoT Edge device can be the sam
 
 1. **Optional:** [Build your own customized Rocket Docker image.](./notebooks/build_rocket_image.ipynb) You can also choose to deploy a pre-built Rocket image with LVA and skip this step. The pre-built image is used by default in Step 3 below.
 
-2. For this sample, you are going to utilize Rocket’s ability to count and alert when objects cross lines of interest in a frame. A sample line configuration file is provided for the [sample video file](./notebooks/documents/sample.mkv) at your convenience. However, to learn more about configuring your own lines of interest, please read this [section.](./notebooks/line_configuration.md)
+2. For this sample, you are going to utilize Rocket’s ability to count and alert when objects cross lines of interest in a frame. A sample line configuration file is provided for the [sample video file](https://aka.ms/rocketlva_videosample) at your convenience. However, to learn more about configuring your own lines of interest, please read this [section.](./notebooks/line_configuration.md)
 
 3. Follow this [section](./notebooks/deploy_to_iot_edge_device.ipynb) to deploy LVA & Rocket to your IoT Edge Device.  
 
