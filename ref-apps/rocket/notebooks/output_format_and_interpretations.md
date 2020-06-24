@@ -3,7 +3,7 @@
 LVA sends decoded frames as binary data to Rocket using HTTP POST at a frequency of <camFPSFilterRate>. Counting results from Rocket are serialized as a JSON object, and sent back to LVA as response of the corresponding POST request. 
 
 ## Local image output
-You can view the output images inside `/lvarocket/output` on the edge device. Results from different modules are sent to different directories (e.g., `output_bgsline` for background subtraction-based detector) whereas `output_all` has images from all modules. Name of each file consists of frame ID, module name, and confidence score. Below are few sample results from running pipeline `rocket-count-fullcascade` on `sample.mkv`. You should also see results printed in [OUTPUT in VS Code](#831-monitoring-iot-edge-module-to-iot-hub-message-flow) during running.   
+You can view the output images inside `/lvarocket/output` on the edge device. Results from different modules are sent to different directories (e.g., `output_bgsline` for background subtraction-based detector) whereas `output_all` has images from all modules. Name of each file consists of frame ID, module name, and confidence score. Below are few sample results from running pipeline `rocket-count-fullcascade` on `sample.mkv`. You should also see results printed in [OUTPUT in VS Code](#monitoring-iot-edge-module-to-iot-hub-message-flow) during running.   
 <img src="documents/_localoutput_1.png" alt="localoutput" width="1280">  
 The above illustration shows that at frame 415, background subtraction detected an object, tiny YOLO DNN confirmed it was a car with a confidence of 0.69, which is below the pre-defined threshold of 0.8. Hence, heavy YOLOv3 was called and a car was confirmed with a confidence of 0.81. 
 <img src="documents/_localoutput_2.png" alt="localoutput" width="1280">  
@@ -124,7 +124,7 @@ We can also monitor messages and visualize the data with Azure Time Series Insig
 4) Click the link to open the explorer UI:  
 <img src="documents/_monitor_atsi_3.png" width=800/>  
 
-Based on above [JSON inference output](#81-output-data-format), we can filter out counts based on lines, and visualize a specific time range. Below are two examples.
+Based on above [JSON inference output](#output-data-format), we can filter out counts based on lines, and visualize a specific time range. Below are two examples.
 
 1) Initial ATSI window. Select time range to monitor events (1: refresh chart, 2: select time 3: apply and search time range).  
 <img src="documents/_monitor_atsi_4.png" width=800/>  
