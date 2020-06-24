@@ -17,9 +17,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
    ><span>[!NOTE]</span>
    >Jupyter notebooks (`.ipynb`) may take several seconds to render in VSCode.
 2. Create the required [Azure services](../../../common/create_azure_services.ipynb).
-3. You will need a development PC and also an IoT Edge device to run LVA containers. 
-   * If you have a physical IoT Edge device, you can proceed to [set up your IoT Edge device](../../../common/setup_iotedge_device.md).
-   * If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../../../common/create_azure_vm.ipynb).
+3. You will need a development PC and also an IoT Edge device to run LVA containers. If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../../../common/create_azure_vm.ipynb).
 
     > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
     > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
@@ -51,6 +49,6 @@ The image below summarizes the deployment scheme of LVA. As the image indicates,
 
 The following sections will explain how to deploy your Docker image and run media graphs on LVA. 
 
-1. After you have tested your Docker image, upload the [container image](../../../common/upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR).
+1. Upload the [container image](../../../common/upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR).
 2. Once the image has been uploaded onto ACR, you can now [deploy the inference server](../../../common/deploy_iotedge_modules.ipynb) to an IoT Edge device using a module deployment manifest. 
-3. Finally, deploy [media graphs](../../../common/deploy_media_graph.ipynb) to trigger the inference server and test to see if it works as desired.
+3. Finally, [deploy media graphs](../../../common/deploy_media_graph.ipynb) to trigger the inference server and test to see if it works as desired.
