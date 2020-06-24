@@ -49,6 +49,6 @@ The image below summarizes the deployment scheme of LVA. As the image indicates,
 
 The following sections will explain how to deploy your Docker image and run media graphs on LVA. 
 
-1. After you have tested your Docker image, upload the [container image](../../../common/upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR).
+1. Upload the [container image](../../../common/upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR).
 2. Once the image has been uploaded onto ACR, you can now [deploy the inference server](../../../common/deploy_iotedge_modules.ipynb) to an IoT Edge device using a module deployment manifest. 
-3. Finally, deploy [media graphs](../../../common/deploy_media_graph.ipynb) to trigger the inference server and test to see if it works as desired.
+3. Finally, [deploy media graphs](../../../common/deploy_media_graph.ipynb) to trigger the inference server and test to see if it works as desired.
