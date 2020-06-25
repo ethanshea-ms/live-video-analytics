@@ -12,6 +12,9 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
    > <span>[!NOTE]</span>
    > For pictures to render on VSCode, you must have the entire [live-video-analytics](/../..) folder open in your VSCode workspace.
    
+   > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
+   > Going forward, we will be using VSCode to run this sample. Please navigate to VSCode to continue.
+   
 ## Getting Started
 1. On VSCode, [set up the environment](../../../common/setup_environment.ipynb) so that we can test and deploy LVA.
    ><span>[!NOTE]</span>
