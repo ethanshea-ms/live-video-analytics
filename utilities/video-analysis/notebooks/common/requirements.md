@@ -34,7 +34,7 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     If you do not have Pip installed, you can install Pip by running the following command, based on your version of Python: 
 
     ```
-    sudo apt install python3-pip
+    sudo apt-get update && sudo apt-get install python3-pip
     ```
     > <span style="color:red; font-weight:bold"> [!WARNING] </span>  
     > We used `python3` in the command above because we are running Python 3. In your case, use `python` or `python3` depending on your installed version of Python.
@@ -62,7 +62,9 @@ Later in this sample, we will be using Docker to containerize our inference serv
 Because this sample utilizes Azure, you will need an active Azure subscription to run the following sections. If you do not have an active Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## Install the Azure CLI
-We will mainly be interacting with Azure through Jupyter, but for this to work, you will need to install the [Azure command-line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+We will mainly be interacting with Azure through Jupyter, but for this to work, you will need to install the [Azure command-line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), version >=2.7.
+> <span style="color:red; font-weight:bold"> [!WARNING] </span>  
+> If you are using Windows with WSL 2 as your development PC, please download Azure CLI for Debian/Ubuntu.
 
 
 ## Install Jupyter
@@ -76,7 +78,7 @@ pip3 install jupyter
 > We used `pip3` in the command above because we are running Python 3. In your case, use `pip` or `pip3` depending on your installed version of Python.
 
 ## Working with Jupyter Notebooks on VSCode
-If you are not familiar with running Jupyter notebooks, we recommend getting started with this tutorial on running [Jupyter on VSCode](https://code.visualstudio.com/docs/python/jupyter-support). When you are running Jupyer on VSCode, be sure to activate the right Python environment for VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for `Python: Select Interpreter to start Jupyter server`. Choose the appropriate version of Python that matches your needs.
+If you are not familiar with running Jupyter notebooks, we recommend getting started with this tutorial on running [Jupyter on VSCode](https://code.visualstudio.com/docs/python/jupyter-support). When you are running Jupyter on VSCode, be sure to activate the right Python environment for VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for `Python: Select Interpreter to start Jupyter server`. Choose the appropriate version of Python that matches your needs.
 
 <img src="../../../../images/_python_interpreter.png" width=500px />
 
