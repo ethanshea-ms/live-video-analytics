@@ -76,7 +76,7 @@ pip3 install jupyter
 > We used `pip3` in the command above because we are running Python 3. In your case, use `pip` or `pip3` depending on your installed version of Python.
 
 ## Working with Jupyter Notebooks on VSCode
-If you are not familiar with running Jupyter notebooks, we recommend getting started with this tutorial on running [Jupyter on VSCode](https://code.visualstudio.com/docs/python/jupyter-support). When you are running Jupyer on VSCode, be sure to activate the right Python environment for VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for `Python: Select Interpreter to start Jupyter server`. Choose the appropriate version of Python that matches your needs.
+If you are not familiar with running Jupyter notebooks, we recommend getting started with this tutorial on running [Jupyter on VSCode](https://code.visualstudio.com/docs/python/jupyter-support). When you are running Jupyter on VSCode, be sure to activate the right Python environment for VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for `Python: Select Interpreter to start Jupyter server`. Choose the appropriate version of Python that matches your needs.
 
 <img src="../../../../images/_python_interpreter.png" width=500px />
 
