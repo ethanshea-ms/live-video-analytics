@@ -62,7 +62,9 @@ Later in this sample, we will be using Docker to containerize our inference serv
 Because this sample utilizes Azure, you will need an active Azure subscription to run the following sections. If you do not have an active Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## Install the Azure CLI
-We will mainly be interacting with Azure through Jupyter, but for this to work, you will need to install the [Azure command-line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+We will mainly be interacting with Azure through Jupyter, but for this to work, you will need to install the [Azure command-line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), version >=2.7 
+> <span style="color:red; font-weight:bold"> [!WARNING] </span>  
+> If you are using Windows with WSL 2 as your development PC, please download Azure CLI for Debian/Ubuntu.
 
 
 ## Install Jupyter
