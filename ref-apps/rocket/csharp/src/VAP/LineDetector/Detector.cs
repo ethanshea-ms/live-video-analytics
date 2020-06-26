@@ -36,7 +36,7 @@ namespace LineDetector
             Console.WriteLine(linesFile);
         }
 
-        public (Dictionary<string, int>, Dictionary<string, bool>) updateLineResults(Mat frame, int frameIndex, Mat fgmask, List<Box> boxes, ref long teleCountsBGS)
+        public (Dictionary<string, int>, Dictionary<string, bool>) updateLineResults(Mat frame, int frameIndex, Mat fgmask, List<Box> boxes, ref long teleCountsBGS, bool savePictures = false)
         {
             if (frameIndex > START_DELAY)
             {
@@ -68,11 +68,14 @@ namespace LineDetector
                     if (diff > 0) //object detected by BGS-based counter
                     {
                         teleCountsBGS++;
-                        Console.WriteLine($"Line: {lane}\tCounts: {counts[lane]}");
-                        string blobName_BGS = Utils.Utils.RemoveInvalidChars($@"frame-{frameIndex}-BGS-{lane}-{counts[lane]}.jpg");
-                        string fileName_BGS = @OutputFolder.OutputFolderBGSLine + blobName_BGS;
-                        frame.SaveImage(fileName_BGS);
-                        frame.SaveImage(@OutputFolder.OutputFolderAll + blobName_BGS);
+                        //Console.WriteLine($"Line: {lane}\tCounts: {counts[lane]}");
+                        if (savePictures)
+                        {
+                            string blobName_BGS = Utils.Utils.RemoveInvalidChars($@"frame-{frameIndex}-BGS-{lane}-{counts[lane]}.jpg");
+                            string fileName_BGS = @OutputFolder.OutputFolderBGSLine + blobName_BGS;
+                            frame.SaveImage(fileName_BGS);
+                            frame.SaveImage(@OutputFolder.OutputFolderAll + blobName_BGS);
+                        }
                     }
                 }
             }

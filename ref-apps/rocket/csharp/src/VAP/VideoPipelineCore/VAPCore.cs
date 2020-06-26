@@ -265,7 +265,7 @@ namespace VideoPipelineCore
             //line counter
             if (new int[] { 5, 2, 1 }.Contains(pplConfig))
             {
-                (counts, occupancy) = lineDetector.updateLineResults(frame, frameIndex, fgmask, foregroundBoxes, ref teleCountsBGS);
+                (counts, occupancy) = lineDetector.updateLineResults(frame, frameIndex, fgmask, foregroundBoxes, ref teleCountsBGS, false);
             }
 
 
