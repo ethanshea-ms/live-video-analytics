@@ -112,11 +112,11 @@ namespace VideoPipelineCore
                         break;
                 }
             }
-            if (args[3] != null) SAMPLING_FACTOR = int.Parse(args[2]);
-            if (args[4] != null) RESOLUTION_FACTOR = double.Parse(args[3]);
-            if (args[5] != null) DNNConfig.FRAME_SEARCH_RANGE = int.Parse(args[4]);
-            if (args[6] != null) LineDetectorConfig.UP_STATE_TRANSITION_LENGTH = int.Parse(args[5]);
-            if (args[7] != null) LineDetectorConfig.DOWN_STATE_TRANSITION_LENGTH = int.Parse(args[6]);
+            if (args[3] != null) SAMPLING_FACTOR = int.Parse(args[3]);
+            if (args[4] != null) RESOLUTION_FACTOR = double.Parse(args[4]);
+            if (args[5] != null) DNNConfig.FRAME_SEARCH_RANGE = int.Parse(args[5]);
+            if (args[6] != null) LineDetectorConfig.UP_STATE_TRANSITION_LENGTH = int.Parse(args[6]);
+            if (args[7] != null) LineDetectorConfig.DOWN_STATE_TRANSITION_LENGTH = int.Parse(args[7]);
 
             //if no categpry is specified, add all classes from coco dataset
             if (args.Length > 8)
@@ -265,7 +265,7 @@ namespace VideoPipelineCore
             //line counter
             if (new int[] { 5, 2, 1 }.Contains(pplConfig))
             {
-                (counts, occupancy) = lineDetector.updateLineResults(frame, frameIndex, fgmask, foregroundBoxes, ref teleCountsBGS, false);
+                (counts, occupancy) = lineDetector.updateLineResults(frame, frameIndex, fgmask, foregroundBoxes, ref teleCountsBGS, true);
             }
 
 
