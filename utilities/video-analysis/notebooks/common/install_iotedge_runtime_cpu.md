@@ -1,13 +1,37 @@
 # Install IoT Edge Runtime for CPU Accelerated IoT Edge Devices
-If you are using a virtual machine, you can use the SSH connection string to create a terminal session over the VM. Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
-
-## Install the Azure IoT Edge runtime
+If you are using a virtual machine, you can use the SSH connection string located in the [.env file](.env) to create a terminal session over the VM. Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
 
 To be able to run commands below, you need to install the `curl` command line tool in case it is not already installed. To install curl, please use the following command:
 
 ```shell
 sudo apt-get -y install curl
 ```
+
+## Install Docker Engine on Ubuntu
+After your IoT Edge device restarts (the last command above restarts it), install Docker engine by running the code snippets bellow. You can learn more about [Docker engine](https://docs.docker.com/engine/install/ubuntu/) here.
+
+```shell
+sudo apt-get update
+
+sudo apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+sudo apt-get update
+
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+```
+
+## Install the Azure IoT Edge runtime
 
 To install the IoT Edge Runtime, in order run the below commands in the terminal window. Be sure the following URL in the below commands reflects the right version of your OS in the IoT Edge Device:  
 ```
