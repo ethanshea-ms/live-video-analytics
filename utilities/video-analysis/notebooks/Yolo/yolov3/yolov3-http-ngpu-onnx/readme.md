@@ -37,14 +37,16 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 The following sections will explain how to build a Docker container image of an inference server solution that uses AI logic (i.e., YoloV3 for object detection) on a GPU accelerated IoT Edge Device.
 1. Create a [YoloV3 inference engine](create_yolov3_ngpu_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
 2. Create a [local Docker image](create_yolov3_ngpu_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
-3. Finally, we will update the deployment manifest template file with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json). We will override some of the parameters in [this file](create_yolov3_ngpu_deployment_manifest.ipynb).
-4. Optional: You may want to test the Docker image locally before uploading the Docker image to a container registry, to ensure that it runs as expected. To do this, you must meet the following requirements. (If you do not meet all of the requirements, you can skip this.)
+3. Finally, [update the deployment manifest template file](create_yolov3_ngpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json), which will be overridden with parameters specific for this sample.
+
+<!--
+1. Optional: You may want to test the Docker image locally before uploading the Docker image to a container registry, to ensure that it runs as expected. To do this, you must meet the following requirements. (If you do not meet all of the requirements, you can skip this.)
    * Your development PC has the same GPU as your IoT Edge device
    * Your development PC has the same GPU drivers installed as your IoT Edge device
    * Your development PC has the same NVidia Docker toolkit installed as your IoT Edge device
 
     If you are unsure how to install the latter two requirements, you can review the [GPU installation process](../../../common/install_iotedge_runtime_gpu.md#61-install-nvidia-cuda-drivers-for-your-ngpu-tesla-k80-in-this-case). After you have everything set up, you can [test locally](local_test.ipynb). 
-
+-->
 
 ## Deploy Your Docker Image
 The image below summarizes the deployment scheme of LVA. As the image indicates, LVA can utilize containers hosted on the Internet, on a local network, or even on a local machine.
