@@ -1,15 +1,15 @@
 # Output Format & Interpretations
 
-LVA sends decoded frames as binary data to Rocket using HTTP POST at a frequency of <camFPSFilterRate>. Counting results from Rocket are serialized as a JSON object, and sent back to LVA as response of the corresponding POST request. 
+LVA sends decoded frames as binary data to Rocket using HTTP POST at a prespecified frame rate `frameRate`. Counting results from Rocket are serialized as a JSON object, and sent back to LVA as response of the corresponding POST request. 
 
 ## Local image output
 You can view the output images inside `/lvarocket/output` on the edge device. Results from different modules are sent to different directories (e.g., `output_bgsline` for background subtraction-based detector) whereas `output_all` has images from all modules. Name of each file consists of frame ID, module name, and confidence score. Below are few sample results from running pipeline `rocket-count-fullcascade` on `sample.mkv`. You should also see results printed in [OUTPUT in VS Code](#monitoring-iot-edge-module-to-iot-hub-message-flow) during running.   
 <img src="documents/_localoutput_1.png" alt="localoutput" width="1280">  
-The above illustration shows that at frame 415, background subtraction detected an object, tiny YOLO DNN confirmed it was a car with a confidence of 0.69, which is below the pre-defined threshold of 0.8. Hence, heavy YOLOv3 was called and a car was confirmed with a confidence of 0.81. 
+The above illustration shows that at frame 720, background subtraction detected an object, tiny YOLO DNN confirmed it was a car with a confidence of 0.69, which is below the pre-defined threshold of 0.8. Hence, heavy YOLOv3 was called and a car was confirmed with a confidence of 0.81. 
 <img src="documents/_localoutput_2.png" alt="localoutput" width="1280">  
-In another example, at frame 3768, tiny YOLO detected a car with confidence score of 0.94. Hence the heavy model was not invoked. 
+In another example, at frame 4073, tiny YOLO detected a car with confidence score of 0.94. Hence the heavy model was not invoked. 
 <img src="documents/_localoutput_3.png" alt="localoutput" width="1280">  
-Finally, at frame 1826, background subtraction detected a moving object but tiny YOLO model found it does not belong to the class of interest (i.e., car). Hence, heavy model was not called and counts remained the same. 
+Finally, at frame 2131, background subtraction detected a moving object but tiny YOLO model found it does not belong to the class of interest (i.e., car). Hence, heavy model was not called and counts remained the same. 
 
 
 ## Output data format
