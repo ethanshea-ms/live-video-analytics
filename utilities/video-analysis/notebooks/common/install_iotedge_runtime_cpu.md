@@ -31,7 +31,7 @@ sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 ```
 
-## Install the Azure IoT Edge runtime
+## Install the Azure IoT Edge Runtime
 
 To install the IoT Edge Runtime, in order run the below commands in the terminal window. Be sure the following URL in the below commands reflects the right version of your OS in the IoT Edge Device:  
 ```
