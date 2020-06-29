@@ -2,7 +2,7 @@
 [Live video analytics on IoT Edge](https://azure.microsoft.com/en-us/services/media-services/live-video-analytics/) is a new capability of Azure Media Services. Live Video Analytics (LVA) provides a platform for you to build intelligent video applications that span the edge and the cloud. The platform offers the capability to capture, record, analyze live video and publish the results (video and/or video analytics) to Azure services (in the cloud and/or the edge). The platform can be used to enhance IoT solutions with video analytics. This folder contains [Jupyter notebook](https://jupyter.org/) samples for LVA. With Jupyter, you can create and deploy LVA applications on notebooks that contain live code, equations, and formatted text. To get started, click on any of the samples listed in the table below.  
 
 ## Prerequisites  
-A part from sample specific prerequisities and requirements, specified in the below samples table, all samples need the following common prerequisites:  
+Apart from sample specific prerequisities and requirements, specified in the below samples table, all samples need the following common prerequisites:  
 - **Development PC:** A physical or a *virtual machine*<sup>*</sup> that will be used to build and deploy the sample.
 - **Iot Edge Device:** A phsical or a *virtual machine*<sup>*</sup> that the sample will be deployed into. Per [LVA requirement](https://docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/overview#supported-environments), this device should be Linux AMD64/X64.
 - **Azure Subscription:** An active [Azure subscription](https://azure.microsoft.com/) that will host LVA required services.
