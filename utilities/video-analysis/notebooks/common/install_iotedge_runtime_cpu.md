@@ -7,30 +7,6 @@ To be able to run commands below, you need to install the `curl` command line to
 sudo apt-get -y install curl
 ```
 
-## Install Docker Engine on Ubuntu
-After your IoT Edge device restarts (the last command above restarts it), install Docker engine by running the code snippets bellow. You can learn more about [Docker engine](https://docs.docker.com/engine/install/ubuntu/) here.
-
-```shell
-sudo apt-get update
-
-sudo apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-sudo apt-key fingerprint 0EBFCD88
-
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-
-sudo apt-get update
-
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-```
-
 ## Install the Azure IoT Edge Runtime
 
 To install the IoT Edge Runtime, in order run the below commands in the terminal window. Be sure the following URL in the below commands reflects the right version of your OS in the IoT Edge Device:  
