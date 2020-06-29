@@ -12,6 +12,6 @@ This folder has a set of video analysis related utilities
 
 ## Contributions needed
 - Build a Docker container with Resnet
-- Bulid a Docker container with Face detection 
+- Build a Docker container with Face detection 
 - Build a Docker container with Yolov3 inferencing in GPU
 - Build a Docker container with an inferencing model in FPGA

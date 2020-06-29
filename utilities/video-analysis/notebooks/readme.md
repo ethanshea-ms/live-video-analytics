@@ -9,7 +9,7 @@ A part from sample specific prerequisities and requirements, specified in the be
 
 Per your preference, your development PC and your IoT Edge device can be the same machine (i.e., developing, debugging, and deploying a sample on the same machine).
 
-<sup>*</sup> Follow the guidance in the below samples. Per your chioce, they will guide you to [create an Azure VM - Azure Virtual Machine](common/create_azure_vm.ipynb) in case needed.
+<sup>*</sup> Per your chioce, below samples will guide you to [create an Azure VM - Azure Virtual Machine](common/create_azure_vm.ipynb) in case needed.
 
 ## List of samples
 | # | Name       | Extension | Accelerator| Description | Passed<sup>i</sup> |
@@ -24,7 +24,6 @@ Per your preference, your development PC and your IoT Edge device can be the sam
 iGPU: Intel GPU  
 nGPU: Nvidia GPU
 
-
 ## Test specifications<sup>i</sup>:
 | Test Case | Development PC<sup>a</sup>                            | IoT Edge Device<sup>b</sup>   |
 | :---      | :---                                                  | :---                          |
@@ -32,7 +31,4 @@ nGPU: Nvidia GPU
 | 2         | Azure VM<br>-OS: Ubuntu 18.04<br>-Python 3.8.3 Dev, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
 | 3         | Azure VM<br>-OS: Windows 10 Build 2004<br>runnnig [WSL 2 Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/about)<br>-Python 3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
 | 4         | Physical PC<br>-OS: Windows 10 with Git Bash<br>-Python 3.8.3, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |  
-| 5         | Physical PC<br>-OS: MacOS 15<br>-Python 3.6.9, Pip 3 | Azure VM<<br>-OS: Ubuntu 18.04 |
-
-
-
+| 5         | Physical PC<br>-OS: MacOS 15<br>-Python 3.6.9, Pip 3 | Azure VM<<br>-OS: Ubuntu 18.04 |  
