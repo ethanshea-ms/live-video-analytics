@@ -2,17 +2,19 @@
 [Live video analytics on IoT Edge](https://azure.microsoft.com/en-us/services/media-services/live-video-analytics/) is a new capability of Azure Media Services. Live Video Analytics (LVA) provides a platform for you to build intelligent video applications that span the edge and the cloud. The platform offers the capability to capture, record, analyze live video and publish the results (video and/or video analytics) to Azure services (in the cloud and/or the edge). The platform can be used to enhance IoT solutions with video analytics. This folder contains [Jupyter notebook](https://jupyter.org/) samples for LVA. With Jupyter, you can create and deploy LVA applications on notebooks that contain live code, equations, and formatted text. To get started, click on any of the samples listed in the table below.  
 
 ## Prerequisites  
-Apart from sample specific prerequisities specified in each sample listed in the below table, all samples need the following common prerequisites:  
+Following items needed to run the below samples:  
 - **Development PC:** A physical or a *virtual machine*<sup>*</sup> that will be used to build and deploy the sample.
 - **Iot Edge Device:** A phsical or a *virtual machine*<sup>*</sup> that the sample will be deployed into. Per [LVA requirement](https://docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/overview#supported-environments), this device should be Linux AMD64/X64.
 - **Azure Subscription:** An active [Azure subscription](https://azure.microsoft.com/) that will host LVA required services.
 
 Per your preference, your development PC and your IoT Edge device can be the same machine (i.e., developing, debugging, and deploying a sample on the same machine).
 
-<sup>*</sup> Per your chioce, below samples will guide you to [create an Azure VM - Azure Virtual Machine](common/create_azure_vm.ipynb) in case needed.
+<sup>*</sup> if you need a fresh development PC, you can create an [Azure VM - Azure Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/) with OS of your choice and connect to it with remote desktop connection for [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/connect-logon) or for [Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop). 
+
+<sup>*</sup> if you dont have an IoT Edge Device and want to create an Azure VM for it, below samples will guide you with required steps.
 
 ## List of samples
-| # | Name       | Extension | Accelerator| Description | Passed<sup>i</sup> |
+| # | Name       | Extension | Accelerator| Description | Test cases <br>Passed<sup>i</sup> |
 |:---:|:---:        |:---:       |:---:        |:---       |:---:       |
 | 1 | [Yolo V3](Yolo/yolov3/yolov3-http-icpu-onnx/readme.md)             | HTTP      | iCPU | LVA module using YoloV3, a neural network for real-time object detection, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an Intel CPU accelerated IoT Edge device with connection through HTTP. | |
 | 2 | [Yolo V3](Yolo/yolov3/yolov3-http-ngpu-onnx/readme.md)             | HTTP      | nGPU<sup>*</sup> |  LVA module using YoloV3, a neural network for real-time object detection, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an NVidia GPU accelerated IoT Edge device with connection through HTTP. | 1, 2, 3, 4 |
@@ -24,7 +26,7 @@ Per your preference, your development PC and your IoT Edge device can be the sam
 iGPU: Intel GPU  
 nGPU: Nvidia GPU
 
-## Test specifications<sup>i</sup>:
+## Test environments<sup>i</sup>:
 | Test Case | Development PC<sup>a</sup>                            | IoT Edge Device<sup>b</sup>   |
 | :---      | :---                                                  | :---                          |
 | 1         | Azure VM<br>-OS: Ubuntu 18.04<br>-Python 3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
