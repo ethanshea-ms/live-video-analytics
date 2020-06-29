@@ -27,7 +27,6 @@ namespace Utils.Config
         {
             OutputFolderAll = OutputFolderRoot + "output_all/";
             OutputFolderBGSLine = OutputFolderRoot + "output_bgsline/";
-            OutputFolderBGSLine = OutputFolderRoot + "output_bgsline/";
             OutputFolderLtDNN = OutputFolderRoot + "output_ltdnn/";
             OutputFolderCcDNN = OutputFolderRoot + "output_ccdnn/";
             OutputFolderAML = OutputFolderRoot + "output_aml/";

@@ -88,6 +88,7 @@
                 "image": "$CONTAINER_REGISTRY_USERNAME_myacr.azurecr.io/$CONTAINER_IMAGE_NAME",
                 "createOptions": {
                   "Cmd": [
+                    "$ROCKET_PIPELINE",
                     "$ROCKET_CAT",
                     "$ROCKET_LINE",
                     "$ROCKET_SFACTOR",
