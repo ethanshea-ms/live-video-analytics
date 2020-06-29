@@ -16,7 +16,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
    > Going forward, we will be using VSCode to run this sample. Please navigate to VSCode to continue.
    
 ## Getting Started
-1. On VSCode, [set up the environment](../../../common/setup_environment.ipynb) so that we can test and deploy LVA.
+1. In VSCode, [set up the environment](../../../common/setup_environment.ipynb) so that we can test and deploy LVA.
    ><span>[!NOTE]</span>
    >Jupyter notebooks (`.ipynb`) may take several seconds to render in VSCode.
 2. Create the required [Azure services](../../../common/create_azure_services.ipynb).

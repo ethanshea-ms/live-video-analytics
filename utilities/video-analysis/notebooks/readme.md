@@ -8,21 +8,11 @@
 | 2 | [Yolo V3](Yolo/yolov3/yolov3-http-ngpu-onnx/readme.md)             | HTTP      | nGPU |  LVA module using YoloV3, a neural network for real-time object detection, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an NVidia GPU accelerated IoT Edge device with connection through HTTP. | 1, 2, 3, 4 |
 | 3 | [Tiny Yolo V3](Yolo/tinyyolov3/tinyyolov3-http-icpu-onnx/readme.md)    | HTTP      | iCPU | LVA module using Tiny YoloV3, a lightweight variant of the Yolo V3 neural network model, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an Intel CPU accelerated IoT Edge device with connection through HTTP. | |
 | 4 | [Tiny Yolo V3](Yolo/tinyyolov3/tinyyolov3-grpc-icpu-onnx/readme.md)                    | gRPC      | iCPU | LVA module using Tiny YoloV3, a lightweight variant of the Yolo V3 neural network model, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an Intel CPU accelerated IoT Edge device with connection through gRPC. gRPC is a remote procedure call that efficiently connects services in and across data centers with pluggable support for load balancing, tracing, health checking and authentication. | |
-| 5 | [OpenVINO™](OpenVINO/readme.md)             | HTTP      | iCPU, eGPU |  LVA module using OpenVINO™, a comprehensive toolkit for quickly developing applications and solutions that emulate human vision. Based on Convolutional Neural Networks (CNNs), the toolkit extends CV workloads across Intel® hardware, maximizing performance. | |
+| 5 | [OpenVINO™](OpenVINO/readme.md)             | HTTP      | iCPU, eGPU |  LVA module using OpenVINO™, a comprehensive toolkit for quickly developing applications and solutions that emulate human vision. Based on Convolutional Neural Networks (CNNs), the toolkit extends CV workloads across Intel® hardware, maximizing performance. | |  
 
 
 
 
-## Test specifications<sup>i</sup>:
-| Test Case | Development PC<sup>a</sup>                            | IoT Edge Device<sup>b</sup>   |
-| :---      | :---                                                  | :---                          |
-| 1         | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04<br>-Python 3.6.9, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |
-| 2         | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04<br>-Python 3.8.3 Dev, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |
-| 3         | Azure VM<br>-OS: Windows 10 Build 2004<br>runnnig [WSL 2 Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/about)<br>-Python 3.6.9, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |
-| 4         | Physical PC<br>-OS: Windows 10 with Git Bash<br>-Python 3.8.3, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |  
-| 5         | Physical PC<br>-OS: MacOS 15<br>-Python 3.6.9, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |
-
-<sup>*</sup> [Create Azure Virtual Machine](common/create_azure_vm.ipynb) section has the instructions for creating an Azure virtual machine.
 
 ## Terminology
 Throughout the samples, we refer to three different terms. Here are descriptions for each of them for future reference:
@@ -34,3 +24,15 @@ Throughout the samples, we refer to three different terms. Here are descriptions
 </ol>
 
 Per your preference, your development PC and your IoT Edge device can be the same machine (i.e., developing, debugging, and deploying this sample all on the same IoT Edge device).
+
+
+## Test specifications<sup>i</sup>:
+| Test Case | Development PC<sup>a</sup>                            | IoT Edge Device<sup>b</sup>   |
+| :---      | :---                                                  | :---                          |
+| 1         | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04<br>-Python 3.6.9, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |
+| 2         | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04<br>-Python 3.8.3 Dev, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |
+| 3         | Azure VM<br>-OS: Windows 10 Build 2004<br>runnnig [WSL 2 Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/about)<br>-Python 3.6.9, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |
+| 4         | Physical PC<br>-OS: Windows 10 with Git Bash<br>-Python 3.8.3, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |  
+| 5         | Physical PC<br>-OS: MacOS 15<br>-Python 3.6.9, Pip 3 | Azure VM<sup>*</sup><br>-OS: Ubuntu 18.04 |
+
+<sup>*</sup> Creating an Azure Virtual Machine will be covered in the **Getting Started** sections of the notebooks.
