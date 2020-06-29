@@ -20,7 +20,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
    ><span>[!NOTE]</span>
    >Jupyter notebooks (`.ipynb`) may take several seconds to render in VSCode.
 2. Create the required [Azure services](../../../common/create_azure_services.ipynb).
-3. You will need a development PC and also an IoT Edge device to run LVA containers. If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../../../common/create_azure_vm.ipynb).
+3. You will need an IoT Edge device to deploy the LVA and this sample generated containers. If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../../../common/create_azure_vm.ipynb).
 
     > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
     > If you want to run the following sections, you must create a GPU accelerated VM such as the Standard_NC6 VM, which has an NVidia GPU.
@@ -34,9 +34,10 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 2. If your VM has an NVidia GPU, [install](../../../common/install_iotedge_runtime_gpu.md) IoT Edge runtime and the required drivers and tools for your NVidia GPU. 
 
 ## Build a Docker Image of the Inference Server
-The following sections will explain how to build a Docker image of an inference server that uses AI logic (i.e., YoloV3 for object detection) on a GPU accelerated VM.
+The following sections will explain how to build a Docker container image of an inference server solution that uses AI logic (i.e., YoloV3 for object detection) on a GPU accelerated IoT Edge Device.
 1. Create a [YoloV3 inference engine](create_yolov3_ngpu_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
 2. Create a [local Docker image](create_yolov3_ngpu_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
+<<<<<<< HEAD
 3. Finally, we will update the deployment manifest template file with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json). We will override some of the parameters in [this file](create_yolov3_ngpu_deployment_manifest.ipynb).
 4. Optional: You may want to test the Docker image locally before uploading the Docker image to a container registry, to ensure that it runs as expected. To do this, you must meet the following requirements. (If you do not meet all of the requirements, you can skip this.)
    * Your development PC has the same GPU as your IoT Edge device
@@ -44,6 +45,9 @@ The following sections will explain how to build a Docker image of an inference 
    * Your development PC has the same NVidia Docker toolkit installed as your IoT Edge device
 
     If you are unsure how to install the latter two requirements, you can review the [GPU installation process](../../../common/install_iotedge_runtime_gpu.md#61-install-nvidia-cuda-drivers-for-your-ngpu-tesla-k80-in-this-case). After you have everything set up, you can [test locally](local_test.ipynb). 
+=======
+3. Optional: You may want to test the Docker container image locally before uploading it to a container registry, to ensure that it runs as expected. To do this, you need to have an NVidia GPU, GPU drivers specific to your GPU model installed, and NVidia Docker toolkit installed. We do all these for Azure VM that can be used as IoT Edge Device in the following [guide](../../../common/install_iotedge_runtime_gpu.md#61-install-nvidia-cuda-drivers-for-your-ngpu-tesla-k80-in-this-case). Dont forget that a specific NVidia GPU model is targetted in that guide. In case you want to test the container image on your local machine, you may follow the same steps in the guide but you should use the right GPU drivers specific to your GPU model. After you have everything set up, you can [test locally](local_test.ipynb). 
+>>>>>>> master
 
 
 ## Deploy Your Docker Image

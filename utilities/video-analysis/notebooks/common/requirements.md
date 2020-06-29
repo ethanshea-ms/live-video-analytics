@@ -62,7 +62,7 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     - [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
     - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)     
 ## Install Docker
-Later in this sample, we will be using Docker to containerize our inference server container image. On your development PC, install Docker based on your operating system:
+Later in this sample, we will be using Docker to containerize our inference server solution to create a container image. On your development PC, install Docker based on your operating system:
 * [MacOS](https://docs.docker.com/docker-for-mac/install/)
 * [Linux](https://docs.docker.com/engine/install/)
 * [Windows on WSL](https://docs.docker.com/docker-for-windows/wsl/)
