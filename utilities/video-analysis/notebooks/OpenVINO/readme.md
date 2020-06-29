@@ -36,7 +36,7 @@ The following instructions will enable you to run a [OpenVINO™](https://softwa
 The following sections will explain how to build a Docker image of an inference server that uses AI logic (i.e., OpenVINO™ for deep learning).
 1. Create an [OpenVINO™ inference engine](create_openvino_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
 2. Create a [local Docker image](create_openvino_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
-3. Finally, [update the deployment manifest template file](create_yolov3_ngpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json), which will be overridden with parameters specific for this sample.
+3. Finally, [update the deployment manifest template file](create_yolov3_ngpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../common/deployment.lva_common.template.json), which will be overridden with parameters specific for this sample.
 
 ## Deploy Your Docker Image
 The image below summarizes the deployment scheme of LVA. As the image indicates, LVA can utilize containers hosted on the Internet, on a local network, or even on a local machine.
