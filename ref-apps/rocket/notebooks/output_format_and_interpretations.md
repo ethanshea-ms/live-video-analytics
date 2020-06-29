@@ -1,6 +1,6 @@
 # Output Format & Interpretations
 
-LVA sends decoded frames as binary data to Rocket using HTTP POST at a frequency of <camFPSFilterRate>. Counting results from Rocket are serialized as a JSON object, and sent back to LVA as response of the corresponding POST request. 
+LVA sends decoded frames as binary data to Rocket using HTTP POST at a prespecified frame rate `frameRate`. Counting results from Rocket are serialized as a JSON object, and sent back to LVA as response of the corresponding POST request. 
 
 ## Local image output
 You can view the output images inside `/lvarocket/output` on the edge device. Results from different modules are sent to different directories (e.g., `output_bgsline` for background subtraction-based detector) whereas `output_all` has images from all modules. Name of each file consists of frame ID, module name, and confidence score. Below are few sample results from running pipeline `rocket-count-fullcascade` on `sample.mkv`. You should also see results printed in [OUTPUT in VS Code](#monitoring-iot-edge-module-to-iot-hub-message-flow) during running.   
