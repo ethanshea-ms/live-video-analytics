@@ -17,6 +17,8 @@ namespace VAPManagerService.Controllers
     [ApiController]
     public class ImageItemsController : ControllerBase
     {
+        static SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1, 1);
+
         public ImageItemsController() { }
         #endregion
 
@@ -50,6 +52,8 @@ namespace VAPManagerService.Controllers
                 Thread.Sleep(20);
             }
 
+            
+            await _semaphoreSlim.WaitAsync();
             //process the first frame in the buffer queue
             try
             {
@@ -59,6 +63,10 @@ namespace VAPManagerService.Controllers
             {
                 Console.WriteLine(e.ToString());
                 VideoPipelineCore.VAPCore.isDNNRunning = false;
+            }
+            finally
+            {
+                _semaphoreSlim.Release();
             }
 
             if (results == "" || results == null)
