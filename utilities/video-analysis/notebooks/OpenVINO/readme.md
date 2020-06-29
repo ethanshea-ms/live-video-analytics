@@ -12,12 +12,18 @@ The following instructions will enable you to run a [OpenVINO™](https://softwa
    > <span>[!NOTE]</span>
    > For pictures to render on VSCode, you must have the entire [live-video-analytics](/../..) folder open in your VSCode workspace.
    
+   > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
+   > Going forward, we will be using VSCode to run this sample. Please navigate to VSCode to continue.
+
 ## Getting Started
 1. On VSCode, [set up the environment](../common/setup_environment.ipynb) so that we can test and deploy LVA.
    ><span>[!NOTE]</span>
    >Jupyter notebooks (`.ipynb`) may take several seconds to render in VSCode.
 2. Create the required [Azure services](../common/create_azure_services.ipynb).
-3. You will need a development PC and also an IoT Edge device to run LVA containers. If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../common/create_azure_vm.ipynb).
+3. You will need an IoT Edge device to deploy the LVA and this sample generated containers. If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../common/create_azure_vm.ipynb).
+
+    > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
+    > If you want to run the following sections, you must create a CPU accelerated VM such as the Standard_DS3_v2 VM, which has an Intel CPU.
 
 <!--
     Change the following steps based on specific instructions.
@@ -30,6 +36,7 @@ The following instructions will enable you to run a [OpenVINO™](https://softwa
 The following sections will explain how to build a Docker image of an inference server that uses AI logic (i.e., OpenVINO™ for deep learning).
 1. Create an [OpenVINO™ inference engine](create_openvino_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
 2. Create a [local Docker image](create_openvino_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
+3. Finally, [update the deployment manifest template file](create_yolov3_ngpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../common/deployment.lva_common.template.json), which will be overridden with parameters specific for this sample.
 
 ## Deploy Your Docker Image
 The image below summarizes the deployment scheme of LVA. As the image indicates, LVA can utilize containers hosted on the Internet, on a local network, or even on a local machine.
