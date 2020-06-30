@@ -27,6 +27,10 @@ sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
 
 sudo apt-get -y update
 
+sudo apt-get -y install moby-engine
+
+sudo apt-get -y update
+
 sudo apt-get -y install iotedge
 ```
 
