@@ -1,5 +1,5 @@
 # LVA OpenVINO™ Sample on Jupyter Notebooks 
-The following instructions will enable you to run a [OpenVINO™](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) model on Live Video Analytics (LVA) using Jupyter notebooks. This sample is specific for Intel CPU accelerated IoT Edge devices. 
+The following instructions will enable you to run a [OpenVINO™](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) model on Live Video Analytics (LVA) using Jupyter notebooks. This sample is specific for Intel® CPU accelerated IoT Edge devices. 
 
 ## Prerequisites
 1. Install the [requirements for running LVA on Jupyter](../common/requirements.md) on your development PC.
@@ -23,20 +23,20 @@ The following instructions will enable you to run a [OpenVINO™](https://softwa
 3. You will need an IoT Edge device to deploy the LVA and this sample generated containers. If you don't have a physical IoT Edge device, you can create an [Azure virtual machine](../common/create_azure_vm.ipynb).
 
     > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
-    > If you want to run the following sections, you must create a CPU accelerated VM such as the Standard_DS3_v2 VM, which has an Intel CPU.
+    > If you want to run the following sections, you must create a CPU accelerated VM such as the Standard_DS3_v2 VM, which has an Intel® CPU.
 
 <!--
     Change the following steps based on specific instructions.
 -->
 
 ## Install Drivers for IoT Edge Device
-1. If your VM has an Intel CPU, [install](../common/install_iotedge_runtime_cpu.md) IoT Edge runtime and the required drivers and tools for your VM. 
+1. If your VM has an Intel® CPU, [install](../common/install_iotedge_runtime_cpu.md) IoT Edge runtime and the required tools for your VM. 
 
 ## Build a Docker Image of the Inference Server
 The following sections will explain how to build a Docker image of an inference server that uses AI logic (i.e., OpenVINO™ for deep learning).
 1. Create an [OpenVINO™ inference engine](create_openvino_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
 2. Create a [local Docker image](create_openvino_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
-3. Finally, [update the deployment manifest template file](create_yolov3_ngpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../common/deployment.lva_common.template.json), which will be overridden with parameters specific for this sample.
+3. Finally, [update the deployment manifest template file](create_openvino_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../common/deployment.lva_common.template.json), which will be overridden with parameters specific for this sample.
 
 ## Deploy Your Docker Image
 The image below summarizes the deployment scheme of LVA. As the image indicates, LVA can utilize containers hosted on the Internet, on a local network, or even on a local machine.
