@@ -10,10 +10,10 @@
               "minDockerVersion": "v1.25",
               "loggingOptions": "",
               "registryCredentials": {
-                "$CONTAINER_REGISTRY_USERNAME_myacr": {
-                    "username": "$CONTAINER_REGISTRY_USERNAME_myacr",
-                    "password": "$CONTAINER_REGISTRY_PASSWORD_myacr",
-                    "address": "$CONTAINER_REGISTRY_USERNAME_myacr.azurecr.io"
+                "evaamscontreg": {
+                    "username": "evaamscontreg",
+                    "password": "byPKbDcgqHoOkW1+XRcBpL4LMuTAys80",
+                    "address": "evaamscontreg.azurecr.io"
                   }
               }
             }
@@ -85,7 +85,7 @@
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "$CONTAINER_REGISTRY_USERNAME_myacr.azurecr.io/$CONTAINER_IMAGE_NAME",
+                "image": "evaamscontreg.azurecr.io/$CONTAINER_IMAGE_NAME",
                 "createOptions": {
                   "Cmd": [
                     "$ROCKET_PIPELINE",
