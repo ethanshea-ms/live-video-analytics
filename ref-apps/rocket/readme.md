@@ -11,13 +11,13 @@ We provide a reference architecture with instructions to build and deploy a live
 
 This reference application sample includes: 
 1)	Rocket docker container with OpenCV vision modules as well as the YOLOv3 DNN pre-trained with the [MS-COCO classes](https://gist.github.com/AruniRC/7b3dadd004da04c80198557db5da4bda). It supports GPU execution.
-2)	Sample Jupyter notebook code to use the Rocket docker container with LVA on IoT Edge.
+2)	Sample Jupyter notebook code to use the Rocket docker container with LVA.
 3)	Graph topology and IoT Edge deployment manifest template to orchestrate the live video analytics pipeline. 
 
 
 ## Architecture Diagram
 
-Below is the general architecture of the video analytics pipeline used in this sample. The LVA container ingests and decodes the frames of the video, and relays the frames to the Microsoft Rocket container, which in turn uses its cascaded video pipeline for analytics. The results are shipped back to the LVA container and sent to applications in Azure.
+Below is the general architecture of the video analytics pipeline used in this sample. LVA provides the infrastructure to ingest, decode and relay video frames to the Microsoft Rocket container, which in turn uses its cascaded video pipeline for analytics. The results are shipped back to LVA and sent to services and applications in Azure.
 
 <img src="./notebooks/documents/_architecture_lva.png" alt="architecture" width="1568">
 
