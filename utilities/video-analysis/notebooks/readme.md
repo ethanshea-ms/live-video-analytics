@@ -33,4 +33,5 @@ nGPU: Nvidia GPU
 | 2         | Azure VM<br>-OS: Ubuntu 18.04<br>-Python 3.8.3 Dev, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
 | 3         | Azure VM<br>-OS: Windows 10 Build 2004<br>runnnig [WSL 2 Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/about)<br>-Python 3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
 | 4         | Physical PC<br>-OS: Windows 10 with Git Bash<br>-Python 3.8.3, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |  
-| 5         | Physical PC<br>-OS: MacOS 15<br>-Python 3.6.9, Pip 3 | Azure VM<<br>-OS: Ubuntu 18.04 |  
+| 5         | Physical PC<br>-OS: MacOS 15<br>-Python 3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 | 
+| 6         | Physical PC<br>-OS: MacOS 15<br>-Python 3.8.3, Pip 3 with Anaconda | Azure VM<br>-OS: Ubuntu 18.04 |  
