@@ -36,7 +36,7 @@ The following instructions will enable you to run a [YoloV3](http://pjreddie.com
 The following sections will explain how to build a Docker container image of an inference server solution that uses AI logic (i.e., YoloV3 for object detection) on a CPU accelerated IoT Edge Device.
 1. Create a [YoloV3 inference engine](create_yolov3_icpu_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
 2. Create a [local Docker image](create_yolov3_icpu_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
-3. Finally, [update the deployment manifest template file](create_yolov3_icpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json), which will be overridden with parameters specific for this sample.
+3. Finally, [update the deployment manifest template file](create_yolov3_icpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json), which will be used to generate a new template with specific parameters for this sample.
 
 ## Deploy Your Docker Image
 The image below summarizes the deployment scheme of LVA. As the image indicates, LVA can utilize containers hosted on the Internet, on a local network, or even on a local machine.
@@ -46,5 +46,9 @@ The image below summarizes the deployment scheme of LVA. As the image indicates,
 The following sections will explain how to deploy your Docker image and run media graphs on LVA. 
 
 1. Upload the [container image](../../../common/upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR).
-2. Once the image has been uploaded onto ACR, you can now [deploy the inference server](../../../common/deploy_iotedge_modules.ipynb) to an IoT Edge device using a module deployment manifest. 
-3. Finally, [deploy media graphs](../../../common/deploy_media_graph.ipynb) to trigger the inference server and test to see if it works as desired.
+2. Once the image has been uploaded onto ACR, you can now [deploy the inference server](../../../common/deploy_iotedge_modules.ipynb) to an IoT Edge device using a deployment manifest. 
+
+## Deploy Media Graphs and Test LVA
+1. To run inferences, [deploy media graphs](../../../common/deploy_media_graph.ipynb) to trigger the inference server.
+2. Once the media graphs are deployed, [monitor the output](../../../common/monitor_output.md) of the inference server and test to see if it works as desired.
+3. Finally, [deactivate and delete](../../../common/delete_media_graph.ipynb) the media graphs to stop the inferences.
