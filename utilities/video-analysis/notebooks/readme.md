@@ -9,9 +9,9 @@ Following items needed to run the below samples:
 
 Per your preference, your development PC and your IoT Edge device can be the same machine (i.e., developing, debugging, and deploying a sample on the same machine).
 
->> <sup>a</sup> if you need a fresh development PC, you can create an [Azure VM - Azure Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/) with OS of your choice and connect to it with remote desktop connection for [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/connect-logon) or for [Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop). 
+> <sup>a</sup> if you need a fresh development PC, you can create an [Azure VM - Azure Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/) with OS of your choice and connect to it with remote desktop connection for [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/connect-logon) or for [Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop). 
 
->> <sup>b</sup> if you dont have an IoT Edge Device and want to create an Azure VM for it, below samples will guide you with required steps.
+> <sup>b</sup> if you dont have an IoT Edge Device and want to create an Azure VM for it, below samples will guide you with required steps.
 
 ## List of samples
 | # | Name       | Extension | Accelerator| Description | Test cases <br>Passed<sup>i</sup> |
