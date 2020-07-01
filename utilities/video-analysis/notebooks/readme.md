@@ -3,15 +3,15 @@
 
 ## Prerequisites  
 Following items needed to run the below samples:  
-- **Development PC:** A physical or a *virtual machine*<sup>*</sup> that will be used to build and deploy the sample.
-- **Iot Edge Device:** A phsical or a *virtual machine*<sup>*</sup> that the sample will be deployed into. Per [LVA requirement](https://docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/overview#supported-environments), this device should be Linux AMD64/X64.
+- **Development PC<sup>a</sup>:** A physical or a *virtual machine* that will be used to build and deploy the sample.
+- **Iot Edge Device<sup>b</sup>:** A phsical or a *virtual machine* that the sample will be deployed into. Per [LVA requirement](https://docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/overview#supported-environments), this device should be Linux AMD64/X64.
 - **Azure Subscription:** An active [Azure subscription](https://azure.microsoft.com/) that will host LVA required services.
 
 Per your preference, your development PC and your IoT Edge device can be the same machine (i.e., developing, debugging, and deploying a sample on the same machine).
 
-<sup>*</sup> if you need a fresh development PC, you can create an [Azure VM - Azure Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/) with OS of your choice and connect to it with remote desktop connection for [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/connect-logon) or for [Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop). 
+>> <sup>a</sup> if you need a fresh development PC, you can create an [Azure VM - Azure Virtual Machine](https://docs.microsoft.com/en-us/azure/virtual-machines/) with OS of your choice and connect to it with remote desktop connection for [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/connect-logon) or for [Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop). 
 
-<sup>*</sup> if you dont have an IoT Edge Device and want to create an Azure VM for it, below samples will guide you with required steps.
+>> <sup>b</sup> if you dont have an IoT Edge Device and want to create an Azure VM for it, below samples will guide you with required steps.
 
 ## List of samples
 | # | Name       | Extension | Accelerator| Description | Test cases <br>Passed<sup>i</sup> |
