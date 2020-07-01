@@ -156,7 +156,7 @@ namespace VideoPipelineCore
             //----------
             //initialize pipeline components
             Utils.Utils.cleanFolder(@OutputFolder.OutputFolderAll);
-            decoder = new Decoder.Decoder(videoUrl, loop); //decoder is not used in integration with LVA
+            //decoder = new Decoder.Decoder(videoUrl, loop); //decoder is not used in integration with LVA
             //----------
             if (new int[] { 5, 1, 2, 3, 4 }.Contains(pplConfig))
             {
