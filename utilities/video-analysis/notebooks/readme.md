@@ -23,7 +23,7 @@ From the list below, click the link you want to run.
 | 2 | [Yolo V3](Yolo/yolov3/yolov3-http-ngpu-onnx/readme.md)             | HTTP      | nGPU<sup>*</sup> |  LVA module using YoloV3, a neural network for real-time object detection, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an NVidia GPU accelerated IoT Edge device with connection through HTTP. | 1, 2, 3, 4 |
 | 3 | [Tiny Yolo V3](Yolo/tinyyolov3/tinyyolov3-http-icpu-onnx/readme.md)    | HTTP      | iCPU | LVA module using Tiny YoloV3, a lightweight variant of the Yolo V3 neural network model, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an Intel® CPU accelerated IoT Edge device with connection through HTTP. | |
 | 4 | [Tiny Yolo V3](Yolo/tinyyolov3/tinyyolov3-grpc-icpu-onnx/readme.md)                    | gRPC      | iCPU | LVA module using Tiny YoloV3, a lightweight variant of the Yolo V3 neural network model, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an Intel® CPU accelerated IoT Edge device with connection through gRPC. gRPC is a remote procedure call that efficiently connects services in and across data centers with plugin support for load balancing, tracing, health checking and authentication. | |
-| 5 | [OpenVINO™](OpenVINO/readme.md)             | HTTP      | iCPU, iGPU<sup>*</sup> |  LVA module using OpenVINO™, a comprehensive toolkit for quickly developing applications and solutions that emulate human vision. Based on Convolutional Neural Networks (CNNs), the toolkit extends CV workloads across Intel® hardware, maximizing performance. | 2, 4 |
+| 5 | [OpenVINO™](OpenVINO/readme.md)             | HTTP      | iCPU, iGPU<sup>*</sup> |  LVA module using OpenVINO™, a comprehensive toolkit for quickly developing applications and solutions that emulate human vision. Based on Convolutional Neural Networks (CNNs), the toolkit extends CV workloads across Intel® hardware, maximizing performance. | 1, 3 |
 
 <sup>*</sup>  Accelerators:  
 iGPU: Intel® GPU  
@@ -33,7 +33,6 @@ nGPU: Nvidia GPU
 | Test Case | Development PC<sup>a</sup>                            | IoT Edge Device<sup>b</sup>   |
 | :---      | :---                                                  | :---                          |
 | 1         | Azure VM<br>-OS: Ubuntu 18.04<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
-| 2         | Azure VM<br>-OS: Ubuntu 18.04<br>-Python >= v3.6.9 Dev, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
-| 3         | Azure VM<br>-OS: Windows 10 Build 2004<br>runnnig [WSL 2 Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/about)<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
-| 4         | Physical PC<br>-OS: Windows 10 with Git Bash<br>-Python >=v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |  
-| 5         | Physical PC<br>-OS: MacOS 15<br>-Python >= v3.6.9, Pip 3 | Azure VM<<br>-OS: Ubuntu 18.04 |  
+| 2         | Azure VM<br>-OS: Windows 10 Build 2004<br>runnnig [WSL 2 Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/about)<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
+| 3         | Physical PC<br>-OS: Windows 10 with Git Bash<br>-Python >=v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |  
+| 4         | Physical PC<br>-OS: MacOS 15<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |  
