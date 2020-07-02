@@ -34,7 +34,7 @@ sudo reboot
 After your IoT Edge device restarts (the last command above restarts it), install Docker engine by running the code snippets bellow. You can learn more about [Docker engine](https://docs.docker.com/engine/install/ubuntu/) here.
 
 ```shell
-sudo apt-get update
+sudo apt-get -y update
 
 sudo apt-get install -y \
     apt-transport-https \
@@ -49,7 +49,7 @@ sudo apt-key fingerprint 0EBFCD88
 
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 
-sudo apt-get update
+sudo apt-get -y update
 
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 ```
@@ -68,7 +68,7 @@ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
 
 curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 
-sudo apt-get update
+sudo apt-get -y update
 
 sudo apt-get install -y nvidia-docker2
 
