@@ -15,7 +15,6 @@ Next, install the drivers for your nGPU. Note that the installation may take a f
 
 
 ```shell
-# Install driver
 wget -O /tmp/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb 
 
 sudo dpkg -i /tmp/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
@@ -24,11 +23,10 @@ sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda
 
 rm -f /tmp/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
 
-sudo apt-get update
+sudo apt-get -y update
 
-sudo apt-get install cuda-drivers
+sudo apt-get install -y cuda-drivers
 
-# Restart the VM
 sudo reboot
 ```
 
@@ -84,10 +82,9 @@ sudo docker run --runtime nvidia nvidia/cuda:10.0-base nvidia-smi
 ```
 
 ## Install the Azure IoT Edge Runtime
-To install the IoT Edge Runtime, in order run the below commands in the terminal window. Be sure the following URL in the below commands reflects the right version of your OS in the IoT Edge Device:  
-```
+In order to run the commands below in the terminal window, be sure to update the URL with the appropriate OS for your IoT Edge Device:  
+
 https://packages.microsoft.com/config/ubuntu/<YOUR_OS_VERSION>/multiarch/prod.list
-```
 
 
 Commands to install the IoT Edge Runtime:
