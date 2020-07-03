@@ -7,7 +7,6 @@ COPY ./src/VAP/Directory.Build.props .
 COPY ./src/VAP/Directory.Build.targets .
 COPY ./src/VAP/Versions.props .
 COPY ./src/VAP/BGSObjectDetector/*.csproj ./BGSObjectDetector/
-COPY ./src/VAP/Decoder/*.csproj ./Decoder/
 COPY ./src/VAP/DNNDetector/*.csproj ./DNNDetector/
 COPY ./src/VAP/FramePreProcessor/*.csproj ./FramePreProcessor/
 COPY ./src/VAP/LineDetector/*.csproj ./LineDetector/
@@ -19,7 +18,6 @@ COPY ./src/VAP/VideoPipelineCore/*.csproj ./VideoPipelineCore/
 COPY ./src/VAP/VAPManagerService/*.csproj ./VAPManagerService/
 
 RUN dotnet restore ./BGSObjectDetector/
-RUN dotnet restore ./Decoder/
 RUN dotnet restore ./DNNDetector/
 RUN dotnet restore ./FramePreProcessor/
 RUN dotnet restore ./LineDetector/
@@ -32,7 +30,6 @@ RUN dotnet restore ./VAPManagerService/
 
 # Copy everything else and build
 COPY ./src/VAP/BGSObjectDetector/ ./BGSObjectDetector/
-COPY ./src/VAP/Decoder/ ./Decoder/
 COPY ./src/VAP/DNNDetector/ ./DNNDetector/
 COPY ./src/VAP/FramePreProcessor/ ./FramePreProcessor/
 COPY ./src/VAP/LineDetector/ ./LineDetector/
@@ -48,7 +45,6 @@ RUN dotnet publish ./TFWrapper/ -c Release -o out
 RUN dotnet publish ./ORTWrapper/ -c Release -o out
 RUN dotnet publish ./BGSObjectDetector/ -c Release -o out
 RUN dotnet publish ./DNNDetector/ -c Release -o out
-RUN dotnet publish ./Decoder/ -c Release -o out
 RUN dotnet publish ./LineDetector/ -c Release -o out
 RUN dotnet publish ./FramePreProcessor/ -c Release -o out
 RUN dotnet publish ./PostProcessor/ -c Release -o out
