@@ -1,4 +1,4 @@
-FROM ycshu086/ubuntu1804-dotnetcore2231-aspnetcore31-opencv34-opencvsharp-cuda100-cudnn76:0.1 AS build-env
+FROM mcr.microsoft.com/lva-utilities/rocket-base:1.0 AS build-env
 
 WORKDIR /app
 
@@ -57,7 +57,7 @@ RUN dotnet publish ./VAPManagerService/ -c Release -o out
 
 
 # Build runtime image
-FROM ycshu086/ubuntu1804-dotnetcore2231-aspnetcore31-opencv34-opencvsharp-cuda100-cudnn76:0.1 AS final
+FROM mcr.microsoft.com/lva-utilities/rocket-base:1.0 AS final
 
 WORKDIR /app
 EXPOSE 7788

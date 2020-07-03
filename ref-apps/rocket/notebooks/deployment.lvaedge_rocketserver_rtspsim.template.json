@@ -10,10 +10,10 @@
               "minDockerVersion": "v1.25",
               "loggingOptions": "",
               "registryCredentials": {
-                "evaamscontreg": {
-                    "username": "evaamscontreg",
-                    "password": "byPKbDcgqHoOkW1+XRcBpL4LMuTAys80",
-                    "address": "evaamscontreg.azurecr.io"
+                "$CONTAINER_REGISTRY_USERNAME_myacr": {
+                    "username": "$CONTAINER_REGISTRY_USERNAME_myacr",
+                    "password": "$CONTAINER_REGISTRY_PASSWORD_myacr",
+                    "address": "$CONTAINER_REGISTRY_USERNAME_myacr.azurecr.io"
                   }
               }
             }
@@ -85,7 +85,7 @@
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "evaamscontreg.azurecr.io/$CONTAINER_IMAGE_NAME",
+                "image": "mcr.microsoft.com/lva-utilities/rocket:1.0",
                 "createOptions": {
                   "Cmd": [
                     "$ROCKET_PIPELINE",
