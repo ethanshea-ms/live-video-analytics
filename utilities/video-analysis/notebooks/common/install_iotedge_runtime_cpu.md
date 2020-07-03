@@ -8,11 +8,9 @@ sudo apt-get -y install curl
 ```
 
 ## Install the Azure IoT Edge Runtime
+In order to run the commands below in the terminal window, be sure to update the URL with the appropriate OS for your IoT Edge Device:  
 
-To install the IoT Edge Runtime, in order run the below commands in the terminal window. Be sure the following URL in the below commands reflects the right version of your OS in the IoT Edge Device:  
-```
 https://packages.microsoft.com/config/ubuntu/<YOUR_OS_VERSION>/multiarch/prod.list
-```
 
 Commands to install the IoT Edge Runtime:
 
