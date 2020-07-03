@@ -80,7 +80,27 @@ sudo systemctl restart docker
 ```shell
 sudo docker run --runtime nvidia nvidia/cuda:10.0-base nvidia-smi
 ```
+Here is the sample output from the command:
+```
++-----------------------------------------------------------------------------+ 
+| NVIDIA-SMI 450.36.06    Driver Version: 450.36.06    CUDA Version: xx.0     | 
+|-------------------------------+----------------------+----------------------+ 
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC | 
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. | 
+|                               |                      |               MIG M. | 
+|===============================+======================+======================| 
+|   0  Tesla K80           On   | 00000001:00:00.0 Off |                    0 | 
+| N/A   47C    P0    55W / 149W |    482MiB / 11441MiB |      0%      Default | 
+|                               |                      |                  N/A | 
++-------------------------------+----------------------+----------------------+ 
 
++-----------------------------------------------------------------------------+ 
+| Processes:                                                                  | 
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory | 
+|        ID   ID                                                   Usage      | 
+|=============================================================================| 
++-----------------------------------------------------------------------------+ 
+```
 ## Install the Azure IoT Edge Runtime
 In order to run the commands below in the terminal window, be sure to update the URL with the appropriate OS for your IoT Edge Device:  
 
