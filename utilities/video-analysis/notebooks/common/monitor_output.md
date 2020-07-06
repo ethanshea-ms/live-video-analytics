@@ -10,7 +10,7 @@ In VSCode, under the "AZURE IOT HUB" panel,
 2. Click on "Start Monitoring Built-In Event Endpoint".  
 
 
-<img src="../../../../images/_monitor01.jpg" width=500px/>   
+<img src="../../../../images/_monitor01.png" width=500px/>   
 
 
 3. You will see the message flow with inference results and the video chunk logs that are sent to Azure Media Services cloud service.  
@@ -29,9 +29,6 @@ To play these clips, click on the desired asset. Then, locate the "Streaming URL
 
 
 <img src="../../../../images/_asset-streaming-url.png" width=400px/>   
-
-## Troubleshooting
-If you need help with troubleshooting, please review the Troubleshooting section on the [previous section](deploy_iotedge_modules.ipynb) or [read the LVA Troubleshooting guide](https://docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/troubleshoot-how-to).
 
 ## Next Steps
 
