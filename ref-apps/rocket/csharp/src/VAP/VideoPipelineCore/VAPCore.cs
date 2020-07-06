@@ -30,11 +30,9 @@ namespace VideoPipelineCore
         static double RESOLUTION_FACTOR = 1;
 
         static int pplConfig = Convert.ToInt16(ConfigurationManager.AppSettings["PplConfig"]);
-        static bool loop = false;
         static bool displayRawVideo = false;
         static bool displayBGSVideo = false;
 
-        static Decoder.Decoder decoder;
         static BGSObjectDetector.BGSObjectDetector bgs;
         static List<Box> foregroundBoxes;
         static Dictionary<string, int> counts;
@@ -156,7 +154,6 @@ namespace VideoPipelineCore
             //----------
             //initialize pipeline components
             Utils.Utils.cleanFolder(@OutputFolder.OutputFolderAll);
-            //decoder = new Decoder.Decoder(videoUrl, loop); //decoder is not used in integration with LVA
             //----------
             if (new int[] { 5, 1, 2, 3, 4 }.Contains(pplConfig))
             {

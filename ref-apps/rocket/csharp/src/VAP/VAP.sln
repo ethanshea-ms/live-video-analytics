@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoPipelineCore", "VideoPipelineCore\VideoPipelineCore.csproj", "{FCC65D32-909C-4C0F-AFB2-A5CCA1819E99}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Decoder", "Decoder\Decoder.csproj", "{A93D135A-1AE9-4B84-81C0-27854510758E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BGSObjectDetector", "BGSObjectDetector\BGSObjectDetector.csproj", "{8FAB835A-D47C-4D9D-96F1-3B5150200CEA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FramePreProcessor", "FramePreProcessor\FramePreProcessor.csproj", "{F991D5B2-CDF3-419A-9D20-7FBDCAAD61F6}"
@@ -35,10 +33,6 @@ Global
 		{FCC65D32-909C-4C0F-AFB2-A5CCA1819E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCC65D32-909C-4C0F-AFB2-A5CCA1819E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCC65D32-909C-4C0F-AFB2-A5CCA1819E99}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A93D135A-1AE9-4B84-81C0-27854510758E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A93D135A-1AE9-4B84-81C0-27854510758E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A93D135A-1AE9-4B84-81C0-27854510758E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A93D135A-1AE9-4B84-81C0-27854510758E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8FAB835A-D47C-4D9D-96F1-3B5150200CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8FAB835A-D47C-4D9D-96F1-3B5150200CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FAB835A-D47C-4D9D-96F1-3B5150200CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU

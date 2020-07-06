@@ -82,6 +82,7 @@ Per your preference, your development PC and your IoT Edge device can be the sam
 | 1     | Physical PC - OS: Ubuntu 18.04 - Python 3.6.9, Pip 3             | Azure VM - OS: Ubuntu 18.04 | Passed         |
 | 2     | Azure VM - OS: Ubuntu 18.04 - Python 3.6.9, Pip 3                | Azure VM - OS: Ubuntu 18.04 | Passed         |
 | 3     | Physical PC - OS: MacOS 15 - Python 3.6.9, Pip 3                 | Azure VM - OS: Ubuntu 18.04 | Passed         |
+| 4     | Physical PC - OS: Windows 10 with Git Bash - Python 3.6.9, Pip 3 | Azure VM - OS: Ubuntu 18.04 | Passed         |
 
 
 ## Information links
