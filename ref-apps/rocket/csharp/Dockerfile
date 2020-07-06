@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/lva-utilities/rocket-base:1.0 AS build-env
+FROM mcr.microsoft.com/lva-utilities/rocket-base:1 AS build-env
 
 WORKDIR /app
 
@@ -53,7 +53,7 @@ RUN dotnet publish ./VAPManagerService/ -c Release -o out
 
 
 # Build runtime image
-FROM mcr.microsoft.com/lva-utilities/rocket-base:1.0 AS final
+FROM mcr.microsoft.com/lva-utilities/rocket-base:1 AS final
 
 WORKDIR /app
 EXPOSE 7788
