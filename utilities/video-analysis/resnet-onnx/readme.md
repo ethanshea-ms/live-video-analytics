@@ -1,25 +1,18 @@
-# Yolov3 ONNX model
+# ResNet ONNX model
 
-The following instructions will enable you to build a Docker container with [Yolov3](http://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) model using [nginx](https://www.nginx.com/), [gunicorn](https://gunicorn.org/), [flask](https://github.com/pallets/flask), [runit](http://smarden.org/runit/), and [pillow](https://pillow.readthedocs.io/en/stable/index.html).
-
-Note: References to third-party software in this repo are for informational and convenience purposes only. Microsoft does not endorse nor provide rights for the third-party software. For more information on third-party software please see the links provided above.
-
-## Contributions needed
-
-* Improved logging
-* Graceful shutdown of nginx and gunicorn
+The following instructions will enable you to build a Docker container with a [ResNet](https://github.com/onnx/models/blob/master/vision/classification/resnet/README.md) [ONNX](http://onnx.ai/) model.
 
 ## Prerequisites
 
 1. [Install Docker](http://docs.docker.com/docker-for-windows/install/) on your machine
 2. Install [curl](http://curl.haxx.se/)
 
-## Building the docker container
+## Building the Docker container
 
 Build the container image (should take some minutes) by running the following Docker command from a command window in that directory
 
 ```bash
-    docker build . -t yolov3-onnx:latest
+    docker build . -t resnet-onnx:latest
 ```
 
 ## Running and testing
@@ -27,7 +20,7 @@ Build the container image (should take some minutes) by running the following Do
 Run the container using the following Docker command
 
 ```bash
-    docker run  --name my_yolo_container -p 8080:80 -d  -i yolov3-onnx:latest
+    docker run  --name my_resnet_container -p 8080:80 -d  -i resnet-onnx:latest
 ```
 
 Note that you can use any host port that is available instead of 8080.
@@ -105,7 +98,7 @@ In the above command, confidenceThreshold should be specified as a float value.
 
 You can use the container to process video and view the output video with inferencing overlays in a browser. To do so, you can post video frames to the container with stream=<stream-id> as a query parameter (i.e. you will need to post video frames to [http://127.0.0.1:8080/score?stream=test-stream](http://127.0.0.1/score?stream=test-stream). The output video can then be viewed by going to [http://127.0.0.1:8080/stream/test-stream](http://127.0.0.1:8080/stream/test-stream).
 
-### /annotate
+### /annotate - might delete
 
 To see the bounding boxes overlaid on the image run the following command
 
