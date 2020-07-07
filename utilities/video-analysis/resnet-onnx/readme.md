@@ -1,6 +1,6 @@
 # ResNet ONNX model
 
-The following instructions will enable you to build a Docker container with a [ResNet](https://github.com/onnx/models/blob/master/vision/classification/resnet/README.md) [ONNX](http://onnx.ai/) model.
+The following instructions will enable you to build a Docker container with a [ResNet](https://github.com/onnx/models/blob/master/vision/classification/resnet/README.md) [ONNX](http://onnx.ai/) model using ResNet50 v2.
 
 ## Prerequisites
 
@@ -98,7 +98,9 @@ In the above command, confidenceThreshold should be specified as a float value.
 
 You can use the container to process video and view the output video with inferencing overlays in a browser. To do so, you can post video frames to the container with stream=<stream-id> as a query parameter (i.e. you will need to post video frames to [http://127.0.0.1:8080/score?stream=test-stream](http://127.0.0.1/score?stream=test-stream). The output video can then be viewed by going to [http://127.0.0.1:8080/stream/test-stream](http://127.0.0.1:8080/stream/test-stream).
 
-### /annotate - might delete
+<!--
+
+### /annotate
 
 To see the bounding boxes overlaid on the image run the following command
 
@@ -107,6 +109,8 @@ To see the bounding boxes overlaid on the image run the following command
 ```
 
 If successful, you will see a file out.jpeg with bounding boxes overlaid on the input image.
+
+-->
 
 ### /score-debug
 
@@ -119,7 +123,7 @@ To get the list of detected objects and also generate an annotated image run the
 If successful, you will see a list of detected objected in JSON. The annotated image will be generated in the /app/images directory inside the container. You can copy the images out to your host machine by using the following command
 
 ```bash
-   docker cp my_yolo_container:/app/images ./
+   docker cp my_resnet_container:/app/images ./
 ```
 
 The entire /images folder will be copied to ./images on your host machine. Image files have the following format dd_mm_yyyy_HH_MM_SS.jpeg
@@ -129,8 +133,8 @@ The entire /images folder will be copied to ./images on your host machine. Image
 Terminate the container using the following docker commands
 
 ```bash
-docker stop my_yolo_container
-docker rm my_yolo_container
+docker stop my_resnet_container
+docker rm my_resnet_container
 ```
 
 ## Upload docker image to Azure container registry

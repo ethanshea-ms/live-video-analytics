@@ -5,7 +5,7 @@ FROM ubuntu:18.04
 
 # Copy the app file and the tags file
 RUN mkdir /app
-COPY app/yolov3-app.py /app
+COPY app/resnet-app.py /app
 COPY  tags.txt /app
 
 # Install python
@@ -29,26 +29,26 @@ RUN apt-get update -y && \
 
 # Download the model
 RUN cd /app && \
-    wget https://github.com/onnx/models/raw/master/vision/object_detection_segmentation/yolov3/model/yolov3-10.tar.gz && \
-    tar -xzf yolov3-10.tar.gz && \
-    rm -rf yolov3-10.tar.gz && \
+    wget https://github.com/onnx/models/blob/master/vision/classification/resnet/model/resnet50-v2-7.tar.gz && \
+    tar -xzf resnet50-v2-7.tar.gz && \
+    rm -rf resnet50-v2-7.tar.gz && \
     rm -rf test_data_set_0/* && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
     apt-get purge -y --auto-remove wget
 
 # Copy nginx config file
-COPY yolov3-app.conf /etc/nginx/sites-available
+COPY resnet-app.conf /etc/nginx/sites-available
 
 # Setup runit file for nginx and gunicorn
 RUN mkdir /var/runit && \
     mkdir /var/runit/nginx && \
     /bin/bash -c "echo -e '"'#!/bin/bash\nexec nginx -g "daemon off;"\n'"' > /var/runit/nginx/run" && \
     chmod +x /var/runit/nginx/run && \
-    ln -s /etc/nginx/sites-available/yolov3-app.conf /etc/nginx/sites-enabled/ && \
+    ln -s /etc/nginx/sites-available/resnet-app.conf /etc/nginx/sites-enabled/ && \
     rm -rf /etc/nginx/sites-enabled/default && \
     mkdir /var/runit/gunicorn && \
-    /bin/bash -c "echo -e '"'#!/bin/bash\nexec gunicorn -b 127.0.0.1:8000 --chdir /app yolov3-app:app\n'"' > /var/runit/gunicorn/run" && \
+    /bin/bash -c "echo -e '"'#!/bin/bash\nexec gunicorn -b 127.0.0.1:8000 --chdir /app resnet-app:app\n'"' > /var/runit/gunicorn/run" && \
     chmod +x /var/runit/gunicorn/run
 
 EXPOSE 80
