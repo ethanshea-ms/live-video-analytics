@@ -29,8 +29,8 @@ RUN apt-get update -y && \
 
 # Download the model
 RUN cd /app && \
-    wget https://github.com/onnx/models/blob/master/vision/classification/synset.txt && \
-    wget https://github.com/onnx/models/blob/master/vision/classification/resnet/model/resnet50-v2-7.tar.gz && \
+    wget https://github.com/onnx/models/raw/master/vision/classification/synset.txt && \
+    wget https://github.com/onnx/models/raw/master/vision/classification/resnet/model/resnet50-v2-7.tar.gz && \
     tar -xzf resnet50-v2-7.tar.gz && \
     rm -rf resnet50-v2-7.tar.gz && \
     rm -rf test_data_set_0/* && \
