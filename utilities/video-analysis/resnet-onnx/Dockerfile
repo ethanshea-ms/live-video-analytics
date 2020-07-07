@@ -33,7 +33,6 @@ RUN cd /app && \
     wget https://github.com/onnx/models/raw/master/vision/classification/resnet/model/resnet50-v2-7.tar.gz && \
     tar -xzf resnet50-v2-7.tar.gz && \
     rm -rf resnet50-v2-7.tar.gz && \
-    rm -rf test_data_set_0/* && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
     apt-get purge -y --auto-remove wget

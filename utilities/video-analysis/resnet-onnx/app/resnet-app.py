@@ -24,7 +24,7 @@ def init():
     global tags
     global output_dir
     
-    model_path = 'resnet50-v2/resnet50-v2-7.onnx'
+    model_path = 'resnet50v2/resnet50-v2-7.onnx'
     # Initialize an inference session with  ResNet model
     session = onnxruntime.InferenceSession(model_path) 
     if (session != None):
