@@ -85,7 +85,7 @@
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/lva-utilities/rocket:1.0",
+                "image": "mcr.microsoft.com/lva-utilities/rocket:1",
                 "createOptions": {
                   "Cmd": [
                     "$ROCKET_PIPELINE",
