@@ -25,18 +25,18 @@ def init():
     global output_dir
     
     model_path = 'resnet50-v2/resnet50-v2-7.onnx'
-    # Initialize an inference session with  yoloV3 model
+    # Initialize an inference session with  ResNet model
     session = onnxruntime.InferenceSession(model_path) 
     if (session != None):
         print('Session initialized')
     else:
         print('Session is not initialized')
 
-    tags_file = 'tags.txt'
+    tags_file = 'synset.txt'
     
-    with open(tags_file) as f:
+    with open(tags_file, 'r') as f:
         for line in f: 
-            line = line.strip()
+            line = line.rstrip()
             tags.append(line) 
 
     if (os.path.exists(output_dir)):
@@ -68,6 +68,27 @@ def preprocess(img):
     image_data = np.expand_dims(image_data, 0)
     
     return image_data
+
+    # mean_vec = np.array([0.485, 0.456, 0.406])
+    # stddev_vec = np.array([0.229, 0.224, 0.225])
+    # norm_img_data = np.zeros(img.shape).astype('float32')
+    # for i in range(img.shape[0]):  
+    #      # for each pixel in each channel, divide the value by 255 to get value between [0, 1] and then normalize
+    #     norm_img_data[i,:,:] = (img[i,:,:]/255 - mean_vec[i]) / stddev_vec[i]
+    # return norm_img_data
+
+# require mxnet to do this:
+
+# def preprocess(img):   
+#     transform_fn = transforms.Compose([
+#     transforms.Resize(256),
+#     transforms.CenterCrop(224),
+#     transforms.ToTensor(),
+#     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+#     ])
+#     img = transform_fn(img)
+#     img = img.expand_dims(axis=0)
+#     return img
 
 def postprocess(boxes, scores, indices, iw, ih, objectType=None, confidenceThreshold=0.0):
     
@@ -168,7 +189,7 @@ app = Flask(__name__)
 # / routes to the default function which returns 'Hello World'
 @app.route('/', methods=['GET'])
 def defaultPage():
-    return Response(response='Hello from Yolov3 inferencing based on ONNX', status=200)
+    return Response(response='Hello from ResNet inferencing based on ONNX', status=200)
 
 @app.route('/stream/<id>')
 def stream(id):

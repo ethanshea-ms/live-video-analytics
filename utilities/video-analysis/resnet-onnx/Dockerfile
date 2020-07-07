@@ -6,7 +6,7 @@ FROM ubuntu:18.04
 # Copy the app file and the tags file
 RUN mkdir /app
 COPY app/resnet-app.py /app
-COPY  tags.txt /app
+# COPY  tags.txt /app
 
 # Install python
 RUN apt-get update -y && \
@@ -29,6 +29,7 @@ RUN apt-get update -y && \
 
 # Download the model
 RUN cd /app && \
+    wget https://github.com/onnx/models/blob/master/vision/classification/synset.txt && \
     wget https://github.com/onnx/models/blob/master/vision/classification/resnet/model/resnet50-v2-7.tar.gz && \
     tar -xzf resnet50-v2-7.tar.gz && \
     rm -rf resnet50-v2-7.tar.gz && \
