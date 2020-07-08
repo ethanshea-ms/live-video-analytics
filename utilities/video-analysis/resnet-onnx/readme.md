@@ -1,136 +1,53 @@
-# ResNet ONNX model
+# ResNet ONNX Model
 
 The following instructions will enable you to build a Docker container with a [ResNet](https://github.com/onnx/models/blob/master/vision/classification/resnet/README.md) [ONNX](http://onnx.ai/) model using ResNet50 v2.
 
 ## Prerequisites
-
 1. [Install Docker](http://docs.docker.com/docker-for-windows/install/) on your machine
 2. Install [curl](http://curl.haxx.se/)
 
-## Building the Docker container
-
-Build the container image (should take some minutes) by running the following Docker command from a command window in that directory
+## Building the Docker Container
+Build the container image by running the following Docker command. Make sure you are in the same directory as the Dockerfile. This step may take a few minutes.
 
 ```bash
     docker build . -t resnet-onnx:latest
 ```
-
-## Running and testing
+    
+## Running and Testing
+The REST endpoint for ResNet accepts an image with the size of 224 pixels by 224 pixels, which is required by the ResNet model. Since LVA Edge is capable of sending specifically sized images in specific formats, we are not preprocessing the incoming images to resize them. This is mainly done for performance improvements. Thus, to run the commands below, you must use images that are 224x224.
 
 Run the container using the following Docker command
 
 ```bash
-    docker run  --name my_resnet_container -p 8080:80 -d  -i resnet-onnx:latest
+docker run  --name my_resnet_container -p 80:80 -d  -i resnet-onnx:latest
 ```
-
-Note that you can use any host port that is available instead of 8080.
 
 Test the container using the following commands
 
 ### /score
-
-To get a list of detected objects using the following command
+To get a list of detected objected, use the following command
 
 ```bash
-   curl -X POST http://127.0.0.1:8080/score -H "Content-Type: image/jpeg" --data-binary @<image_file_in_jpeg>
+curl -X POST http://127.0.0.1/score -H "Content-Type: image/jpeg" --data-binary @<image_file_in_jpeg>
 ```
-
 If successful, you will see JSON printed on your screen that looks something like this
-
-```JSON
+```json
 {
     "inferences": [
         {
-            "entity": {
-                "box": {
-                    "h": 0.3498992351271351,
-                    "l": 0.027884870008988812,
-                    "t": 0.6497463818662655,
-                    "w": 0.212033897746693
-                },
+            "type": "classification",
+            "classification": {
                 "tag": {
-                    "confidence": 0.9857677221298218,
-                    "value": "person"
+                    "value": "Egyptian cat",
+                    "confidence": 0.08730117797851562
                 }
-            },
-            "type": "entity"
-        },
-        {
-            "entity": {
-                "box": {
-                    "h": 0.3593513820482337,
-                    "l": 0.6868949751420454,
-                    "t": 0.6334065123374417,
-                    "w": 0.26539528586647726
-                },
-                "tag": {
-                    "confidence": 0.9851594567298889,
-                    "value": "person"
-                }
-            },
-            "type": "entity"
+            }
         }
     ]
 }
 ```
 
-#### Filter objects of interest
-
-To filter the list of detected objects use the following command
-
-```bash
-   curl -X POST "http://127.0.0.1:8080/score?object=<objectType>" -H "Content-Type: image/jpeg" --data-binary @<image_file_in_jpeg>
-```
-
-The above command will only return objects of objectType
-
-#### Filter objects of interest above a confidence threshold
-
-To filter the list of detected objects above a certain confidence threshold use the following command
-
-```bash
-   curl -X POST "http://127.0.0.1:8080/score?object=<objectType>&confidence=<confidenceThreshold>" -H "Content-Type: image/jpeg" --data-binary @<image_file_in_jpeg>
-```
-
-In the above command, confidenceThreshold should be specified as a float value.
-
-#### View video stream with inferencing overlays
-
-You can use the container to process video and view the output video with inferencing overlays in a browser. To do so, you can post video frames to the container with stream=<stream-id> as a query parameter (i.e. you will need to post video frames to [http://127.0.0.1:8080/score?stream=test-stream](http://127.0.0.1/score?stream=test-stream). The output video can then be viewed by going to [http://127.0.0.1:8080/stream/test-stream](http://127.0.0.1:8080/stream/test-stream).
-
-<!--
-
-### /annotate
-
-To see the bounding boxes overlaid on the image run the following command
-
-```bash
-   curl -X POST http://127.0.0.1:8080/annotate -H "Content-Type: image/jpeg" --data-binary @<image_file_in_jpeg> --output out.jpeg
-```
-
-If successful, you will see a file out.jpeg with bounding boxes overlaid on the input image.
-
--->
-
-### /score-debug
-
-To get the list of detected objects and also generate an annotated image run the following command
-
-```bash
-   curl -X POST http://127.0.0.1:8080/score-debug -H "Content-Type: image/jpeg" --data-binary @<image_file_in_jpeg>
-```
-
-If successful, you will see a list of detected objected in JSON. The annotated image will be generated in the /app/images directory inside the container. You can copy the images out to your host machine by using the following command
-
-```bash
-   docker cp my_resnet_container:/app/images ./
-```
-
-The entire /images folder will be copied to ./images on your host machine. Image files have the following format dd_mm_yyyy_HH_MM_SS.jpeg
-
-## Terminating
-
-Terminate the container using the following docker commands
+Terminate the container using the following Docker commands
 
 ```bash
 docker stop my_resnet_container
@@ -139,8 +56,9 @@ docker rm my_resnet_container
 
 ## Upload docker image to Azure container registry
 
-Follow instruction in [Push and Pull Docker images  - Azure Container Registry](http://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli) to save your image for later use on another machine.
+Follow the instruction in [Push and Pull Docker images - Azure Container Registry](http://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli) to save your image for later use on another machine.
 
 ## Deploy as an Azure IoT Edge module
 
-Follow instruction in [Deploy module from Azure portal](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-modules-portal) to deploy the container image as an IoT Edge module (use the IoT Edge module option).
+Follow the instructions in [Deploy module from Azure portal](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-modules-portal) to deploy the container image as an IoT Edge module (using the IoT Edge module option). 
+

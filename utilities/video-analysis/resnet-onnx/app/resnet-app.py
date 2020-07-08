@@ -1,315 +1,108 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
 
-import onnxruntime
-from PIL import Image, ImageDraw, ImageFont
+import threading
+import cv2
 import numpy as np
-import time
 import io
+import onnxruntime
 import json
-import os
-from datetime import datetime
-import requests
 
 # Imports for the REST API
 from flask import Flask, request, jsonify, Response
 
-session = None
-tags = []
-output_dir = 'images'
+class ResnetModel:
+    def __init__(self):
+        self._lock = threading.Lock()
 
-# Called when the deployed service starts
-def init():
-    global session
-    global tags
-    global output_dir
-    
-    model_path = 'resnet50v2/resnet50-v2-7.onnx'
-    # Initialize an inference session with  ResNet model
-    session = onnxruntime.InferenceSession(model_path) 
-    if (session != None):
-        print('Session initialized')
-    else:
-        print('Session is not initialized')
+        with open('synset.txt', "r") as f:
+            self._labelList = [l.rstrip() for l in f]
 
-    tags_file = 'synset.txt'
-    
-    with open(tags_file, 'r') as f:
-        for line in f: 
-            line = line.rstrip()
-            tags.append(line) 
+        #print(self._labelList)
+        self._onnxSession = onnxruntime.InferenceSession('resnet50-v2-7.onnx')
 
-    if (os.path.exists(output_dir)):
-        print(output_dir + " already exits")
-    else:
-        os.mkdir(output_dir)
-    
+    def Preprocess(self, cvImage):
+        imageBlob = cv2.cvtColor(cvImage, cv2.COLOR_BGR2RGB)
+        imageBlob = np.array(imageBlob, dtype='float32')
+        imageBlob /= 255.
+        imageBlob = np.transpose(imageBlob, [2, 0, 1])
+        imageBlob = np.expand_dims(imageBlob, 0)
 
-def letterbox_image(image, size):
-    '''Resize image with unchanged aspect ratio using padding'''
-    iw, ih = image.size
-    w, h = size
-    scale = min(w/iw, h/ih)
-    nw = int(iw*scale)
-    nh = int(ih*scale)
+        return imageBlob
 
-    image = image.resize((nw,nh), Image.BICUBIC)
-    new_image = Image.new('RGB', size, (128,128,128))
-    new_image.paste(image, ((w-nw)//2, (h-nh)//2))
+    def Postprocess(self, index, probability):
+        detectedObjects = []
+        obj = self._labelList[index]
+        obj_name = obj.split(' ', 1)[1]
 
-    return new_image
+        confidence = probability/100 #convert percent to decimal
 
-def preprocess(img):
-    model_image_size = (416, 416)
-    boxed_image = letterbox_image(img, tuple(reversed(model_image_size)))
-    image_data = np.array(boxed_image, dtype='float32')
-    image_data /= 255.
-    image_data = np.transpose(image_data, [2, 0, 1])
-    image_data = np.expand_dims(image_data, 0)
-    
-    return image_data
-
-    # mean_vec = np.array([0.485, 0.456, 0.406])
-    # stddev_vec = np.array([0.229, 0.224, 0.225])
-    # norm_img_data = np.zeros(img.shape).astype('float32')
-    # for i in range(img.shape[0]):  
-    #      # for each pixel in each channel, divide the value by 255 to get value between [0, 1] and then normalize
-    #     norm_img_data[i,:,:] = (img[i,:,:]/255 - mean_vec[i]) / stddev_vec[i]
-    # return norm_img_data
-
-# require mxnet to do this:
-
-# def preprocess(img):   
-#     transform_fn = transforms.Compose([
-#     transforms.Resize(256),
-#     transforms.CenterCrop(224),
-#     transforms.ToTensor(),
-#     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-#     ])
-#     img = transform_fn(img)
-#     img = img.expand_dims(axis=0)
-#     return img
-
-def postprocess(boxes, scores, indices, iw, ih, objectType=None, confidenceThreshold=0.0):
-    
-    detected_objects = []
-    
-    for idx_ in indices:
-        idx_1 = (idx_[0], idx_[2])
-
-        objectTag = tags[idx_[1].tolist()]
-        confidence = scores[tuple(idx_)].tolist()
-
-        
-        y1, x1, y2, x2 = boxes[idx_1].tolist()
-
-        width = (x2 - x1) / iw
-        height = (y2 - y1) / ih
-        left = x1 / iw
-        top = y1 / ih
-        
         dobj = {
-            "type" : "entity",
-            "entity" : {
+            "type" : "classification",
+            "classification" : {
                 "tag" : {
-                    "value" : objectTag,
+                    "value" : obj_name, #skip the first word
                     "confidence" : confidence
-                },
-                "box" : {
-                    "l" : left,
-                    "t" : top,
-                    "w" : width,
-                    "h" : height
                 }
             }
         }
+        detectedObjects.append(dobj)
 
-        if (objectType is None):
-            detected_objects.append(dobj)
-        else:
-            if (objectType == objectTag) and (confidence > confidenceThreshold):
-                detected_objects.append(dobj)
+        return detectedObjects
 
-        
-        
-    return detected_objects
+    def Score(self, cvImage):
+        with self._lock:
 
-def processImage(img, objectType=None, confidenceThreshold=0.0):
-    try:
-        # Preprocess input according to the functions specified above
-        img_data = preprocess(img)
-        img_size = np.array([img.size[1], img.size[0]], dtype=np.float32).reshape(1, 2)
+            imageBlob = self.Preprocess(cvImage)
+            probabilities = self._onnxSession.run(None, {"data": imageBlob})
+            highest_prob = np.max(probabilities)  
+            highest_prob_index = np.argmax(probabilities)
 
-        inference_time_start = time.time()
-        boxes, scores, indices = session.run(None, {"input_1": img_data, "image_shape":img_size})
-        inference_time_end = time.time()
-        inference_duration = np.round(inference_time_end - inference_time_start, 2)
-        
-        iw, ih = img.size
-        detected_objects = postprocess(boxes, scores, indices, iw, ih, objectType, confidenceThreshold)
-        return inference_duration, detected_objects
-
-    except Exception as e:
-        print('EXCEPTION:', str(e))
-        return 'Error processing image', 500
+        return self.Postprocess(highest_prob_index, highest_prob)
 
 
-def drawBboxes(image, detected_objects):
-    objects_identified = len(detected_objects)
-    
-    iw, ih = image.size
-    draw = ImageDraw.Draw(image)    
-
-    textfont = ImageFont.load_default()
-    
-    for pos in range(objects_identified):       
-        entity = detected_objects[pos]['entity'] 
-        box = entity["box"]
-        x1 = box["l"]
-        y1 = box["t"]
-        x2 = box["w"]
-        y2 = box["h"]
-        
-        x1 = x1 * iw
-        y1 = y1 * ih
-        x2 = (x2 * iw) + x1
-        y2 = (y2 * ih) + y1
-        tag = entity['tag']
-        objClass = tag['value']        
-
-        draw.rectangle((x1, y1, x2, y2), outline = 'blue', width = 1)
-        print('rectangle drawn')
-        draw.text((x1, y1), str(objClass), fill = "white", font = textfont)
-     
-    return image
-
+# global ml model class
+resnet = ResnetModel()
 
 app = Flask(__name__)
 
 # / routes to the default function which returns 'Hello World'
 @app.route('/', methods=['GET'])
 def defaultPage():
-    return Response(response='Hello from ResNet inferencing based on ONNX', status=200)
-
-@app.route('/stream/<id>')
-def stream(id):
-    respBody = ("<html>"
-                "<h1>Stream with inferencing overlays</h1>"
-                "<img src=\"/mjpeg/" + id + "\"/>"
-                "</html>")
-
-    return Response(respBody, status= 200)
-
-    #return render_template('mjpeg.html')
+    return Response(response='Hello World, from ResNet50v2 inferencing based on ONNX', status=200)
 
 # /score routes to scoring function 
 # This function returns a JSON object with inference duration and detected objects
-@app.route("/score", methods=['POST'])
+@app.route('/score', methods=['POST'])
 def score():
+    global resnet
     try:
-        objectType = None
-        confidenceThreshold = 0.0
+        # get request as byte stream
+        reqBody = request.get_data(False)
 
-        if (request.args):
-            try:
-                objectType = request.args.get('object')
-                stream = request.args.get('stream')
-                confidence = request.args.get('confidence')
-                if confidence is not None:
-                    confidenceThreshold = float(confidence)                
-            except Exception as ex:
-                print('EXCEPTION:', str(ex))                                
+        # convert from byte stream
+        inMemFile = io.BytesIO(reqBody)
 
-        imageData = io.BytesIO(request.get_data())
+        # load a sample image
+        inMemFile.seek(0)
+        fileBytes = np.asarray(bytearray(inMemFile.read()), dtype=np.uint8)
 
-        # load the image
-        img = Image.open(imageData)
+        cvImage = cv2.imdecode(fileBytes, cv2.IMREAD_COLOR)
 
-        inference_duration, detected_objects = processImage(img, objectType, confidenceThreshold)        
-
-        try:        
-            if stream is not None:
-                output_img = drawBboxes(img, detected_objects)
-
-                imgBuf = io.BytesIO()
-                output_img.save(imgBuf, format='JPEG')
-
-                # post the image with bounding boxes so that it can be viewed as an MJPEG stream
-                postData = b'--boundary\r\n' + b'Content-Type: image/jpeg\r\n\r\n' + imgBuf.getvalue() + b'\r\n'
-                requests.post('http://127.0.0.1:80/mjpeg_pub/' + stream, data = postData)
-
-        except Exception as ex:
-            print('EXCEPTION:', str(ex))
-
-        if len(detected_objects) > 0:
+        # Infer Image
+        detectedObjects = resnet.Score(cvImage)
+ 
+        if len(detectedObjects) > 0:
             respBody = {                    
-                        "inferences" : detected_objects
+                        "inferences" : detectedObjects
                     }
-
             respBody = json.dumps(respBody)
             return Response(respBody, status= 200, mimetype ='application/json')
         else:
-            return Response(status= 204)            
-    except Exception as e:
-        print('EXCEPTION:', str(e))
-        return Response(response='Error processing image ' + str(e), status= 500)
+            return Response(status= 204)
 
-# /score-debug routes to score_debug
-# This function scores the image and stores an annotated image for debugging purposes
-@app.route('/score-debug', methods=['POST'])
-def score_debug():
-
-    try:
-        imageData = io.BytesIO(request.get_data())
-        # load the image
-        img = Image.open(imageData)
-
-        inference_duration, detected_objects = processImage(img)
-        print('Inference duration was ', str(inference_duration))
-
-        output_img = drawBboxes(img, detected_objects)
-
-        # datetime object containing current date and time
-        now = datetime.now()
-        
-        output_img_file = now.strftime("%d_%m_%Y_%H_%M_%S.jpeg")
-        output_img.save(output_dir + "/" + output_img_file)
-
-        respBody = {                    
-                    "inferences" : detected_objects
-                    }                   
-        
-        return respBody
-    except Exception as e:
-        print('EXCEPTION:', str(e))
-        return Response(response='Error processing image', status= 500)
-
-# /annotate routes to annotation function 
-# This function returns an image with bounding boxes drawn around detected objects
-@app.route('/annotate', methods=['POST'])
-def annotate():
-    try:
-        imageData = io.BytesIO(request.get_data())
-        # load the image
-        img = Image.open(imageData)
-
-        inference_duration, detected_objects = processImage(img)
-        print('Inference duration was ', str(inference_duration))
-
-        img = drawBboxes(img, detected_objects)
-        
-        imgByteArr = io.BytesIO()        
-        img.save(imgByteArr, format = 'JPEG')        
-        imgByteArr = imgByteArr.getvalue()                
-
-        return Response(response = imgByteArr, status = 200, mimetype = "image/jpeg")
-    except Exception as e:
-        print('EXCEPTION:', str(e))
-        return Response(response='Error processing image', status= 500)
-
-
-# Load and initialize the model
-init()
+    except:
+        return Response(response='Error processing image', status=500)
 
 if __name__ == '__main__':
     # Run the server
