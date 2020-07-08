@@ -19,7 +19,7 @@ The REST endpoint for ResNet accepts an image with the size of 224 pixels by 224
 Run the container using the following Docker command
 
 ```bash
-docker run  --name my_resnet_container -p 80:80 -d  -i resnet-onnx:latest
+docker run  --name my_container -p 80:80 -d  -i resnet-onnx:latest
 ```
 
 Test the container using the following commands
@@ -50,8 +50,8 @@ If successful, you will see JSON printed on your screen that looks something lik
 Terminate the container using the following Docker commands
 
 ```bash
-docker stop my_resnet_container
-docker rm my_resnet_container
+docker stop my_container
+docker rm my_container
 ```
 
 ## Upload docker image to Azure container registry
