@@ -19,7 +19,7 @@ The REST endpoint for ResNet accepts an image with the size of 224 pixels by 224
 Run the container using the following Docker command
 
 ```bash
-docker run  --name my_container -p 80:80 -d  -i resnet-onnx:latest
+docker run  --name my_container -p 8080:80 -d  -i resnet-onnx:latest
 ```
 
 Test the container using the following commands
@@ -28,7 +28,7 @@ Test the container using the following commands
 To get a list of detected objected, use the following command
 
 ```bash
-curl -X POST http://127.0.0.1/score -H "Content-Type: image/jpeg" --data-binary @<image_file_in_jpeg>
+curl -X POST http://127.0.0.1:8080/score -H "Content-Type: image/jpeg" --data-binary @<image_file_in_jpeg>
 ```
 If successful, you will see JSON printed on your screen that looks something like this
 ```json
