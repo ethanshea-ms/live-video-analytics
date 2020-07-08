@@ -10,7 +10,7 @@ The following instructions will enable you to build a Docker container with a [R
 Build the container image by running the following Docker command. Make sure you are in the same directory as the Dockerfile. This step may take a few minutes.
 
 ```bash
-docker build . -t resnet-onnx:latest
+docker build . -t resnet50v2-onnx:latest
 ```
     
 ## Running and Testing
@@ -19,7 +19,7 @@ The REST endpoint for ResNet accepts an image with the size of 224 pixels by 224
 Run the container using the following Docker command
 
 ```bash
-docker run  --name my_resnet50v2_container -p 8080:80 -d  -i resnet-onnx:latest
+docker run  --name my_resnet50v2_container -p 8080:80 -d  -i resnet50v2-onnx:latest
 ```
 
 Test the container using the following commands
