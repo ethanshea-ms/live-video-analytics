@@ -37,7 +37,7 @@ RUN mkdir /var/runit && \
     ln -s /etc/nginx/sites-available/resnet-app.conf /etc/nginx/sites-enabled/ && \
     rm -rf /etc/nginx/sites-enabled/default && \
     mkdir /var/runit/gunicorn && \
-    /bin/bash -c "echo -e '"'#!/bin/bash\nexec gunicorn -b 127.0.0.1:8888 --chdir /app resnet-onnx-app:app\n'"' > /var/runit/gunicorn/run" && \
+    /bin/bash -c "echo -e '"'#!/bin/bash\nexec gunicorn -b 127.0.0.1:8888 --chdir /app resnet-app:app\n'"' > /var/runit/gunicorn/run" && \
     chmod +x /var/runit/gunicorn/run && \
     cd /app
 
