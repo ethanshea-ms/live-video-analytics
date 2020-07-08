@@ -10,7 +10,7 @@ The following instructions will enable you to build a Docker container with a [R
 Build the container image by running the following Docker command. Make sure you are in the same directory as the Dockerfile. This step may take a few minutes.
 
 ```bash
-    docker build . -t resnet-onnx:latest
+docker build . -t resnet-onnx:latest
 ```
     
 ## Running and Testing
