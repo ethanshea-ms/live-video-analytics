@@ -14,7 +14,7 @@ To run LVA on Jupyter notebooks, you will first need to install the following to
     - [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
     - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)     
 
-3. To run the Jupyter notebooks, you will need to have [Anaconda](https://www.anaconda.com/products/individual) installed with Python 3.7. If you wish to install Anaconda for all users, [read the Anaconda documentation](https://docs.anaconda.com/anaconda/install/multi-user/) for instructions on how to do so.   
+3. To run the Jupyter notebooks, you will need to have [Anaconda](https://www.anaconda.com/products/individual) installed with Python 3.7. When installing Anaconda, please choose to add Anaconda to your Path. If you wish to install Anaconda for all users, [read the Anaconda documentation](https://docs.anaconda.com/anaconda/install/multi-user/) for instructions on how to do so.   
     <br><img src="../../../../images/_conda_installation.jpg" width=600px />
    
 ## Setting Up the Conda Environment
