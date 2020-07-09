@@ -23,7 +23,7 @@ Once Anaconda is installed, we will be creating a Conda environment to hold all 
 conda env create --prefix ./lva_conda_env --file environment.yml
 ```
 
-In VSCode, [set the Python environment](https://code.visualstudio.com/docs/python/environments) so that the Conda installation of Python is in use.
+In VSCode, [set the Python environment](https://code.visualstudio.com/docs/python/environments) by using the Command Palette (`Ctrl+Shift+P`) and search for "Python: Select Interpreter" so that the Conda installation of Python is in use.
 
 <img src="../../../../images/_python_interpreter.jpg" width=500px />
 
