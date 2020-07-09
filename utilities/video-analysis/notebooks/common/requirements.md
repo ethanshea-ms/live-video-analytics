@@ -1,24 +1,19 @@
 # Requirements for LVA Jupyter Notebook Samples 
+In this section, we will install the required tools to run LVA on Jupyter notebooks. All of the commands in this sample should work as intended on development PCs running Ubuntu 18.04 and MacOS. If you are using a machine running Windows, you can try running either of the following additional steps:
 
-## Install the Required Tools
-To run LVA on Jupyter notebooks, you will first need to install the following tools on your development PC.  
+* Option 1: Turn on the [Windows Subsystem for Linux](https://code.visualstudio.com/remote-tutorials/wsl/enable-wsl) setting. Afterwards, you will have to log out from your PC and log back in. Then, [upgrade to WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and download [Ubuntu 18.04 terminal](https://www.microsoft.com/en-us/p/ubuntu-1804-lts/9n9tngvndl3q?rtc=1&activetab=pivot:overviewtab) from the Microsoft store. When installing the tools below, use the Ubuntu terminal and install the Ubuntu versions of the applications. When running the Jupyter notebooks, first install the [Remote - WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) and then [switch the terminal setting](https://code.visualstudio.com/docs/remote/wsl#_open-a-remote-folder-or-workspace) in VSCode so that the WSL terminal is used.
 
-1. Out of the many options to run, manage, and update Jupyter notebooks, we recommend using Visual Studio Code (VSCode) because it has extensions for running and managing IoT devices as well. Install [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview) if you do not already have it installed. 
-    
-    <u>Windows Installation</u>
+* Option 2: Install [Git Bash](https://git-scm.com/downloads). When installing the tools below, use the Git Bash terminal. When running the Jupyter notebooks, [open VSCode](https://code.visualstudio.com/docs/editor/command-line#_launching-from-command-line) using the Git Bash terminal and [switch the terminal setting](https://code.visualstudio.com/docs/editor/integrated-terminal) so that the Bash terminal is used. You will now be able to run Bash commands on Jupyter notebooks using VSCode. Make sure that in the VSCode terminal window, you click the dropdown and select **bash**.    
 
-    All of the commands in this sample should work as intended on development PCs running Ubuntu 18.04 and MacOS. If you are using a machine running Windows, you can try either of the following solutions:
-    <br><br>Option 1: Turn on the [Windows Subsystem for Linux](https://code.visualstudio.com/remote-tutorials/wsl/enable-wsl) setting. Afterwards, you will have to log out from your PC and log back in. Then, [upgrade to WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and download [Ubuntu 18.04 terminal](https://www.microsoft.com/en-us/p/ubuntu-1804-lts/9n9tngvndl3q?rtc=1&activetab=pivot:overviewtab) from the Microsoft store. When installing the tools below, use the Ubuntu terminal and install the Ubuntu versions of the applications. When running the Jupyter notebooks, first install the [Remote - WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) and then [switch the terminal setting](https://code.visualstudio.com/docs/remote/wsl#_open-a-remote-folder-or-workspace) in VSCode so that the WSL terminal is used.
-  
-    Option 2: Install [Git Bash](https://git-scm.com/downloads). When installing the tools below, use the Git Bash terminal. When running the Jupyter notebooks, [open VSCode](https://code.visualstudio.com/docs/editor/command-line#_launching-from-command-line) using the Git Bash terminal and [switch the terminal setting](https://code.visualstudio.com/docs/editor/integrated-terminal) so that the Bash terminal is used. You will now be able to run Bash commands on Jupyter notebooks using VSCode. Make sure that in the VSCode terminal window, you click the dropdown and select **bash**.    
-    
     <img src="../../../../images/_bash_terminal.jpg" width=300px />
 
-2. In Visual Studio Code, install the following extensions:  
+
+## Install the Required Tools
+1. In Visual Studio Code, install the following extensions:  
     - [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
     - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)     
 
-3. To run the Jupyter notebooks, you will need to have [Anaconda](https://www.anaconda.com/products/individual) installed with Python 3.7. When installing Anaconda, please choose to add Anaconda to your Path. If you wish to install Anaconda for all users, [read the Anaconda documentation](https://docs.anaconda.com/anaconda/install/multi-user/) for instructions on how to do so.   
+2. To run the Jupyter notebooks, you will need to have [Anaconda](https://www.anaconda.com/products/individual) installed with Python 3.7. When installing Anaconda, please click on the checkbox that adds Anaconda to your Path. If you wish to install Anaconda for all users, [read the Anaconda documentation](https://docs.anaconda.com/anaconda/install/multi-user/) for instructions on how to do so.   
     <br><img src="../../../../images/_conda_installation.jpg" width=600px />
    
 ## Setting Up the Conda Environment

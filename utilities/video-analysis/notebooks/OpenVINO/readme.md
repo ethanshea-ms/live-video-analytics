@@ -2,7 +2,9 @@
 The following instructions will enable you to run a [OpenVINO™](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) model on Live Video Analytics (LVA) using Jupyter notebooks. This sample is specific for Intel® CPU accelerated IoT Edge devices. 
 
 ## Prerequisites
-1. First, [clone](https://code.visualstudio.com/Docs/editor/versioncontrol#_cloning-a-repository) [this repository](/../../) locally into your development PC and open the repository with VSCode. 
+Out of the many options to run, manage, and update Jupyter notebooks, we recommend using Visual Studio Code (VSCode) because it has extensions for running and managing IoT devices as well. Install [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview) if you do not already have it installed. 
+
+1. [Clone](https://code.visualstudio.com/Docs/editor/versioncontrol#_cloning-a-repository) [this repository](/../../) locally into your development PC and open the repository with VSCode. 
 2. Locate this Readme page in your local repository and continue reading the following sections on VSCode. You can preview Markdown (`.md`) pages by pressing `Ctrl+Shift+V` to open a full-screen window or by clicking the preview button on the top toolbar in VSCode. For pictures to render on VSCode, you must have the entire [live-video-analytics](/../..) folder open in your VSCode workspace. Going forward, we will be using VSCode to run this sample. Please navigate to VSCode to continue. 
    
    <img src="../../../../images/_markdown_preview.png" width=200px/> 
