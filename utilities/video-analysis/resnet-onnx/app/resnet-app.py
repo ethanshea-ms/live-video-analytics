@@ -31,8 +31,8 @@ class ResnetModel:
         return imageBlob
 
     def Postprocess(self, probabilities):
-        sorted_prob = np.sort(probabilities)[0:3]
-        sorted_indices = np.argsort(probabilities)[0:3]
+        sorted_prob = np.squeeze(np.sort(probabilities))[::-1]
+        sorted_indices = np.squeeze(np.argsort(probabilities))[::-1]
         detectedObjects = []
              
         for i in range(3):

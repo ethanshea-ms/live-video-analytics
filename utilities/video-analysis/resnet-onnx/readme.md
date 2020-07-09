@@ -38,8 +38,26 @@ If successful, you will see JSON printed on your screen that looks something lik
             "type": "classification",
             "classification": {
                 "tag": {
-                    "value": "Egyptian cat",
-                    "confidence": 0.08730117797851562
+                    "value": "llama",
+                    "confidence": 0.1784792137145996
+                }
+            }
+        },
+        {
+            "type": "classification",
+            "classification": {
+                "tag": {
+                    "value": "gazelle",
+                    "confidence": 0.11214914321899414
+                }
+            }
+        },
+        {
+            "type": "classification",
+            "classification": {
+                "tag": {
+                    "value": "wallaby, brush kangaroo",
+                    "confidence": 0.10473043441772462
                 }
             }
         }
