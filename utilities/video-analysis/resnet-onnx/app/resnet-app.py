@@ -30,23 +30,26 @@ class ResnetModel:
 
         return imageBlob
 
-    def Postprocess(self, index, probability):
+    def Postprocess(self, probabilities):
+        sorted_prob = np.squeeze(np.sort(probabilities))[::-1]
+        sorted_indices = np.squeeze(np.argsort(probabilities))[::-1]
         detectedObjects = []
-        obj = self._labelList[index]
-        obj_name = obj.split(' ', 1)[1]
+             
+        for i in range(3):
+            confidence = sorted_prob[i]/100 #convert percent to decimal
+            obj = self._labelList[sorted_indices[i]]
+            obj_name = obj.split(' ', 1)[1]
 
-        confidence = probability/100 #convert percent to decimal
-
-        dobj = {
-            "type" : "classification",
-            "classification" : {
-                "tag" : {
-                    "value" : obj_name, #skip the first word
-                    "confidence" : confidence
+            dobj = {
+                "type" : "classification",
+                "classification" : {
+                    "tag" : {
+                        "value" : obj_name, #skip the first word
+                        "confidence" : confidence
+                    }
                 }
             }
-        }
-        detectedObjects.append(dobj)
+            detectedObjects.append(dobj)
 
         return detectedObjects
 
@@ -55,10 +58,8 @@ class ResnetModel:
 
             imageBlob = self.Preprocess(cvImage)
             probabilities = self._onnxSession.run(None, {"data": imageBlob})
-            highest_prob = np.max(probabilities)  
-            highest_prob_index = np.argmax(probabilities)
-
-        return self.Postprocess(highest_prob_index, highest_prob)
+         
+        return self.Postprocess(probabilities)
 
 
 # global ml model class
