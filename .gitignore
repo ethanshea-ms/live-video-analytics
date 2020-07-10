@@ -3,6 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+.ipynb_checkpoints
+
 .env
 
 # User-specific files
@@ -307,8 +309,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-.ipynb_checkpoints
-lva_conda_env
 
 # Cake - Uncomment if you are using it
 # tools/**
