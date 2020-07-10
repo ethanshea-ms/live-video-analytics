@@ -31,7 +31,7 @@ nGPU: Nvidia GPU
 ## Test Cases<sup>i</sup>:
 | Environment | Development PC                         | IoT Edge Device   |
 | :---        | :---                                                  | :---                          |
-| 1           | Azure VM<br>-OS: Ubuntu 18.04 | Azure VM<br>-OS: Ubuntu 18.04 |
-| 2           | Azure VM<br>-OS: Windows 10 Build 2004<br>runnnig [WSL 2 Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/about) | Azure VM<br>-OS: Ubuntu 18.04 |
-| 3           | Physical PC<br>-OS: Windows 10 with Git Bash | Azure VM<br>-OS: Ubuntu 18.04 |  
-| 4           | Physical PC<br>-OS: MacOS 15 | Azure VM<br>-OS: Ubuntu 18.04 |  
+| 1           | Azure VM<br>-OS: Ubuntu 18.04<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
+| 2           | Azure VM<br>-OS: Windows 10 Build 2004<br>runnnig [WSL 2 Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/about)<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
+| 3           | Physical PC<br>-OS: Windows 10 with Git Bash<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |  
+| 4           | Physical PC<br>-OS: MacOS 15<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |  
