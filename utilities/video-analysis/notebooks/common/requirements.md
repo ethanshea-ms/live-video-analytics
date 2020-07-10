@@ -23,7 +23,11 @@ Once Anaconda is installed, we will be creating a Conda environment to hold all 
 conda env create --prefix ./lva_conda_env --file environment.yml
 ```
 
-After running the Conda script above, restart your development PC. Once your development PC has restarted, open VSCode again. If you get a terminal message that says "To activate this environment...", run the command to activate the Conda environment.
+After running the Conda script above, restart your development PC. Once your development PC has restarted, open VSCode again. 
+* If you get a terminal message that says "To activate this environment...", run the command to activate the Conda environment.
+* If you get the following message in VSCode, follow the instructions to turn off the `inheritEnv` setting.
+    
+    <img src="../../../../images/_conda_terminal.png" width=350px />
 
 Next, [set the Python environment](https://code.visualstudio.com/docs/python/environments) in VSCode by using the Command Palette (`Ctrl+Shift+P`) and search for "Python: Select Interpreter" so that the Conda installation of Python is in use.
 
