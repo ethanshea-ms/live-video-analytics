@@ -3,7 +3,7 @@
 
 FROM ubuntu:18.04
 
-# Copy the app file and the tags file
+# Copy the app file
 RUN mkdir /app
 COPY app/yolov3-app.py /app
 COPY  tags.txt /app
@@ -51,7 +51,7 @@ RUN mkdir /var/runit && \
     /bin/bash -c "echo -e '"'#!/bin/bash\nexec gunicorn -b 127.0.0.1:8000 --chdir /app yolov3-app:app\n'"' > /var/runit/gunicorn/run" && \
     chmod +x /var/runit/gunicorn/run
 
-EXPOSE 80
+EXPOSE 443
 
 # Start runsvdir
 CMD ["runsvdir","/var/runit"]

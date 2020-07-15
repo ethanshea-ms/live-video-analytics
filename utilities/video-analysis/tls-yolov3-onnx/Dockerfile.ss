@@ -37,21 +37,26 @@ RUN cd /app && \
     apt-get clean && \
     apt-get purge -y --auto-remove wget
 
+# Create a self signed SSL Certificate with openssl
+# hint: customize longevity (-days) and host's IP/NAME (in -subj)
+RUN mkdir /certsss && cd /certsss && \
+    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -subj '/CN=<REPLACE-WITh-IP-OR-NAME>'
+
 # Copy nginx config file
-COPY yolov3-app.conf /etc/nginx/sites-available
+COPY yolov3-app-ss.conf /etc/nginx/sites-available
 
 # Setup runit file for nginx and gunicorn
 RUN mkdir /var/runit && \
     mkdir /var/runit/nginx && \
     /bin/bash -c "echo -e '"'#!/bin/bash\nexec nginx -g "daemon off;"\n'"' > /var/runit/nginx/run" && \
     chmod +x /var/runit/nginx/run && \
-    ln -s /etc/nginx/sites-available/yolov3-app.conf /etc/nginx/sites-enabled/ && \
+    ln -s /etc/nginx/sites-available/yolov3-app-ss.conf /etc/nginx/sites-enabled/ && \
     rm -rf /etc/nginx/sites-enabled/default && \
     mkdir /var/runit/gunicorn && \
     /bin/bash -c "echo -e '"'#!/bin/bash\nexec gunicorn -b 127.0.0.1:8000 --chdir /app yolov3-app:app\n'"' > /var/runit/gunicorn/run" && \
     chmod +x /var/runit/gunicorn/run
 
-EXPOSE 80
+EXPOSE 443
 
 # Start runsvdir
 CMD ["runsvdir","/var/runit"]

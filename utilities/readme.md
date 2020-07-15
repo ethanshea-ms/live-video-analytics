@@ -1,11 +1,3 @@
-# Live video analytics on Edge
+# Utilities for Live video analytics
 
-This folder has LVA edge related content
-
-## Contents
-
-| File/folder          | Description                                                   |
-|----------------------|---------------------------------------------------------------|
-| `rtspsim-live555`    |                                                               |
-| `USB-to-RTSP`        |                                                               |
-| `video-analysis`     |                                                               |
+This folder contains a set of utility components that can be used in conjunction with Live Video Analytics
