@@ -26,9 +26,13 @@ Next, [set the Python environment](https://code.visualstudio.com/docs/python/env
 
 <img src="../../../../images/_python_interpreter.jpg" width=500px />
 
-Similarly, set the Python environment to start the Jupyter server by using the Command Palette (`Ctrl+Shift+P`) and searching for "Python: Select Interpreter to start Jupyter server". If you are running into issues related to Python package dependencies, you may be using the wrong Python interpreter. The correct Python interpreter should have `lva_conda_env` in its directory.
+Similarly, set the Python environment to start the Jupyter server by using the Command Palette (`Ctrl+Shift+P`) and searching for "Python: Select Interpreter to start Jupyter server".
 
 <img src="../../../../images/_python_interpreter.png" width=500px />
+
+If you are running into issues related to Python package dependencies, you may be using the wrong Python interpreter. You can identify the interpreter on the top right of VSCode, as shown below. The correct Python interpreter should have `lva_conda_env` in its directory.
+
+<img src="../../../../images/_top_right.png" width=300px />
 
 For additional information, you can read more about [managing Conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
