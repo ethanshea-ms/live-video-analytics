@@ -1,0 +1,10 @@
+name: lva_conda_environment
+dependencies:
+  - python=3.6
+  - numpy
+  - pip
+  - pip:
+    - jupyter
+    - python-dotenv
+    - azure-iot-device
+    - azure-iot-hub

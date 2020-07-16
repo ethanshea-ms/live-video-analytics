@@ -18,8 +18,8 @@ From the table below, click the sample you want to run.
 
 | # | Name       | Extension | Accelerator| Description | Test Cases Passed<sup>i</sup> |
 |:---:|:---:        |:---:       |:---:        |:---       |:---:       |
-| 1 | [Yolo V3](Yolo/yolov3/yolov3-http-icpu-onnx/readme.md)             | HTTP      | iCPU | LVA module using YoloV3, a neural network for real-time object detection, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an Intel® CPU accelerated IoT Edge device with connection through HTTP. | 1, 2, 3 |
-| 2 | [Yolo V3](Yolo/yolov3/yolov3-http-ngpu-onnx/readme.md)             | HTTP      | nGPU<sup>*</sup> |  LVA module using YoloV3, a neural network for real-time object detection, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an NVidia GPU accelerated IoT Edge device with connection through HTTP. | 1, 2, 3, 4 |
+| 1 | [Yolo V3](Yolo/yolov3/yolov3-http-icpu-onnx/readme.md)             | HTTP      | iCPU | LVA module using YoloV3, a neural network for real-time object detection, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an Intel® CPU accelerated IoT Edge device with connection through HTTP. | 1, 2 |
+| 2 | [Yolo V3](Yolo/yolov3/yolov3-http-ngpu-onnx/readme.md)             | HTTP      | nGPU<sup>*</sup> |  LVA module using YoloV3, a neural network for real-time object detection, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an NVidia GPU accelerated IoT Edge device with connection through HTTP. | 1, 2, 3 |
 | 3 | [Tiny Yolo V3](Yolo/tinyyolov3/tinyyolov3-http-icpu-onnx/readme.md)    | HTTP      | iCPU | LVA module using Tiny YoloV3, a lightweight variant of the Yolo V3 neural network model, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an Intel® CPU accelerated IoT Edge device with connection through HTTP. | |
 | 4 | [Tiny Yolo V3](Yolo/tinyyolov3/tinyyolov3-grpc-icpu-onnx/readme.md)                    | gRPC      | iCPU | LVA module using Tiny YoloV3, a lightweight variant of the Yolo V3 neural network model, that complies with the Open Neural Network Exchange (ONNX). Follow this sample if your solution requires an Intel® CPU accelerated IoT Edge device with connection through gRPC. gRPC is a remote procedure call that efficiently connects services in and across data centers with plugin support for load balancing, tracing, health checking and authentication. | |
 
@@ -30,7 +30,6 @@ nGPU: Nvidia GPU
 ## Test Cases<sup>i</sup>:
 | Environment | Development PC                         | IoT Edge Device   |
 | :---        | :---                                                  | :---                          |
-| 1           | Azure VM<br>-OS: Ubuntu 18.04<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
-| 2           | Azure VM<br>-OS: Windows 10 Build 2004<br>runnnig [WSL 2 Ubuntu 18.04](https://docs.microsoft.com/en-us/windows/wsl/about)<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |
-| 3           | Physical PC<br>-OS: Windows 10 with Git Bash<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |  
-| 4           | Physical PC<br>-OS: MacOS 15<br>-Python >= v3.6.9, Pip 3 | Azure VM<br>-OS: Ubuntu 18.04 |  
+| 1           | Azure VM<br>-OS: Ubuntu 18.04| Azure VM<br>-OS: Ubuntu 18.04 |
+| 2           | Azure VM<br>-OS: Windows 10  | Azure VM<br>-OS: Ubuntu 18.04 |
+| 3           | Physical PC<br>-OS: MacOS 15 | Azure VM<br>-OS: Ubuntu 18.04 |  
