@@ -26,7 +26,7 @@ Out of the many options to run, manage, and update Jupyter notebooks, we recomme
     Change the following steps based on specific instructions.
 -->
 
-## Install Drivers for IoT Edge Device
+## Install Tools for IoT Edge Device
 1. If your VM has an Intel® CPU, [install](../../../common/install_iotedge_runtime_cpu.md) IoT Edge runtime and the required tools for your VM. 
 
 ## Build a Docker Image of the Inference Server

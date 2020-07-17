@@ -27,7 +27,7 @@ Out of the many options to run, manage, and update Jupyter notebooks, we recomme
     Change the following steps based on specific instructions.
 -->
 
-## Install Drivers for IoT Edge Device
+## Install Tools for IoT Edge Device
 1. Once you have created your VM, check to see what [type of GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-gpu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) comes with your VM. 
 2. If your VM has an NVidia GPU, [install](../../../common/install_iotedge_runtime_gpu.md) IoT Edge runtime and the required drivers and tools for your NVidia GPU. 
 
