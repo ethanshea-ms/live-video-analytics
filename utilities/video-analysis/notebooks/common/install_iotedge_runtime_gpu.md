@@ -1,8 +1,11 @@
 # Install IoT Edge runtime for NVidia GPU Accelerated IoT Edge Devices
 
+> <span style="color:red; font-weight:bold"> [!IMPORTANT] </span>  
+> All of the commands in this section should be run on your IoT Edge device.
+
 This section assumes that your PC have NVidia Tesla K80 GPU card installed and you are using Ubuntu OS version 18.04. For other operating system versions and GPU types, the commands below may need to be updated (e.g., find the appropriate GPU drivers for your Edge device).
 
-If you are using a virtual machine, you can use the SSH connection string located in the [.env file](.env) to create a terminal session over the VM. Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
+If you are using a virtual machine, you can use the SSH connection string located in the [.env file](.env) to [create a terminal session over the VM](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#ssh-into-your-vm). Alternatively, with your own preference of connection type, open a terminal window session on the IoT Edge device. The commands in the steps below should be executed on the IoT Edge device through the terminal session.
 
 ## Install NVidia Cuda Drivers for your nGPU (Tesla K80 in this case)
 First, install the `curl` command line tool on your Iot Edge device's terminal.
@@ -102,10 +105,12 @@ Here is the sample output from the command:
 +-----------------------------------------------------------------------------+ 
 ```
 ## Install the Azure IoT Edge Runtime
-In order to run the commands below in the terminal window, be sure to update the URL with the appropriate OS for your IoT Edge Device:  
+In order to run the commands below in the terminal window, be sure to update the URL with the appropriate OS for your IoT Edge device:  
 
+```
+Example:
 https://packages.microsoft.com/config/ubuntu/<YOUR_OS_VERSION>/multiarch/prod.list
-
+```
 
 Commands to install the IoT Edge Runtime:
 

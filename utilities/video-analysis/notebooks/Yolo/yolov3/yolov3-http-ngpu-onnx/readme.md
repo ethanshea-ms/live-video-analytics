@@ -27,9 +27,9 @@ Out of the many options to run, manage, and update Jupyter notebooks, we recomme
     Change the following steps based on specific instructions.
 -->
 
-## Install Tools for IoT Edge Device
+## Install GPU Drivers and IoT Edge Runtime for IoT Edge Device
 1. Once you have created your VM, check to see what [type of GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-gpu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) comes with your VM. 
-2. If your VM has an NVidia GPU, [install](../../../common/install_iotedge_runtime_gpu.md) IoT Edge runtime and the required drivers and tools for your NVidia GPU. 
+2. [Install](../../../common/install_iotedge_runtime_gpu.md) IoT Edge runtime and the required drivers and tools for your NVidia GPU on the Edge device. 
 
 ## Build a Docker Image of the Inference Server
 The following sections will explain how to build a Docker container image of an inference server solution that uses AI logic (i.e., YoloV3 for object detection) on a GPU accelerated IoT Edge Device.
@@ -49,7 +49,7 @@ The following sections will explain how to build a Docker container image of an 
 ## Deploy Your Docker Image
 The image below summarizes the deployment scheme of LVA. As the image indicates, LVA can utilize containers hosted on the Internet, on a local network, or even on a local machine.
 
-<img src="../../../../../../images/_architecture.png?raw=true" width=500px/>  
+<img src="../../../../../../images/_architecture.jpg?raw=true" width=500px/>  
 
 The following sections will explain how to deploy your Docker image and run media graphs on LVA. 
 

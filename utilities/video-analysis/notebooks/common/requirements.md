@@ -31,7 +31,7 @@ Similarly, set the Python environment to start the Jupyter server by using the C
 
 <img src="../../../../images/_python_interpreter.png" width=500px />
 
-If you are running into issues related to Python package dependencies, you may be using the wrong Python interpreter. You can identify the interpreter on the top right of VSCode, as shown below. The correct Python interpreter should have `lva_conda_env` in its directory. If you do not see this Python interpreter, you can try restarting your development PC for the Conda activation to take effect.
+If you are running into issues related to Python package dependencies, you may be using the wrong Python interpreter. You can identify the interpreter on the top right of VSCode, as shown in the image below. The correct Python interpreter should have `lva_conda_env` in its directory. If you do not see this Python interpreter, you can try restarting your development PC for the Conda activation to take effect.
 
 <img src="../../../../images/_top_right.png" width=300px />
 
