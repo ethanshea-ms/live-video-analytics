@@ -10,7 +10,7 @@ Out of the many options to run, manage, and update Jupyter notebooks, we recomme
    <img src="../../../../../../images/_markdown_preview.png" width=200px/> 
    <br>
 
-3. Install the [requirements for running LVA on Jupyter](../../../common/requirements.md) on your development PC.
+3. Install the [requirements for running LVA Jupyter notebook samples](../../../common/requirements.md) on your development PC.
 
 
 ## Getting Started
