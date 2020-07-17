@@ -16,7 +16,7 @@ Once Anaconda is installed, we will be creating a Conda environment to hold all 
 conda env create --prefix ./lva_conda_env --file environment.yml
 ```
 
-After running the Conda script above, restart your development PC. Once your development PC has restarted, open VSCode again. 
+After running the Conda script above, log out of your development PC and log back in. Then, open VSCode again. 
 * If, once you open your terminal on VSCode, you get a message that says "To activate this environment...", you can ignore the message.
 * If you get the following message in VSCode, follow the instructions to turn off the `inheritEnv` setting.
     
@@ -30,7 +30,7 @@ Similarly, set the Python environment to start the Jupyter server by using the C
 
 <img src="../../../../images/_python_interpreter.png" width=500px />
 
-If you are running into issues related to Python package dependencies, you may be using the wrong Python interpreter. You can identify the interpreter on the top right of VSCode, as shown below. The correct Python interpreter should have `lva_conda_env` in its directory.
+If you are running into issues related to Python package dependencies, you may be using the wrong Python interpreter. You can identify the interpreter on the top right of VSCode, as shown below. The correct Python interpreter should have `lva_conda_env` in its directory. If you do not see this Python interpreter, you can try restarting your development PC for the Conda activation to take effect.
 
 <img src="../../../../images/_top_right.png" width=300px />
 
