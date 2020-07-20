@@ -38,7 +38,7 @@ The following sections will explain how to build a Docker container image of an 
 ## Deploy Your Docker Container Image and LVA Modules
 The image below summarizes the deployment scheme of LVA. As the image indicates, LVA can utilize containers hosted on the Internet, on a local network, or even on a local machine.
 
-<img src="../../../../../../images/_architecture.jpg?raw=true" width=600px/>  
+<img src="../../../../../../images/_architecture.jpg" width=600px/>  
 
 The following sections will explain how to deploy your Docker image and run media graphs on LVA. 
 
