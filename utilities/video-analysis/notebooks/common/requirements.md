@@ -20,7 +20,7 @@ After running the Conda script above, log out of your development PC and log bac
 * If, once you open your terminal on VSCode, you get a message that says "To activate this environment...", you can ignore the message.
 * If you get the following message in VSCode, follow the instructions to turn off the `inheritEnv` setting. You can also turn off the `inheritEnv` setting by going to your VSCode toolbar and clicking File --> Preferences --> Settings. Then, search for `inheritEnv` and uncheck the checkbox.
     
-    <img src="../../../../images/_conda_terminal.png" width=350px />
+    <img src="../../../../images/_conda_terminal_1.png" width=350px />
   
 
 Next, [set the Python environment](https://code.visualstudio.com/docs/python/environments) in VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for "Python: Select Interpreter" so that the Conda installation of Python is in use.
