@@ -40,10 +40,9 @@ The image below summarizes the deployment scheme of LVA. As the image indicates,
 
 <img src="../../../../../../images/_architecture.jpg" width=600px/>  
 
-The following sections will explain how to deploy your Docker image and run media graphs on LVA. 
+The following section will explain how to deploy your Docker image and run media graphs on LVA. 
 
-1. Update the [deployment manifest template file](create_yolov3_icpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json), which will be used to generate a new template with specific parameters for this sample.
-2. Once the new deployment manifest has been created, you can now [deploy the inference server](../../../common/deploy_iotedge_modules.ipynb) to an IoT Edge device using a deployment manifest. 
+1. [Deploy the inference server](../../../common/deploy_iotedge_modules.ipynb) to an IoT Edge device using a deployment manifest. For this sample, we will be using the pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json).
 
 ## Deploy Media Graphs and Test LVA
 1. To run inferences, [deploy media graphs](../../../common/deploy_media_graph.ipynb) to trigger the inference server.
