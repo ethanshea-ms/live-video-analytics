@@ -10,32 +10,40 @@ In this section, we will install the required tools to run LVA on Jupyter notebo
     <br><img src="../../../../images/_conda_installation.jpg" width=600px />
    
 ## Setting Up the Conda Environment
-Once Anaconda is installed, we will be creating a Conda environment to hold all our dependencies for this sample. Notice that in this folder, we have a file named [environment.yml](environment.yml), which lists all of our dependencies. We will be using this file to set up the Conda environment and install all the necessary packages, including Jupyter. In your terminal, navigate to this folder and run the following command:
+Once Anaconda is installed, we will be creating a Conda environment to hold all our dependencies for this sample. 
 
-```
-conda env create --prefix ./lva_conda_env --file environment.yml
-```
+1. Open a terminal window in VSCode.
+2. Change the terminal directory to live-video-analytics/utilities/video-analysis/notebooks/common.
+3. In your terminal, run the following command to install all the necessary packages for this sample, including Jupyter.
 
-After running the Conda script above, log out of your development PC and log back in. Then, open VSCode again. 
-* If, once you open your terminal on VSCode, you get a message that says "To activate this environment...", you can ignore the message.
-* If you get the following message in VSCode, follow the instructions to turn off the `inheritEnv` setting. You can also turn off the `inheritEnv` setting by going to your VSCode toolbar and clicking File --> Preferences --> Settings. Then, search for `inheritEnv` and uncheck the checkbox.
+    ```
+    conda env create --prefix ./lva_conda_env --file environment.yml
+    ```
+
+    > <span>[!NOTE]</span>
+    > Notice that in this folder, we have a file named [environment.yml](environment.yml), which lists all of our dependencies.
+
+4. After running the Conda script above, log out of your development PC and log back in. Then, open VSCode again. 
+    * If, once you open your terminal on VSCode, you get a message that says "To activate this environment...", you can ignore the message.
+    * If you get the following message in VSCode, follow the instructions to turn off the `inheritEnv` setting. You can also turn off the `inheritEnv` setting by going to your VSCode toolbar and clicking File --> Preferences --> Settings. Then, search for `inheritEnv` and uncheck the checkbox.
     
-    <img src="../../../../images/_conda_terminal_1.png" width=350px />
+        <img src="../../../../images/_conda_terminal_1.png" width=350px />
   
 
-Next, [set the Python environment](https://code.visualstudio.com/docs/python/environments) in VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for "Python: Select Interpreter" so that the Conda installation of Python is in use.
+5. Next, [set the Python environment](https://code.visualstudio.com/docs/python/environments) in VSCode by using the Command Palette (`Ctrl+Shift+P`) and searching for "Python: Select Interpreter" so that the Conda installation of Python is in use.
 
-<img src="../../../../images/_python_interpreter.jpg" width=500px />
+    <img src="../../../../images/_python_interpreter.jpg" width=500px />
 
-Similarly, set the Python environment to start the Jupyter server by using the Command Palette (`Ctrl+Shift+P`) and searching for "Python: Select Interpreter to start Jupyter server".
+6. Similarly, set the Python environment to start the Jupyter server by using the Command Palette (`Ctrl+Shift+P`) and searching for "Python: Select Interpreter to start Jupyter server".
 
-<img src="../../../../images/_python_interpreter.png" width=500px />
+    <img src="../../../../images/_python_interpreter.png" width=500px />
 
-If you are running into issues related to Python package dependencies, you may be using the wrong Python interpreter. You can identify the interpreter on the top right of VSCode, as shown in the image below. The correct Python interpreter should have `lva_conda_env` in its directory. If you do not see this Python interpreter, you can try restarting your development PC for the Conda activation to take effect.
+  > <span style="color:red; font-weight:bold"> [!IMPORTANT] </span> 
+  > If you are running into issues related to Python package dependencies, you may be using the wrong Python interpreter. You can identify the interpreter on the top right of VSCode, as shown in the image below. The correct Python interpreter should have `lva_conda_env` in its directory. If you do not see this Python interpreter, you can try restarting your development PC for the Conda activation to take effect.
 
 <img src="../../../../images/_top_right.png" width=300px />
 
-For additional information, you can read more about [managing Conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+For additional information about Conda, you can read more about [managing Conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
 ## Install Docker
 Later in this sample, we will be using Docker to containerize our inference server solution, named "lvaExtension", to create a container image. On your development PC, install Docker based on your development PC's operating system:
