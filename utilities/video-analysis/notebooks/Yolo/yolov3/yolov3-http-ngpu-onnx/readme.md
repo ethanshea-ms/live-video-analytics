@@ -10,7 +10,7 @@ Out of the many options to run, manage, and update Jupyter notebooks, we recomme
    <img src="../../../../../../images/_markdown_preview.png" width=200px/> 
    <br>
 
-3. Install the [requirements for running LVA on Jupyter](../../../common/requirements.md) on your development PC.
+3. Install the [requirements for running LVA Jupyter notebook samples](../../../common/requirements.md) on your development PC.
 
 
 ## Getting Started
@@ -27,15 +27,15 @@ Out of the many options to run, manage, and update Jupyter notebooks, we recomme
     Change the following steps based on specific instructions.
 -->
 
-## Install Drivers for IoT Edge Device
+## Install GPU Drivers and IoT Edge Runtime for IoT Edge Device
 1. Once you have created your VM, check to see what [type of GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-gpu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) comes with your VM. 
-2. If your VM has an NVidia GPU, [install](../../../common/install_iotedge_runtime_gpu.md) IoT Edge runtime and the required drivers and tools for your NVidia GPU. 
+2. [Install](../../../common/install_iotedge_runtime_gpu.md) IoT Edge runtime and the required drivers and tools for your NVidia GPU on the Edge device. 
 
-## Build a Docker Image of the Inference Server
+## Build a Docker Container Image of the Inference Server Solution
 The following sections will explain how to build a Docker container image of an inference server solution that uses AI logic (i.e., YoloV3 for object detection) on a GPU accelerated IoT Edge Device.
 1. Create a [YoloV3 inference engine](create_yolov3_ngpu_inference_engine.ipynb). The inference engine wrapper will retrieve image data, analyze it, and return the analysis as output.
 2. Create a [local Docker image](create_yolov3_ngpu_container_image.ipynb) to containerize the ML solution. The ML solution consists of a web application and an inference server.
-3. Finally, [update the deployment manifest template file](create_yolov3_ngpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json), which will be used to generate a new template with specific parameters for this sample.
+3. To push the container image to the cloud, [Upload the container image](../../../common/upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR).
 
 <!--
 1. Optional: You may want to test the Docker image locally before uploading the Docker image to a container registry, to ensure that it runs as expected. To do this, you must meet the following requirements. (If you do not meet all of the requirements, you can skip this.)
@@ -46,15 +46,15 @@ The following sections will explain how to build a Docker container image of an 
     If you are unsure how to install the latter two requirements, you can review the [GPU installation process](../../../common/install_iotedge_runtime_gpu.md#61-install-nvidia-cuda-drivers-for-your-ngpu-tesla-k80-in-this-case). After you have everything set up, you can [test locally](local_test.ipynb). 
 -->
 
-## Deploy Your Docker Image
+## Deploy Your Docker Container Image and LVA Modules
 The image below summarizes the deployment scheme of LVA. As the image indicates, LVA can utilize containers hosted on the Internet, on a local network, or even on a local machine.
 
-<img src="../../../../../../images/_architecture.png?raw=true" width=500px/>  
+<img src="../../../../../../images/_architecture.jpg" width=600px/>  
 
 The following sections will explain how to deploy your Docker image and run media graphs on LVA. 
 
-1. To push the container image to the cloud, [Upload the container image](../../../common/upload_container_image_to_acr.ipynb) to Azure Container Registry (ACR).
-2. Once the image has been uploaded onto ACR, you can now [deploy the inference server](../../../common/deploy_iotedge_modules.ipynb) to an IoT Edge device using a deployment manifest. 
+1. Update the [deployment manifest template file](create_yolov3_ngpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json), which will be used to generate a new template with specific parameters for this sample.
+2. Once the new deployment manifest has been created, you can now [deploy the inference server](../../../common/deploy_iotedge_modules.ipynb) to an IoT Edge device using a deployment manifest. 
 
 ## Deploy Media Graphs and Test LVA
 1. To run inferences, [deploy media graphs](../../../common/deploy_media_graph.ipynb) to trigger the inference server.

@@ -86,7 +86,6 @@
                           "image": "$CONTAINER_REGISTRY_USERNAME_myacr.azurecr.io/$CONTAINER_IMAGE_NAME",
                           "createOptions": {
                               "HostConfig": {
-                                  "runtime": "",
                                   "LogConfig": {
                                       "Type": "",
                                       "Config": {

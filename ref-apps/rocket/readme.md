@@ -49,7 +49,7 @@ Out of the many options to run, manage, and update Jupyter notebooks, we recomme
    <img src="../../images/_markdown_preview.png" width=200px/> 
    <br>
 
-3. Install the [requirements for running LVA on Jupyter](../../utilities/video-analysis/notebooks/common/requirements.md) on your development PC.
+3. Install the [requirements for running LVA Jupyter notebook samples](../../utilities/video-analysis/notebooks/common/requirements.md) on your development PC.
 
 ### Getting Started (~30 minutes)
 
@@ -80,10 +80,10 @@ Out of the many options to run, manage, and update Jupyter notebooks, we recomme
 ### Tested Specifications 
 | Setup | Development PC                                                   | IoT Edge Device             | Testing Status |
 |-------|------------------------------------------------------------------|-----------------------------|----------------|
-| 1     | Physical PC - OS: Ubuntu 18.04 - Python 3.6.9, Pip 3             | Azure VM - OS: Ubuntu 18.04 | Passed         |
-| 2     | Azure VM - OS: Ubuntu 18.04 - Python 3.6.9, Pip 3                | Azure VM - OS: Ubuntu 18.04 | Passed         |
-| 3     | Physical PC - OS: MacOS 15 - Python 3.6.9, Pip 3                 | Azure VM - OS: Ubuntu 18.04 | Passed         |
-| 4     | Physical PC - OS: Windows 10 with Git Bash - Python 3.6.9, Pip 3 | Azure VM - OS: Ubuntu 18.04 | Passed         |
+| 1     | Physical PC - OS: Ubuntu 18.04                                   | Azure VM - OS: Ubuntu 18.04 | Passed         |
+| 2     | Azure VM - OS: Ubuntu 18.04                                      | Azure VM - OS: Ubuntu 18.04 | Passed         |
+| 3     | Physical PC - OS: MacOS 15                                       | Azure VM - OS: Ubuntu 18.04 | Passed         |
+| 4     | Physical PC - OS: Windows 10                                     | Azure VM - OS: Ubuntu 18.04 | Passed         |
 
 
 ## Information links
