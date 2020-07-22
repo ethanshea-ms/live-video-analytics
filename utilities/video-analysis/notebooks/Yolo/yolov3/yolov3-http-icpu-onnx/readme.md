@@ -40,12 +40,22 @@ The image below summarizes the deployment scheme of LVA. As the image indicates,
 
 <img src="../../../../../../images/_architecture.jpg" width=600px/>  
 
-The following sections will explain how to deploy your Docker image and run media graphs on LVA. 
+The following section will explain how to deploy your Docker image and run media graphs on LVA. 
 
-1. Update the [deployment manifest template file](create_yolov3_icpu_deployment_manifest.ipynb) with a custom template based on this sample. Notice that there is a pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json), which will be used to generate a new template with specific parameters for this sample.
-2. Once the new deployment manifest has been created, you can now [deploy the inference server](../../../common/deploy_iotedge_modules.ipynb) to an IoT Edge device using a deployment manifest. 
+1. [Deploy the inference server](../../../common/deploy_iotedge_modules.ipynb) to an IoT Edge device using a deployment manifest. For this sample, we will be using the pre-built deployment manifest template named [deployment.lva_common.template.json](../../../common/deployment.lva_common.template.json).
 
 ## Deploy Media Graphs and Test LVA
 1. To run inferences, [deploy media graphs](../../../common/deploy_media_graph.ipynb) to trigger the inference server.
 2. Once the media graphs are deployed, [monitor the output](../../../common/monitor_output.md) of the inference server and test to see if it works as desired.
 3. Finally, [deactivate and delete](../../../common/delete_media_graph.ipynb) the media graphs to stop the inferences.
+
+| Notebook name                                                                                | Description                                                                                              |
+| -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------|
+| [setup_environment.ipynb](../../../common/setup_environment.ipynb)                           | Notebook that will help set up the environment so that we can test and deploy LVA                        |
+| [create_azure_services.ipynb](../../../common/create_azure_services.ipynb)                   | Notebook that will create the required Azure resources                                                   |
+| [create_azure_vm.ipynb](../../../common/create_azure_vm.ipynb)                               | Notebook that help you to chose and configure a Virtual Machine that will act as the IoT Edge device     |
+| [create_yolov3_icpu_inference_engine.ipynb](create_yolov3_icpu_inference_engine.ipynb)       | Notebook that will help create a nCPU accelerated YoloV3 Inference Engine                                |
+| [create_yolov3_icpu_container_image.ipynb](create_yolov3_icpu_container_image.ipynb)         | Notebook that will help create a local Docker container image. <br/> This image acts as an Inference Server and is an HTTP web server with a scoring REST endpoint |
+| [upload_container_image_to_acr.ipynb](../../../common/upload_container_image_to_acr.ipynb)   | This notebook shares the steps to upload your local container to your Azure Container Registry (ACR)     |
+| [create_yolov3_icpu_deployment_manifest.ipynb](create_yolov3_icpu_deployment_manifest.ipynb) | This notebook will help in creating a deployment manifest file which is used to deploy your Docker image |
+| [deploy_iotedge_modules.ipynb](../../../common/deploy_iotedge_modules.ipynb)                 | This notebook will help deploy LVA & Inference Server modules to an IoT Edge device                      |

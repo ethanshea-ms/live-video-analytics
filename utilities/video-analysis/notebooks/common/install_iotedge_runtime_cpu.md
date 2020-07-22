@@ -59,10 +59,3 @@ sudo sed -i "s#\(device_connection_string: \).*#\1\'$IOT_EDGE_DEVICE_CONN_STRING
 
 sudo systemctl restart iotedge
 ```  
-
-## Restart the machine
-Run the following command in the terminal window to the IoT Edge device:
-
-```shell
-sudo reboot
-```
