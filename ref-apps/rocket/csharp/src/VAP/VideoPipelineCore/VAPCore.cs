@@ -5,6 +5,7 @@ using BGSObjectDetector;
 using DNNDetector;
 using DNNDetector.Config;
 using DNNDetector.Model;
+using ICSharpCode.SharpZipLib.Zip;
 using LineDetector;
 using LineDetector.Config;
 using OpenCvSharp;
@@ -16,6 +17,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using Utils.Config;
 using Wrapper.ORT;
 
@@ -32,6 +34,7 @@ namespace VideoPipelineCore
         static int pplConfig = Convert.ToInt16(ConfigurationManager.AppSettings["PplConfig"]);
         static bool displayRawVideo = false;
         static bool displayBGSVideo = false;
+        static string YoloRestApiEndpoint;
 
         static BGSObjectDetector.BGSObjectDetector bgs;
         static List<Box> foregroundBoxes;
@@ -61,7 +64,7 @@ namespace VideoPipelineCore
         public static void Initialize(string[] args)
         {
             //Console.WriteLine("Usage: <exe> <video url> <pipeline> <cfg file> <samplingFactor> <resolutionFactor> <buffersize> <uptran> <downtran> <category1> <category2> ...");
-            
+
             videoUrl = args[0];
             switch (ConfigurationManager.AppSettings["Runtime"])
             {
@@ -116,10 +119,12 @@ namespace VideoPipelineCore
             if (args[6] != null) LineDetectorConfig.UP_STATE_TRANSITION_LENGTH = int.Parse(args[6]);
             if (args[7] != null) LineDetectorConfig.DOWN_STATE_TRANSITION_LENGTH = int.Parse(args[7]);
 
+            YoloRestApiEndpoint = args[8] ?? string.Empty;
+
             //if no categpry is specified, add all classes from coco dataset
-            if (args.Length > 8)
+            if (args.Length > 9)
             {
-                for (int i = 8; i < args.Length; i++)
+                for (int i = 9; i < args.Length; i++)
                 {
                     category.Add(args[i], 0);
                 }
@@ -151,11 +156,14 @@ namespace VideoPipelineCore
             }
             OutputFolder.OutputFolderInit();
 
+            //check param
+            lineFile = @"..\..\..\cfg\line.txt";
+
             //----------
             //initialize pipeline components
             Utils.Utils.cleanFolder(@OutputFolder.OutputFolderAll);
             //----------
-            if (new int[] { 5, 1, 2, 3, 4 }.Contains(pplConfig))
+            if (new int[] { 5, 1, 2, 3, 4, 8 }.Contains(pplConfig))
             {
                 bgs = new BGSObjectDetector.BGSObjectDetector();
                 foregroundBoxes = null;
@@ -253,14 +261,14 @@ namespace VideoPipelineCore
 
             //background subtractor
             Mat fgmask = null;
-            if (new int[] { 5, 2, 1 }.Contains(pplConfig))
+            if (new int[] { 5, 2, 1, 8 }.Contains(pplConfig))
             {
                 foregroundBoxes = bgs.DetectObjects(DateTime.Now, frame, frameIndex, out fgmask);
             }
 
 
             //line counter
-            if (new int[] { 5, 2, 1 }.Contains(pplConfig))
+            if (new int[] { 5, 2, 1, 8 }.Contains(pplConfig))
             {
                 (counts, occupancy) = lineDetector.updateLineResults(frame, frameIndex, fgmask, foregroundBoxes, ref teleCountsBGS, true);
             }
@@ -311,6 +319,39 @@ namespace VideoPipelineCore
                 itemList = frameDNNOnnxItemList;
             }
 
+            // Http request to Yolo
+            if (pplConfig == 8)
+            {
+                try
+                {
+                    using (var client = new HttpClient())
+                    {
+                        client.Timeout = TimeSpan.FromMinutes(25);
+                        var content = new ByteArrayContent(frame.ToBytes());
+                        var response = client.PostAsync(YoloRestApiEndpoint, content).Result;
+
+                        var contentResponse = response.Content.ReadAsStringAsync().Result;
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return contentResponse;
+                        }
+                        else
+                        {
+                            throw new Exception(contentResponse);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    throw new Exception($"Error invoking Yolo API: {ex.Message}");
+                }
+                finally
+                {
+                    isDNNRunning = false;
+                }
+            }
+
 
             //store images in Azure blob
             //DataPersistence.PersistResult(frameIndex, ccDNNItemList, "test");
@@ -333,7 +374,7 @@ namespace VideoPipelineCore
             {
                 resultStringCounting = LVAPostProcessor.SerializeCountingResultFromItemList(itemList, processTime);
                 Console.WriteLine(resultStringCounting);
-            }            
+            }
 
 
             //print out stats
