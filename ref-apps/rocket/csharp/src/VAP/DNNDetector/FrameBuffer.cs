@@ -25,11 +25,6 @@ namespace DNNDetector
                 frameBuffer.Dequeue();
         }
 
-        public void Clear()
-        {
-            frameBuffer.Clear();
-        }
-
         public Mat[] ToArray()
         {
             return frameBuffer.ToArray();

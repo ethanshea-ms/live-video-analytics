@@ -49,7 +49,7 @@ namespace DNNDetector
                             while (frameIndex - frameIndexOnnxYolo < DNNConfig.FRAME_SEARCH_RANGE)
                             {
                                 var index = DNNConfig.FRAME_SEARCH_RANGE - (frameIndex - frameIndexOnnxYolo);
-                                Console.WriteLine($"** Invoking  DNN on {index}");
+                                Console.WriteLine($"** Invoking Http DNN on {index}");
                                 Mat frameOnnx = frameBufferArray[index];
 
                                 teleCountsCheapDNN++;
@@ -80,8 +80,8 @@ namespace DNNDetector
 
                                                     if(count > 0)
                                                     {
-                                                        // empty queue
-                                                        frameBufferLtDNNOnnxYolo.Clear();
+                                                        // Detected
+                                                        Console.WriteLine($"** Http DNN detected on: {index}");
                                                         return result;
                                                     }
                                                 }
@@ -97,6 +97,10 @@ namespace DNNDetector
                                 {
                                     Console.WriteLine($"Error invoking Yolo API: {ex.Message}");
                                     return null;
+                                }
+                                finally
+                                {
+                                    updateCount(counts);
                                 }
 
                                 frameIndexOnnxYolo--;

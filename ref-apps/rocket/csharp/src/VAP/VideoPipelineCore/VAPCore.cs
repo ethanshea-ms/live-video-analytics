@@ -157,9 +157,6 @@ namespace VideoPipelineCore
             }
             OutputFolder.OutputFolderInit();
 
-            //check param
-            lineFile = @"..\..\..\cfg\line.txt";
-
             //----------
             //initialize pipeline components
             Utils.Utils.cleanFolder(@OutputFolder.OutputFolderAll);
