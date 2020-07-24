@@ -49,6 +49,7 @@ namespace VideoPipelineCore
         static FrameDNNOnnxYolo frameDNNOnnxYolo;
         static List<Item> frameDNNOnnxItemList;
         static List<Item> itemList;
+        static LineTriggeredHttp lineTriggeredHttp;
 
         static int frameIndex = 0;
 
@@ -213,6 +214,11 @@ namespace VideoPipelineCore
                 Utils.Utils.cleanFolder(@OutputFolder.OutputFolderFrameDNNONNX);
             }
 
+            if (pplConfig == 8)
+            {
+                lineTriggeredHttp = new LineTriggeredHttp(YoloRestApiEndpoint);
+            }
+
             itemList = null;
 
             //RUN PIPELINE 
@@ -322,34 +328,9 @@ namespace VideoPipelineCore
             // Http request to Yolo
             if (pplConfig == 8)
             {
-                try
-                {
-                    using (var client = new HttpClient())
-                    {
-                        client.Timeout = TimeSpan.FromMinutes(25);
-                        var content = new ByteArrayContent(frame.ToBytes());
-                        var response = client.PostAsync(YoloRestApiEndpoint, content).Result;
-
-                        var contentResponse = response.Content.ReadAsStringAsync().Result;
-                        if (response.IsSuccessStatusCode)
-                        {
-                            return contentResponse;
-                        }
-                        else
-                        {
-                            throw new Exception(contentResponse);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    throw new Exception($"Error invoking Yolo API: {ex.Message}");
-                }
-                finally
-                {
-                    isDNNRunning = false;
-                }
+                var result = lineTriggeredHttp.Run(frame, frameIndex, counts, ref teleCountsHeavyDNN);
+                isDNNRunning = false;
+                return result?.ToString();
             }
 
 
