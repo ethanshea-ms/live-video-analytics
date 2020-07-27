@@ -41,10 +41,10 @@ namespace VAPManagerService
             string bsize = Configuration.GetValue<string>("bsize");
             string uptran = Configuration.GetValue<string>("uptran");
             string downtran = Configuration.GetValue<string>("downtran");
-            string line = Configuration.GetValue<string>("VAP:line");
-            string pipeline = Configuration.GetValue<string>("VAP:pipeline");
-            string yoloRestApiEndpoint = Configuration.GetValue<string>("VAP:yoloRestApiEndpoint");
-            string[] arg = new string[] { "", pipeline, line, sfactor, rfactor, bsize, uptran, downtran, yoloRestApiEndpoint };
+            string line = Configuration.GetValue<string>("line");
+            string pipeline = Configuration.GetValue<string>("pipeline");
+            string dnnApiEndpoint = Configuration.GetValue<string>("dnnApiEndpoint");
+            string[] arg = new string[] { "", pipeline, line, sfactor, rfactor, bsize, uptran, downtran, dnnApiEndpoint };
             string catRaw = Configuration.GetValue<string>("cat");
             if (catRaw != null)
             {

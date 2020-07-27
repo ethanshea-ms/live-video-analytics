@@ -34,7 +34,7 @@ namespace VideoPipelineCore
         static int pplConfig = Convert.ToInt16(ConfigurationManager.AppSettings["PplConfig"]);
         static bool displayRawVideo = false;
         static bool displayBGSVideo = false;
-        static string YoloRestApiEndpoint;
+        static string DnnRestApiEndpoint;
 
         static BGSObjectDetector.BGSObjectDetector bgs;
         static List<Box> foregroundBoxes;
@@ -120,7 +120,7 @@ namespace VideoPipelineCore
             if (args[6] != null) LineDetectorConfig.UP_STATE_TRANSITION_LENGTH = int.Parse(args[6]);
             if (args[7] != null) LineDetectorConfig.DOWN_STATE_TRANSITION_LENGTH = int.Parse(args[7]);
 
-            YoloRestApiEndpoint = args[8] ?? string.Empty;
+            DnnRestApiEndpoint = args[8] ?? string.Empty;
 
             //if no categpry is specified, add all classes from coco dataset
             if (args.Length > 9)
@@ -213,7 +213,7 @@ namespace VideoPipelineCore
 
             if (pplConfig == 8)
             {
-                lineTriggeredHttp = new LineTriggeredHttp(YoloRestApiEndpoint);
+                lineTriggeredHttp = new LineTriggeredHttp(DnnRestApiEndpoint);
             }
 
             itemList = null;
