@@ -46,7 +46,7 @@ namespace VideoPipelineCore
         static List<Item> ltDNNItemList;
         static CascadedDNNORTYolo ccDNN;
         static List<Item> ccDNNItemList;
-        static FrameDNNOnnxYolo frameDNNOnnxYolo;
+        static FrameDNNOnnxYolo frameDNNOnnxYolo, frameHeavyYolo;
         static List<Item> frameDNNOnnxItemList;
         static List<Item> itemList;
         static LineTriggeredHttp lineTriggeredHttp;
@@ -161,7 +161,7 @@ namespace VideoPipelineCore
             //initialize pipeline components
             Utils.Utils.cleanFolder(@OutputFolder.OutputFolderAll);
             //----------
-            if (new int[] { 5, 1, 2, 3, 4, 8 }.Contains(pplConfig))
+            if (new int[] { 5, 1, 2, 3, 4, 8, 9 }.Contains(pplConfig))
             {
                 bgs = new BGSObjectDetector.BGSObjectDetector();
                 foregroundBoxes = null;
@@ -187,7 +187,7 @@ namespace VideoPipelineCore
                 ltDNNItemList = new List<Item>();
             }
             //----------
-            if (new int[] { 1 }.Contains(pplConfig))
+            if (new int[] { 1, 9 }.Contains(pplConfig))
             {
                 ccDNN = new CascadedDNNORTYolo(lines, "yolov3");
                 ccDNNItemList = new List<Item>();
@@ -204,9 +204,10 @@ namespace VideoPipelineCore
                 Utils.Utils.cleanFolder(@OutputFolder.OutputFolderFrameDNNONNX);
             }
             //----------
-            if (new int[] { 4, 7 }.Contains(pplConfig))
+            if (new int[] { 4, 7, 9 }.Contains(pplConfig))
             {
                 frameDNNOnnxYolo = new FrameDNNOnnxYolo(lines, "yolov3tiny", DNNMode.Frame);
+                frameHeavyYolo = new FrameDNNOnnxYolo(lines, "yolov3", DNNMode.Frame);
                 frameDNNOnnxItemList = new List<Item>();
                 Utils.Utils.cleanFolder(@OutputFolder.OutputFolderFrameDNNONNX);
             }
@@ -330,6 +331,39 @@ namespace VideoPipelineCore
                 return result?.ToString();
             }
 
+            // Tiny -> Heavy YOLO
+            if (pplConfig == 9)
+            {
+                frameDNNOnnxItemList = frameDNNOnnxYolo.Run(frame, frameIndex, category, Brushes.Pink, 0, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_SMALL, true);
+                List<Item> tempItems = new List<Item>();
+                if (frameDNNOnnxItemList != null)
+                {
+                    foreach (Item item in frameDNNOnnxItemList)
+                    {
+                        if (item.Confidence >= DNNConfig.CONFIDENCE_THRESHOLD)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            ccDNNItemList = frameHeavyYolo.Run(frame, frameIndex, category, Brushes.Yellow, 0, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_LARGE, true);
+                            if (ccDNNItemList != null)
+                            {
+                                foreach (Item heavyItem in ccDNNItemList)
+                                {
+                                    tempItems.Add(heavyItem);
+                                    heavyItem.Print();
+                                }
+                            }
+                        }
+                    }
+
+                    frameDNNOnnxItemList.AddRange(tempItems);
+                }
+
+                itemList = frameDNNOnnxItemList;
+            }
+
 
             //store images in Azure blob
             //DataPersistence.PersistResult(frameIndex, ccDNNItemList, "test");
@@ -338,7 +372,7 @@ namespace VideoPipelineCore
             double processTime = (DateTime.Now - prevTime).TotalMilliseconds;
             string resultStringDetection = "";
             string resultStringCounting = "";
-            if (new int[] { 6, 7 }.Contains(pplConfig))
+            if (new int[] { 6, 7, 9 }.Contains(pplConfig))
             {
                 resultStringDetection = LVAPostProcessor.SerializeDetectionResult(itemList, processTime, frame.Width, frame.Height);
                 Console.WriteLine(resultStringDetection);
@@ -367,7 +401,7 @@ namespace VideoPipelineCore
 
 
             isDNNRunning = false;
-            if (new int[] { 6, 7 }.Contains(pplConfig))
+            if (new int[] { 6, 7, 9 }.Contains(pplConfig))
             {
                 return resultStringDetection;
             }
