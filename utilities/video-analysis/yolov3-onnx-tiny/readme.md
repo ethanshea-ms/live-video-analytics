@@ -8,10 +8,10 @@ Note: References to third-party software in this repo are for informational and 
 1. [Install Docker](http://docs.docker.com/docker-for-windows/install/) on your machine
 2. Install [curl](http://curl.haxx.se/)
 
-## Building the docker container
+## Building the Docker container
 
 1. Create a new directory on your machine and copy all the files (including the sub-folders) from this GitHub folder to that directory.
-2. Build the container image (should take some minutes) by running the following docker command from a command window in that directory
+2. Build the container image (should take some minutes) by running the following Docker command from a command window in that directory
 
 ```bash
 docker build . -t yolov3-onnx-tiny:latest
@@ -20,7 +20,7 @@ docker build . -t yolov3-onnx-tiny:latest
 ## Running and testing
 REST endpoint accepts image with the size of 416 pixels by 416 pixels. This is requirement by YoloV3 model. Since LVA edge module is capable of sending specified size image in specified format, we are not preprocessing the incoming images for resize them. This is mainly because performance improvement.
 
-Run the container using the following docker command
+Run the container using the following Docker command
 
 ```bash
 docker run  --name my_yolo_container -p 80:80 -d  -i yolov3-onnx-tiny:latest
@@ -37,42 +37,42 @@ curl -X POST http://127.0.0.1/score -H "Content-Type: image/jpeg" --data-binary 
 If successful, you will see JSON printed on your screen that looks something like this
 ```json
 {
-    "inferences": [                
+    "inferences": [
         {
+            "type": "entity",
             "entity": {
-                "box": {
-                    "h": 0.3498992351271351,
-                    "l": 0.027884870008988812,
-                    "t": 0.6497463818662655,
-                    "w": 0.212033897746693
-                },
                 "tag": {
-                    "confidence": 0.9857677221298218,
-                    "value": "person"
+                    "value": "person",
+                    "confidence": "0.959613"
+                },
+                "box": {
+                    "l": "0.692427",
+                    "t": "0.364723",
+                    "w": "0.084010",
+                    "h": "0.077655"
                 }
-            },
-            "type": "entity"
+            }
         },
         {
+            "type": "entity",
             "entity": {
-                "box": {
-                    "h": 0.3593513820482337,
-                    "l": 0.6868949751420454,
-                    "t": 0.6334065123374417,
-                    "w": 0.26539528586647726
-                },
                 "tag": {
-                    "confidence": 0.9851594567298889,
-                    "value": "person"
+                "value": "vehicle",
+                "confidence": "0.929751"
+                },
+                "box": {
+                    "l": "0.521143",
+                    "t": "0.446333",
+                    "w": "0.166306",
+                    "h": "0.126898"
                 }
-            },
-            "type": "entity"
+            }
         }
     ]
 }
 ```
 
-Terminate the container using the following docker commands
+Terminate the container using the following Docker commands
 
 ```bash
 docker stop my_yolo_container
