@@ -5,7 +5,6 @@ using BGSObjectDetector;
 using DNNDetector;
 using DNNDetector.Config;
 using DNNDetector.Model;
-using ICSharpCode.SharpZipLib.Zip;
 using LineDetector;
 using LineDetector.Config;
 using OpenCvSharp;
@@ -17,7 +16,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using Utils.Config;
 using Wrapper.ORT;
 
@@ -187,7 +185,7 @@ namespace VideoPipelineCore
                 ltDNNItemList = new List<Item>();
             }
             //----------
-            if (new int[] { 1, 9 }.Contains(pplConfig))
+            if (new int[] { 1 }.Contains(pplConfig))
             {
                 ccDNN = new CascadedDNNORTYolo(lines, "yolov3");
                 ccDNNItemList = new List<Item>();
@@ -260,8 +258,6 @@ namespace VideoPipelineCore
                 isDNNRunning = false;
                 return null;
             }
-            //Console.WriteLine("Frame ID: " + frameIndex);
-
 
             //background subtractor
             Mat fgmask = null;
@@ -269,7 +265,6 @@ namespace VideoPipelineCore
             {
                 foregroundBoxes = bgs.DetectObjects(DateTime.Now, frame, frameIndex, out fgmask);
             }
-
 
             //line counter
             if (new int[] { 5, 2, 1, 8 }.Contains(pplConfig))
@@ -299,15 +294,6 @@ namespace VideoPipelineCore
                 itemList = ccDNNItemList;
             }
 
-
-            //frame DNN TF
-            //frameDNNTFItemList = frameDNNTF.Run(frame, frameIndex, category, System.Drawing.Brushes.Pink, 0.2);
-            //if (frameDNNTFItemList.Count != 0)
-            //{
-            //    Console.WriteLine("TF detected!");
-            //}
-
-
             //frame DNN ORTONNXYolo
             if (new int[] { 3, 4 }.Contains(pplConfig))
             {
@@ -334,7 +320,7 @@ namespace VideoPipelineCore
             // Tiny -> Heavy YOLO
             if (pplConfig == 9)
             {
-                frameDNNOnnxItemList = frameDNNOnnxYolo.Run(frame, frameIndex, category, Brushes.Pink, 0, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_SMALL, true);
+                frameDNNOnnxItemList = frameDNNOnnxYolo.Run(frame, frameIndex, category, Brushes.Pink, 0, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_LARGE, true);
                 List<Item> tempItems = new List<Item>();
                 if (frameDNNOnnxItemList != null)
                 {
@@ -364,15 +350,12 @@ namespace VideoPipelineCore
                 itemList = frameDNNOnnxItemList;
             }
 
-
             //store images in Azure blob
             //DataPersistence.PersistResult(frameIndex, ccDNNItemList, "test");
-
-
             double processTime = (DateTime.Now - prevTime).TotalMilliseconds;
             string resultStringDetection = "";
             string resultStringCounting = "";
-            if (new int[] { 6, 7, 9 }.Contains(pplConfig))
+            if (new int[] { 6, 7 }.Contains(pplConfig))
             {
                 resultStringDetection = LVAPostProcessor.SerializeDetectionResult(itemList, processTime, frame.Width, frame.Height);
                 Console.WriteLine(resultStringDetection);
@@ -382,7 +365,7 @@ namespace VideoPipelineCore
                 resultStringCounting = LVAPostProcessor.SerializeCountingResultFromCounts(counts, processTime);
                 Console.WriteLine(resultStringCounting);
             }
-            else if (new int[] { 1, 2, 3, 4 }.Contains(pplConfig))
+            else if (new int[] { 1, 2, 3, 4, 9 }.Contains(pplConfig))
             {
                 resultStringCounting = LVAPostProcessor.SerializeCountingResultFromItemList(itemList, processTime);
                 Console.WriteLine(resultStringCounting);
@@ -401,7 +384,7 @@ namespace VideoPipelineCore
 
 
             isDNNRunning = false;
-            if (new int[] { 6, 7, 9 }.Contains(pplConfig))
+            if (new int[] { 6, 7 }.Contains(pplConfig))
             {
                 return resultStringDetection;
             }

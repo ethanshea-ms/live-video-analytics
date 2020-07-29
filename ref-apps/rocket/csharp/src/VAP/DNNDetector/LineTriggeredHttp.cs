@@ -85,20 +85,6 @@ namespace DNNDetector
                                                         return result;
                                                     }
                                                 }
-
-                                                IList<JToken> otherItems = inferences["inferences"].Children().Where(x => x["other"] != null).Select(x => x["other"]).ToList();
-
-                                                foreach (var item in otherItems)
-                                                {
-                                                    var count = item["count"].Value<int>();
-
-                                                    if (count > 0)
-                                                    {
-                                                        // Detected
-                                                        Console.WriteLine($"** Http DNN detected on: {index}");
-                                                        return result;
-                                                    }
-                                                }
                                             }
                                         }
                                         else

@@ -1,11 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-using System;
-using System.Collections.Generic;
-
 using OpenCvSharp;
 using OpenCvSharp.Blob;
+using System;
+using System.Collections.Generic;
 
 namespace BGSObjectDetector
 {
