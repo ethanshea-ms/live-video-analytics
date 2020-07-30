@@ -317,7 +317,7 @@ namespace VideoPipelineCore
 
                 if (!string.IsNullOrWhiteSpace(result))
                 {
-                    return result;
+                    return LVAPostProcessor.SynchronizeCounts(result);
                 }
             }
 
@@ -332,11 +332,12 @@ namespace VideoPipelineCore
                     {
                         if (item.Confidence >= DNNConfig.CONFIDENCE_THRESHOLD)
                         {
+                            tempItems.Add(item);
                             continue;
                         }
                         else
                         {
-                            ccDNNItemList = frameHeavyYolo.Run(frame, frameIndex, category, Brushes.Yellow, 0, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_LARGE, true);
+                            ccDNNItemList = frameHeavyYolo.Run(frame, frameIndex, category, Brushes.Yellow, item.TriggerLineID, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_LARGE, true);
                             if (ccDNNItemList != null)
                             {
                                 foreach (Item heavyItem in ccDNNItemList)
@@ -382,7 +383,7 @@ namespace VideoPipelineCore
             double avgFps2 = 1000 * (long)frameIndex / (DateTime.Now - startTime).TotalMilliseconds;
             Console.WriteLine("{0} {1,-5} {2} {3,-5} {4} {5,-15} {6} {7,-10:N2} {8} {9,-10:N2} {10} {11,-10:N2}",
                                 "sFactor:", SAMPLING_FACTOR, "rFactor:", RESOLUTION_FACTOR, "FrameID:", frameIndex, "ProcessTime:", processTime, "Avg. Processing FPS:", avgFps1 * SAMPLING_FACTOR, "Avg. E2E FPS:", avgFps2);
-            Console.WriteLine("{0} {1,-5} {2} {3,-5} {4} {5,-15}",
+            Console.WriteLine("{0} {1,-5} {2} {3,-5} {4} {5,-15} {6} {7}",
                                 "BGS counts:", teleCountsBGS, "Cheap DNN counts:", teleCountsCheapDNN, "Heavy DNN counts:", teleCountsHeavyDNN, "Http DNN counts:", countHttpDNN);
             Console.WriteLine();
 
