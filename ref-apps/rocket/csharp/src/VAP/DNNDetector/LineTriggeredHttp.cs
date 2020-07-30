@@ -27,7 +27,7 @@ namespace DNNDetector
             Utils.Utils.cleanFolder(@OutputFolder.OutputFolderFrameDNNONNX);
         }
 
-        public string Run(Mat frame, int frameIndex, Dictionary<string, int> counts, ref long teleCountsCheapDNN)
+        public string Run(Mat frame, int frameIndex, Dictionary<string, int> counts, ref long countDNN)
         {
             // buffer frame
             frameBufferLtDNNOnnxYolo.Buffer(frame);
@@ -52,7 +52,7 @@ namespace DNNDetector
                                 Console.WriteLine($"** Invoking Http DNN on {index}");
                                 Mat frameOnnx = frameBufferArray[index];
 
-                                teleCountsCheapDNN++;
+                                countDNN++;
                                 var result = string.Empty;
                                 try
                                 {
@@ -67,7 +67,7 @@ namespace DNNDetector
                                         {
                                             result = contentResponse;
 
-                                            if(!string.IsNullOrWhiteSpace(result) && result.Length > 2)
+                                            if(!string.IsNullOrWhiteSpace(result))
                                             {
                                                 JObject inferences = JObject.Parse(result);
 

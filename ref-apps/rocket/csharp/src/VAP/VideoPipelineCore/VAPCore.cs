@@ -58,7 +58,7 @@ namespace VideoPipelineCore
         public static bool isDNNRunning { get; set; }
         static double avgFps1 = double.PositiveInfinity;
 
-        static long teleCountsBGS = 0, teleCountsCheapDNN = 0, teleCountsHeavyDNN = 0;
+        static long teleCountsBGS = 0, teleCountsCheapDNN = 0, teleCountsHeavyDNN = 0, countHttpDNN = 0;
 
         public static void Initialize(string[] args)
         {
@@ -309,12 +309,16 @@ namespace VideoPipelineCore
                 itemList = frameDNNOnnxItemList;
             }
 
-            // Http request to Yolo
+            // Http request to dnn and return results only if any otherwise result will be serialized
             if (pplConfig == 8)
             {
-                var result = lineTriggeredHttp.Run(frame, frameIndex, counts, ref teleCountsHeavyDNN);
+                var result = lineTriggeredHttp.Run(frame, frameIndex, counts, ref countHttpDNN);
                 isDNNRunning = false;
-                return result?.ToString();
+
+                if (!string.IsNullOrWhiteSpace(result))
+                {
+                    return result;
+                }
             }
 
             // Tiny -> Heavy YOLO
@@ -344,7 +348,7 @@ namespace VideoPipelineCore
                         }
                     }
 
-                    frameDNNOnnxItemList.AddRange(tempItems);
+                    frameDNNOnnxItemList = tempItems;
                 }
 
                 itemList = frameDNNOnnxItemList;
@@ -365,7 +369,7 @@ namespace VideoPipelineCore
                 resultStringCounting = LVAPostProcessor.SerializeCountingResultFromCounts(counts, processTime);
                 Console.WriteLine(resultStringCounting);
             }
-            else if (new int[] { 1, 2, 3, 4, 9 }.Contains(pplConfig))
+            else if (new int[] { 1, 2, 3, 4, 8, 9 }.Contains(pplConfig))
             {
                 resultStringCounting = LVAPostProcessor.SerializeCountingResultFromItemList(itemList, processTime);
                 Console.WriteLine(resultStringCounting);
@@ -379,7 +383,7 @@ namespace VideoPipelineCore
             Console.WriteLine("{0} {1,-5} {2} {3,-5} {4} {5,-15} {6} {7,-10:N2} {8} {9,-10:N2} {10} {11,-10:N2}",
                                 "sFactor:", SAMPLING_FACTOR, "rFactor:", RESOLUTION_FACTOR, "FrameID:", frameIndex, "ProcessTime:", processTime, "Avg. Processing FPS:", avgFps1 * SAMPLING_FACTOR, "Avg. E2E FPS:", avgFps2);
             Console.WriteLine("{0} {1,-5} {2} {3,-5} {4} {5,-15}",
-                                "BGS counts:", teleCountsBGS, "Cheap DNN counts:", teleCountsCheapDNN, "Heavy DNN counts:", teleCountsHeavyDNN);
+                                "BGS counts:", teleCountsBGS, "Cheap DNN counts:", teleCountsCheapDNN, "Heavy DNN counts:", teleCountsHeavyDNN, "Http DNN counts:", countHttpDNN);
             Console.WriteLine();
 
 
