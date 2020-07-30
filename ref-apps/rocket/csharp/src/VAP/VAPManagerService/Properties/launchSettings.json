@@ -11,7 +11,6 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "commandLineArgs": "pipeline=8 dnnApiEndpoint=http://localhost:50200/api/imageItems line=line.txt",
       "launchBrowser": true,
       "launchUrl": "VAPManagerService",
       "environmentVariables": {
