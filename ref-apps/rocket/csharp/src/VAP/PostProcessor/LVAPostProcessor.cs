@@ -132,7 +132,7 @@ namespace PostProcessor
                     if (lResult != null)
                     {
                         int previousAccuCounts = lResult.evt.properties.accumulated;
-                        lResult.evt.properties.accumulated++;
+                        lResult.evt.properties.accumulated += count;
                         lResult.evt.properties.count = lResult.evt.properties.accumulated - previousAccuCounts;
                     }
                 }
