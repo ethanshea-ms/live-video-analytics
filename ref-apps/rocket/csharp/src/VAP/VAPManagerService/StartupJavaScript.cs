@@ -43,7 +43,8 @@ namespace VAPManagerService
             string downtran = Configuration.GetValue<string>("downtran");
             string line = Configuration.GetValue<string>("line");
             string pipeline = Configuration.GetValue<string>("pipeline");
-            string[] arg = new string[] { "", pipeline, line, sfactor, rfactor, bsize, uptran, downtran };
+            string dnnApiEndpoint = Configuration.GetValue<string>("dnnApiEndpoint");
+            string[] arg = new string[] { "", pipeline, line, sfactor, rfactor, bsize, uptran, downtran, dnnApiEndpoint };
             string catRaw = Configuration.GetValue<string>("cat");
             if (catRaw != null)
             {
