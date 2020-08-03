@@ -32,6 +32,7 @@ namespace VideoPipelineCore
         static int pplConfig = Convert.ToInt16(ConfigurationManager.AppSettings["PplConfig"]);
         static bool displayRawVideo = false;
         static bool displayBGSVideo = false;
+        static string DnnRestApiEndpoint;
 
         static BGSObjectDetector.BGSObjectDetector bgs;
         static List<Box> foregroundBoxes;
@@ -43,9 +44,10 @@ namespace VideoPipelineCore
         static List<Item> ltDNNItemList;
         static CascadedDNNORTYolo ccDNN;
         static List<Item> ccDNNItemList;
-        static FrameDNNOnnxYolo frameDNNOnnxYolo;
+        static FrameDNNOnnxYolo frameDNNOnnxYolo, frameHeavyYolo;
         static List<Item> frameDNNOnnxItemList;
         static List<Item> itemList;
+        static LineTriggeredHttp lineTriggeredHttp;
 
         static int frameIndex = 0;
 
@@ -56,12 +58,12 @@ namespace VideoPipelineCore
         public static bool isDNNRunning { get; set; }
         static double avgFps1 = double.PositiveInfinity;
 
-        static long teleCountsBGS = 0, teleCountsCheapDNN = 0, teleCountsHeavyDNN = 0;
+        static long teleCountsBGS = 0, teleCountsCheapDNN = 0, teleCountsHeavyDNN = 0, countHttpDNN = 0;
 
         public static void Initialize(string[] args)
         {
             //Console.WriteLine("Usage: <exe> <video url> <pipeline> <cfg file> <samplingFactor> <resolutionFactor> <buffersize> <uptran> <downtran> <category1> <category2> ...");
-            
+
             videoUrl = args[0];
             switch (ConfigurationManager.AppSettings["Runtime"])
             {
@@ -116,10 +118,12 @@ namespace VideoPipelineCore
             if (args[6] != null) LineDetectorConfig.UP_STATE_TRANSITION_LENGTH = int.Parse(args[6]);
             if (args[7] != null) LineDetectorConfig.DOWN_STATE_TRANSITION_LENGTH = int.Parse(args[7]);
 
+            DnnRestApiEndpoint = args[8] ?? string.Empty;
+
             //if no categpry is specified, add all classes from coco dataset
-            if (args.Length > 8)
+            if (args.Length > 9)
             {
-                for (int i = 8; i < args.Length; i++)
+                for (int i = 9; i < args.Length; i++)
                 {
                     category.Add(args[i], 0);
                 }
@@ -155,7 +159,7 @@ namespace VideoPipelineCore
             //initialize pipeline components
             Utils.Utils.cleanFolder(@OutputFolder.OutputFolderAll);
             //----------
-            if (new int[] { 5, 1, 2, 3, 4 }.Contains(pplConfig))
+            if (new int[] { 5, 1, 2, 3, 4, 8, 9 }.Contains(pplConfig))
             {
                 bgs = new BGSObjectDetector.BGSObjectDetector();
                 foregroundBoxes = null;
@@ -198,11 +202,17 @@ namespace VideoPipelineCore
                 Utils.Utils.cleanFolder(@OutputFolder.OutputFolderFrameDNNONNX);
             }
             //----------
-            if (new int[] { 4, 7 }.Contains(pplConfig))
+            if (new int[] { 4, 7, 9 }.Contains(pplConfig))
             {
                 frameDNNOnnxYolo = new FrameDNNOnnxYolo(lines, "yolov3tiny", DNNMode.Frame);
+                frameHeavyYolo = new FrameDNNOnnxYolo(lines, "yolov3", DNNMode.Frame);
                 frameDNNOnnxItemList = new List<Item>();
                 Utils.Utils.cleanFolder(@OutputFolder.OutputFolderFrameDNNONNX);
+            }
+
+            if (pplConfig == 8)
+            {
+                lineTriggeredHttp = new LineTriggeredHttp(DnnRestApiEndpoint);
             }
 
             itemList = null;
@@ -248,19 +258,16 @@ namespace VideoPipelineCore
                 isDNNRunning = false;
                 return null;
             }
-            //Console.WriteLine("Frame ID: " + frameIndex);
-
 
             //background subtractor
             Mat fgmask = null;
-            if (new int[] { 5, 2, 1 }.Contains(pplConfig))
+            if (new int[] { 5, 2, 1, 8 }.Contains(pplConfig))
             {
                 foregroundBoxes = bgs.DetectObjects(DateTime.Now, frame, frameIndex, out fgmask);
             }
 
-
             //line counter
-            if (new int[] { 5, 2, 1 }.Contains(pplConfig))
+            if (new int[] { 5, 2, 1, 8 }.Contains(pplConfig))
             {
                 (counts, occupancy) = lineDetector.updateLineResults(frame, frameIndex, fgmask, foregroundBoxes, ref teleCountsBGS, true);
             }
@@ -287,15 +294,6 @@ namespace VideoPipelineCore
                 itemList = ccDNNItemList;
             }
 
-
-            //frame DNN TF
-            //frameDNNTFItemList = frameDNNTF.Run(frame, frameIndex, category, System.Drawing.Brushes.Pink, 0.2);
-            //if (frameDNNTFItemList.Count != 0)
-            //{
-            //    Console.WriteLine("TF detected!");
-            //}
-
-
             //frame DNN ORTONNXYolo
             if (new int[] { 3, 4 }.Contains(pplConfig))
             {
@@ -311,11 +309,54 @@ namespace VideoPipelineCore
                 itemList = frameDNNOnnxItemList;
             }
 
+            // Http request to dnn and return results only if any otherwise result will be serialized
+            if (pplConfig == 8)
+            {
+                var result = lineTriggeredHttp.Run(frame, frameIndex, counts, ref countHttpDNN);
+                isDNNRunning = false;
+
+                if (!string.IsNullOrWhiteSpace(result))
+                {
+                    return LVAPostProcessor.SynchronizeCounts(result);
+                }
+            }
+
+            // Tiny -> Heavy YOLO
+            if (pplConfig == 9)
+            {
+                frameDNNOnnxItemList = frameDNNOnnxYolo.Run(frame, frameIndex, category, Brushes.Pink, 0, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_LARGE, true);
+                List<Item> tempItems = new List<Item>();
+                if (frameDNNOnnxItemList != null)
+                {
+                    foreach (Item item in frameDNNOnnxItemList)
+                    {
+                        if (item.Confidence >= DNNConfig.CONFIDENCE_THRESHOLD)
+                        {
+                            tempItems.Add(item);
+                            continue;
+                        }
+                        else
+                        {
+                            ccDNNItemList = frameHeavyYolo.Run(frame, frameIndex, category, Brushes.Yellow, item.TriggerLineID, DNNConfig.MIN_SCORE_FOR_LINEBBOX_OVERLAP_LARGE, true);
+                            if (ccDNNItemList != null)
+                            {
+                                foreach (Item heavyItem in ccDNNItemList)
+                                {
+                                    tempItems.Add(heavyItem);
+                                    heavyItem.Print();
+                                }
+                            }
+                        }
+                    }
+
+                    frameDNNOnnxItemList = tempItems;
+                }
+
+                itemList = frameDNNOnnxItemList;
+            }
 
             //store images in Azure blob
             //DataPersistence.PersistResult(frameIndex, ccDNNItemList, "test");
-
-
             double processTime = (DateTime.Now - prevTime).TotalMilliseconds;
             string resultStringDetection = "";
             string resultStringCounting = "";
@@ -329,11 +370,11 @@ namespace VideoPipelineCore
                 resultStringCounting = LVAPostProcessor.SerializeCountingResultFromCounts(counts, processTime);
                 Console.WriteLine(resultStringCounting);
             }
-            else if (new int[] { 1, 2, 3, 4 }.Contains(pplConfig))
+            else if (new int[] { 1, 2, 3, 4, 8, 9 }.Contains(pplConfig))
             {
                 resultStringCounting = LVAPostProcessor.SerializeCountingResultFromItemList(itemList, processTime);
                 Console.WriteLine(resultStringCounting);
-            }            
+            }
 
 
             //print out stats
@@ -342,8 +383,8 @@ namespace VideoPipelineCore
             double avgFps2 = 1000 * (long)frameIndex / (DateTime.Now - startTime).TotalMilliseconds;
             Console.WriteLine("{0} {1,-5} {2} {3,-5} {4} {5,-15} {6} {7,-10:N2} {8} {9,-10:N2} {10} {11,-10:N2}",
                                 "sFactor:", SAMPLING_FACTOR, "rFactor:", RESOLUTION_FACTOR, "FrameID:", frameIndex, "ProcessTime:", processTime, "Avg. Processing FPS:", avgFps1 * SAMPLING_FACTOR, "Avg. E2E FPS:", avgFps2);
-            Console.WriteLine("{0} {1,-5} {2} {3,-5} {4} {5,-15}",
-                                "BGS counts:", teleCountsBGS, "Cheap DNN counts:", teleCountsCheapDNN, "Heavy DNN counts:", teleCountsHeavyDNN);
+            Console.WriteLine("{0} {1,-5} {2} {3,-5} {4} {5,-15} {6} {7}",
+                                "BGS counts:", teleCountsBGS, "Cheap DNN counts:", teleCountsCheapDNN, "Heavy DNN counts:", teleCountsHeavyDNN, "Http DNN counts:", countHttpDNN);
             Console.WriteLine();
 
 

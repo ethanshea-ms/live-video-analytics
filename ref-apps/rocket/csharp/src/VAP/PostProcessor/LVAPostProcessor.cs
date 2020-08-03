@@ -2,10 +2,13 @@
 // Licensed under the MIT license.
 
 using DNNDetector.Model;
+using Newtonsoft.Json.Linq;
 using PostProcessor.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -27,7 +30,7 @@ namespace PostProcessor
 
                 LVADetectionResults detectionConsolidation = new LVADetectionResults();
                 detectionConsolidation.dInference = new object[detectionItems.Count + 1];
-                
+
                 //Compose other
                 LVAOther other = new LVAOther();
                 other.other.inferenceTime = processTime;
@@ -94,17 +97,7 @@ namespace PostProcessor
                 }
             }
 
-            //Create a stream to serialize the object to.  
-            MemoryStream ms = new MemoryStream();
-
-            //Serializer the User object to the stream.
-            var settings = new DataContractJsonSerializerSettings();
-            settings.EmitTypeInformation = EmitTypeInformation.Never;
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(LVACountingResults), settings);
-            ser.WriteObject(ms, countingConsolidation);
-            byte[] json = ms.ToArray();
-            ms.Close();
-            return Encoding.UTF8.GetString(json, 0, json.Length);
+            return SerializedResult();
         }
 
         public static string SerializeCountingResultFromCounts(Dictionary<string, int> counts, double processTime)
@@ -118,6 +111,38 @@ namespace PostProcessor
                 lResult.evt.properties.accumulated = counts[lResult.evt.name];
             }
 
+            return SerializedResult();
+        }
+
+        public static string SynchronizeCounts(string serializedResponse)
+        {
+            JObject inferences = JObject.Parse(serializedResponse);
+
+            // get JSON result objects into a list
+            IList<JToken> events = inferences["inferences"].Children().Where(x => x["event"] != null).Select(x => x["event"]).ToList();
+
+            foreach (var @event in events)
+            {
+                var count = @event["properties"]["count"].Value<int>();
+
+                if (count > 0)
+                {
+                    LVAEvent lResult = (LVAEvent)countingConsolidation.cInference.OfType<LVAEvent>().FirstOrDefault(x => x.evt.name == @event["name"].Value<string>());
+
+                    if (lResult != null)
+                    {
+                        int previousAccuCounts = lResult.evt.properties.accumulated;
+                        lResult.evt.properties.accumulated += count;
+                        lResult.evt.properties.count = lResult.evt.properties.accumulated - previousAccuCounts;
+                    }
+                }
+            }
+
+            return SerializedResult();
+        }
+
+        private static string SerializedResult()
+        {
             //Create a stream to serialize the object to.  
             MemoryStream ms = new MemoryStream();
 

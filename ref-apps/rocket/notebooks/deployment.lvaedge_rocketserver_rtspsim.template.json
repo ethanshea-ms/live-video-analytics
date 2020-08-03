@@ -95,7 +95,8 @@
                     "$ROCKET_RFACTOR",
                     "$ROCKET_BUFFERSIZE",
                     "$ROCKET_UPTRAN",
-                    "$ROCKET_DOWNTRAN"
+                    "$ROCKET_DOWNTRAN",
+                    "$ROCKET_DNNAPIENDPOINT"
                   ],
                   "HostConfig": {
                     "PortBindings": {

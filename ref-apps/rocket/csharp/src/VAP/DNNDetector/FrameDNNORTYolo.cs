@@ -83,6 +83,7 @@ namespace DNNDetector
                 {
                     item.Item.TaggedImageData = Utils.Utils.DrawImage(imageByteArray, item.Item.X, item.Item.Y, item.Item.Width, item.Item.Height, bboxColor);
                     item.Item.CroppedImageData = Utils.Utils.CropImage(imageByteArray, item.Item.X, item.Item.Y, item.Item.Width, item.Item.Height);
+                    item.Item.RawImageData = imageByteArray;
                     item.Item.Index = _index;
                     item.Item.TriggerLine = "";
                     item.Item.TriggerLineID = -1;

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
     <PackageReference Include="OpenCvSharp4" Version="$(OpenCvSharp4Version)" />
   </ItemGroup>
 
