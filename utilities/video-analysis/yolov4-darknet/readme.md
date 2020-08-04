@@ -1,6 +1,6 @@
-# Yolov4 Darknet model
+# YOLOv4 Darknet model
 
-The following instructions will enable you to build a Docker container with Darknet [Yolov4](http://pjreddie.com/darknet/yolo/) model using [opencv](https://opencv.org/), [cpprestsdk](https://github.com/microsoft/cpprestsdk/).
+The following instructions will enable you to build a Docker container with Darknet [YOLOv4](http://pjreddie.com/darknet/yolo/) model using [opencv](https://opencv.org/), [cpprestsdk](https://github.com/microsoft/cpprestsdk/).
 
 Note: References to third-party software in this repo are for informational and convenience purposes only. Microsoft does not endorse nor provide rights for the third-party software. For more information on third-party software please see the links provided above.
 
