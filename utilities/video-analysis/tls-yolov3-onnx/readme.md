@@ -2,7 +2,7 @@
 
 *An alternative for scenarios where the YOLO inferencing container, will run separately from IoT Edge (i.e. you have a spare beefy (hardware capable) server you'd like to use for this intensive task; given the amount of cameras you'll be feeding LVA with, which in turn, will demand simultaneous inferencing from this container). Although possible from a technical standpoint, if the inferencing container will run under IoT Edge's umbrella, a TLS certificate won't bring any added value. In this case, our suggestion is to walk the [regular documented path](../yolov3-onnx/readme.md)*
 
-The following instruction will enable you to build a Docker container with [Yolov3](http://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) model using [nginx](https://www.nginx.com/), [gunicorn](https://gunicorn.org/), [flask](https://github.com/pallets/flask), and [runit](http://smarden.org/runit/). The container exposes port 443 to the outside world.
+The following instructions will enable you to build a Docker container with [Yolov3](http://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) model using [nginx](https://www.nginx.com/), [gunicorn](https://gunicorn.org/), [flask](https://github.com/pallets/flask), and [runit](http://smarden.org/runit/). The container exposes port 443 to the outside world.
 
 > Note that the SSL connection alone won't discriminate clients, allowing port access to services other than LVA. Mechanisms like username/password or http headers would help if necessary.
 
@@ -52,15 +52,15 @@ Please update the contents for the nginx configuration file `yolo3-app.conf`.
     ssl_certificate_key /certs/<file-name>-key.pem;
 ```
 
-After getting a certificate, copying its pieces and updating the nginx configuration file, you're ready to begin the image building process.
+After you have retreived the certificate, copied its pieces, and updated the nginx configuration file, you will be ready to begin the image building process.
 
 To build the image, use the Docker file named `Dockerfile`.
 
 First, a couple assumptions
 
 * We'll be using Azure Container Registry (ACR) to publish our image before distributing it
-* Our local Docker is already loged into ACR.
-* Our hypothetical ACR name is "myregistry". Your may defer, so please update it properly along the following commands.
+* Our local Docker container image is already loged into ACR.
+* Our hypothetical ACR name is "myregistry". Your name may defer, so please update it properly in the following commands.
 
 > If you're unfamiliar with ACR or have any questions, please follow this [demo on building and pushing an image into ACR](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli).
 
@@ -307,7 +307,7 @@ The entire /images folder will be copied to ./images on your host machine. Image
 
 ## Upload Docker image to Azure container registry
 
-Follow instruction in [Push and Pull Docker images  - Azure Container Registry](http://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli) to save your image for later use on another machine.
+Follow instructions in [Push and Pull Docker images  - Azure Container Registry](http://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli) to save your image for later use on another machine.
 
 ## Deploy as an Azure IoT Edge module
 

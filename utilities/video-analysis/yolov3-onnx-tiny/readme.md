@@ -18,7 +18,7 @@ docker build . -t yolov3-onnx-tiny:latest
 ```
     
 ## Running and testing
-REST endpoint accepts image with the size of 416 pixels by 416 pixels. This is requirement by YoloV3 model. Since LVA edge module is capable of sending specified size image in specified format, we are not preprocessing the incoming images for resize them. This is mainly because performance improvement.
+REST endpoint accepts image with the size of 416px x 416 px. This is requirement by YoloV3 model. Since LVA edge module is capable of sending specified size image in specified format, we are not preprocessing the incoming images for resize them. This is mainly because performance improvement.
 
 Run the container using the following Docker command
 
