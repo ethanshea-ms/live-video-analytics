@@ -14,7 +14,7 @@ Note: References to third-party software in this repo are for informational and 
 1. [Install Docker](http://docs.docker.com/docker-for-windows/install/) on your machine
 2. Install [curl](http://curl.haxx.se/)
 
-## Building the docker container
+## Building the Docker container
 
 Build the container image (should take some minutes) by running the following Docker command from a command window in that directory
 
@@ -48,34 +48,34 @@ If successful, you will see JSON printed on your screen that looks something lik
 {
     "inferences": [
         {
+            "type": "entity",
             "entity": {
-                "box": {
-                    "h": 0.3498992351271351,
-                    "l": 0.027884870008988812,
-                    "t": 0.6497463818662655,
-                    "w": 0.212033897746693
-                },
                 "tag": {
-                    "confidence": 0.9857677221298218,
-                    "value": "person"
+                    "value": "person",
+                    "confidence": 0.959613
+                },
+                "box": {
+                    "l": 0.692427,
+                    "t": 0.364723,
+                    "w": 0.084010,
+                    "h": 0.077655
                 }
-            },
-            "type": "entity"
+            }
         },
         {
+            "type": "entity",
             "entity": {
-                "box": {
-                    "h": 0.3593513820482337,
-                    "l": 0.6868949751420454,
-                    "t": 0.6334065123374417,
-                    "w": 0.26539528586647726
-                },
                 "tag": {
-                    "confidence": 0.9851594567298889,
-                    "value": "person"
+                "value": "vehicle",
+                "confidence": 0.929751
+                },
+                "box": {
+                    "l": 0.521143,
+                    "t": 0.446333,
+                    "w": 0.166306,
+                    "h": 0.126898
                 }
-            },
-            "type": "entity"
+            }
         }
     ]
 }
@@ -133,16 +133,16 @@ The entire /images folder will be copied to ./images on your host machine. Image
 
 ## Terminating
 
-Terminate the container using the following docker commands
+Terminate the container using the following Docker commands
 
 ```bash
 docker stop my_yolo_container
 docker rm my_yolo_container
 ```
 
-## Upload docker image to Azure container registry
+## Upload Docker image to Azure container registry
 
-Follow instruction in [Push and Pull Docker images  - Azure Container Registry](http://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli) to save your image for later use on another machine.
+Follow instructions in [Push and Pull Docker images  - Azure Container Registry](http://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli) to save your image for later use on another machine.
 
 ## Deploy as an Azure IoT Edge module
 
