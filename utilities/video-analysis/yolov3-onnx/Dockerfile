@@ -48,8 +48,8 @@ RUN mkdir /var/runit && \
     chmod +x /var/runit/gunicorn/run
 
 # Copy the app file and the tags file
-COPY app/yolov3-app.py /app
-COPY tags.txt /app
+COPY app/yolov3-app.py /app/
+COPY tags.txt /app/
 
 EXPOSE 80
 
