@@ -22,11 +22,8 @@ class YoloV3Model:
         self.session = onnxruntime.InferenceSession(model_path)
 
         tags_file = 'tags.txt'
-        self.tags = []
         with open(tags_file) as f:
-            for line in f: 
-                line = line.strip()
-                self.tags.append(line)
+            self.tags = [line.strip() for line in f.readlines()]
 
 
     def letterbox_image(self, image: Image, target_size: Tuple[int, int]) -> Image:
@@ -120,12 +117,12 @@ def draw_bounding_boxes(image: Image, detected_objects: list):
     objects_identified = len(detected_objects)
     
     image_width, image_height = image.size
-    draw = ImageDraw.Draw(image)    
+    draw = ImageDraw.Draw(image)
 
     textfont = ImageFont.load_default()
     
-    for pos in range(objects_identified):       
-        entity = detected_objects[pos]['entity'] 
+    for pos in range(objects_identified):
+        entity = detected_objects[pos]['entity']
         box = entity["box"]
         x1 = box["l"]
         y1 = box["t"]
@@ -220,7 +217,7 @@ def score_debug():
 
     # datetime object containing current date and time
     now = datetime.now()
-    
+
     output_dir = 'images'
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
@@ -231,7 +228,7 @@ def score_debug():
     respBody = {
         "inferences" : detected_objects
     }
-    
+
     return respBody
 
 # /annotate routes to annotation function 
@@ -244,9 +241,9 @@ def annotate():
     app.logger.info('Inference took %.2f seconds', inference_duration_s)
 
     image = draw_bounding_boxes(image, detected_objects)
-    
-    image_bytes = io.BytesIO()        
-    image.save(image_bytes, format = 'JPEG')        
+
+    image_bytes = io.BytesIO()
+    image.save(image_bytes, format = 'JPEG')
     image_bytes = image_bytes.getvalue()
 
     return Response(response = image_bytes, status = 200, mimetype = "image/jpeg")
