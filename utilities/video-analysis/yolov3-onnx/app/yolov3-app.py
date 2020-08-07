@@ -19,32 +19,17 @@ import requests
 class YoloV3Model:
     def __init__(self):
         model_path = 'yolov3/yolov3.onnx'
-        self.session = onnxruntime.InferenceSession(model_path)
+        self._session = onnxruntime.InferenceSession(model_path)
 
         tags_file = 'tags.txt'
         with open(tags_file) as f:
             self.tags = [line.strip() for line in f.readlines()]
 
-
-    def letterbox_image(self, image: Image, target_size: Tuple[int, int]) -> Image:
-        '''Resize image with unchanged aspect ratio using padding'''
-        iw, ih = image.size
-        w, h = target_size
-        scale = min(w/iw, h/ih)
-        nw = int(iw*scale)
-        nh = int(ih*scale)
-
-        image = image.resize((nw,nh), Image.BICUBIC)
-        new_image = Image.new('RGB', target_size, (128,128,128))
-        new_image.paste(image, ((w-nw)//2, (h-nh)//2))
-
-        return new_image
+        self.input_size = (416, 416)
 
 
     def preprocess(self, image: Image) -> np.ndarray:
-        model_image_size = (416, 416)
-        boxed_image = self.letterbox_image(image, tuple(reversed(model_image_size)))
-        image_data = np.array(boxed_image, dtype='float32')
+        image_data = np.array(image, dtype='float32')
         image_data /= 255.
         image_data = np.transpose(image_data, [2, 0, 1])
         image_data = np.expand_dims(image_data, 0)
@@ -98,7 +83,7 @@ class YoloV3Model:
         image_size = np.array([image.size[1], image.size[0]], dtype=np.float32).reshape(1, 2)
 
         inference_time_start = time.time()
-        boxes, scores, indices = self.session.run(None, {"input_1": image_data, "image_shape": image_size})
+        boxes, scores, indices = self._session.run(None, {"input_1": image_data, "image_shape": image_size})
         inference_time_end = time.time()
         inference_duration_s = inference_time_end - inference_time_start
         
@@ -148,6 +133,10 @@ def load_image(request: Request):
         image = Image.open(image_data)
     except Exception:
         abort(Response(response='Could not decode image', status=400))
+
+    # Sizing and letterboxing is done by the HttpExtension node within LVA
+    if image.size != model.input_size:
+        abort(Response(response=f'Image must be {model.input_size[0]}x{model.input_size[1]}', status=400))
 
     return image
 
