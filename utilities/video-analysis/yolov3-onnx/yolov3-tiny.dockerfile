@@ -26,7 +26,7 @@ RUN apt-get update -y && \
 RUN mkdir /app && \
     cd /app && \
     wget -nv https://github.com/onnx/models/raw/master/vision/object_detection_segmentation/tiny-yolov3/model/tiny-yolov3-11.onnx && \
-    mv yolov3-tiny.onnx yolov3.onnx && \
+    mv tiny-yolov3-11.onnx yolov3.onnx && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean && \
     apt-get purge -y --auto-remove wget
